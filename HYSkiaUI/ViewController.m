@@ -35,6 +35,9 @@
 
 - (void)handleLeftEdgePan:(UIScreenEdgePanGestureRecognizer *)recognizer {
     CGPoint translation = [recognizer translationInView:self.view];
+    if (translation.x < 0) {
+        translation.x = 0.0f;
+    }
     switch (recognizer.state) {
         case UIGestureRecognizerStateChanged: {
             CGFloat scale = [[UIScreen mainScreen]scale];

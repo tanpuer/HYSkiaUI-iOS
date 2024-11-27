@@ -25,7 +25,7 @@
     self.player.muted = NO;
     AVMutableAudioMix *audioMix = [AVMutableAudioMix audioMix];
     AVMutableAudioMixInputParameters *audioInputParams = [AVMutableAudioMixInputParameters audioMixInputParametersWithTrack:self.playerItem.asset.tracks.firstObject];
-    [audioInputParams setVolume:0.5 atTime:kCMTimeZero];
+    [audioInputParams setVolume:[AVAudioSession sharedInstance].outputVolume atTime:kCMTimeZero];
     audioMix.inputParameters = @[audioInputParams];
     self.playerItem.audioMix = audioMix;
     [self.player play];

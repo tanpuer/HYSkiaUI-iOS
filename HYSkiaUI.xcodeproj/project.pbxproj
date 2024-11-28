@@ -89,6 +89,11 @@
 		22BF2B832CEF318D00E4F457 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 22BF2B822CEF318D00E4F457 /* Base */; };
 		22BF2B862CEF318D00E4F457 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BF2B852CEF318D00E4F457 /* main.m */; };
 		22D6DCDF2CF0702F00732E57 /* HYSkiaView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22D6DCDE2CF0702F00732E57 /* HYSkiaView.mm */; };
+		22F5A0822CF7FAF7005F6F13 /* RichText.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22F5A0812CF7FAF7005F6F13 /* RichText.mm */; };
+		22F5A0852CF7FDB6005F6F13 /* HYVideoDecoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22F5A0842CF7FDB6005F6F13 /* HYVideoDecoder.mm */; };
+		22F5A0882CF81A8A005F6F13 /* YUVVideoView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22F5A0862CF81A8A005F6F13 /* YUVVideoView.mm */; };
+		22F5A08A2CF81EA9005F6F13 /* nv12_fragment_shader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 22F5A0892CF81EA9005F6F13 /* nv12_fragment_shader.glsl */; };
+		22F5A08D2CF828D9005F6F13 /* yiluxiangbei.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 22F5A08C2CF828D9005F6F13 /* yiluxiangbei.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -666,6 +671,14 @@
 		22BF2B852CEF318D00E4F457 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		22D6DCDD2CF0702F00732E57 /* HYSkiaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYSkiaView.h; sourceTree = "<group>"; };
 		22D6DCDE2CF0702F00732E57 /* HYSkiaView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HYSkiaView.mm; sourceTree = "<group>"; };
+		22F5A0802CF7FAF7005F6F13 /* RichText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichText.h; sourceTree = "<group>"; };
+		22F5A0812CF7FAF7005F6F13 /* RichText.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RichText.mm; sourceTree = "<group>"; };
+		22F5A0832CF7FDB6005F6F13 /* HYVideoDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYVideoDecoder.h; sourceTree = "<group>"; };
+		22F5A0842CF7FDB6005F6F13 /* HYVideoDecoder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HYVideoDecoder.mm; sourceTree = "<group>"; };
+		22F5A0862CF81A8A005F6F13 /* YUVVideoView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = YUVVideoView.mm; sourceTree = "<group>"; };
+		22F5A0872CF81A8A005F6F13 /* YUVVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUVVideoView.h; sourceTree = "<group>"; };
+		22F5A0892CF81EA9005F6F13 /* nv12_fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nv12_fragment_shader.glsl; sourceTree = "<group>"; };
+		22F5A08C2CF828D9005F6F13 /* yiluxiangbei.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = yiluxiangbei.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -764,6 +777,8 @@
 				229D58C62CF5E2F200694F52 /* mv_definition_super.svg */,
 				229D58C52CF5E2F200694F52 /* record_player_dark_arm.png */,
 				229D58C32CF5E2F200694F52 /* record_player_verydark_highlight.png */,
+				22F5A0892CF81EA9005F6F13 /* nv12_fragment_shader.glsl */,
+				22F5A08C2CF828D9005F6F13 /* yiluxiangbei.mp4 */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -797,12 +812,16 @@
 				22518BD32CF5636800A2FF19 /* SVGView.h */,
 				22518BD62CF5636E00A2FF19 /* Switch.mm */,
 				22518BD72CF5636E00A2FF19 /* Switch.h */,
+				22F5A0812CF7FAF7005F6F13 /* RichText.mm */,
+				22F5A0802CF7FAF7005F6F13 /* RichText.h */,
 				22518BDA2CF5637F00A2FF19 /* LottieView.mm */,
 				22518BD92CF5637F00A2FF19 /* LottieView.h */,
 				22518BE32CF568CB00A2FF19 /* MovingArea.mm */,
 				22518BE42CF568CB00A2FF19 /* MovingArea.h */,
 				22518BEE2CF5899F00A2FF19 /* ImageView.mm */,
 				22518BED2CF5899F00A2FF19 /* ImageView.h */,
+				22F5A0862CF81A8A005F6F13 /* YUVVideoView.mm */,
+				22F5A0872CF81A8A005F6F13 /* YUVVideoView.h */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -1868,6 +1887,8 @@
 				229D58B62CF5DE3E00694F52 /* LyricScrollView.h */,
 				229D58D62CF5E4DF00694F52 /* HYAudioPlayer.m */,
 				229D58D52CF5E4DF00694F52 /* HYAudioPlayer.h */,
+				22F5A0832CF7FDB6005F6F13 /* HYVideoDecoder.h */,
+				22F5A0842CF7FDB6005F6F13 /* HYVideoDecoder.mm */,
 			);
 			path = custom;
 			sourceTree = "<group>";
@@ -1995,6 +2016,7 @@
 				229D58CC2CF5E2F200694F52 /* record_player_verydark_highlight.png in Resources */,
 				22518BBF2CF54C8B00A2FF19 /* AlimamaFangYuanTiVF-Thin.ttf in Resources */,
 				22518BC12CF54C8B00A2FF19 /* NotoColorEmoji.ttf in Resources */,
+				22F5A08A2CF81EA9005F6F13 /* nv12_fragment_shader.glsl in Resources */,
 				229D58CA2CF5E2F200694F52 /* ic_previous.png in Resources */,
 				22BF2B832CEF318D00E4F457 /* Base in Resources */,
 				22760C252CF01FB70084E042 /* README.md in Resources */,
@@ -2010,6 +2032,7 @@
 				229D58BE2CF5E03E00694F52 /* feng.mp4 in Resources */,
 				229D58CF2CF5E2F200694F52 /* mv_definition_super.svg in Resources */,
 				22518BDD2CF5647300A2FF19 /* WorkspacePlanet.json in Resources */,
+				22F5A08D2CF828D9005F6F13 /* yiluxiangbei.mp4 in Resources */,
 				229D58BF2CF5E03E00694F52 /* feng.srt in Resources */,
 				229D58CD2CF5E2F200694F52 /* ic_pause.png in Resources */,
 				229D58D12CF5E2F200694F52 /* ic_play.png in Resources */,
@@ -2045,6 +2068,7 @@
 				229D58BB2CF5DF6B00694F52 /* AudioFFTView.mm in Sources */,
 				22246FCA2CF376DB0090C0E3 /* YGEnums.cpp in Sources */,
 				226317FC2CF4215200AD9DDB /* CppTest.mm in Sources */,
+				22F5A0852CF7FDB6005F6F13 /* HYVideoDecoder.mm in Sources */,
 				22760C362CF058680084E042 /* HYSkiaMetalApp.mm in Sources */,
 				22BF2B752CEF318B00E4F457 /* AppDelegate.m in Sources */,
 				22246FCC2CF376DB0090C0E3 /* YGNode.cpp in Sources */,
@@ -2071,7 +2095,9 @@
 				22246FCE2CF376DB0090C0E3 /* YGStyle.cpp in Sources */,
 				226317FD2CF4215200AD9DDB /* ExamplePage.mm in Sources */,
 				22246FCD2CF376DB0090C0E3 /* YGNodePrint.cpp in Sources */,
+				22F5A0822CF7FAF7005F6F13 /* RichText.mm in Sources */,
 				22BF2B782CEF318B00E4F457 /* SceneDelegate.m in Sources */,
+				22F5A0882CF81A8A005F6F13 /* YUVVideoView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

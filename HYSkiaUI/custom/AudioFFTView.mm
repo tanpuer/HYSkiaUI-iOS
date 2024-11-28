@@ -9,7 +9,7 @@ AudioFFTView::AudioFFTView() {
 }
 
 AudioFFTView::~AudioFFTView() {
-    player = nil;
+    player = nullptr;
 }
 
 void AudioFFTView::setSource(const char *path) {

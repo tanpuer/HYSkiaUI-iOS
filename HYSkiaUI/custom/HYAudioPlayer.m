@@ -11,6 +11,7 @@
 @implementation HYAudioPlayer
 
 - (void)dealloc {
+    NSLog(@"HYAudioPlayer dealloc");
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
 }
 

@@ -15,6 +15,8 @@
 #include "MovingArea.h"
 #include "ImageView.h"
 #include "QQMusicPage.h"
+#include "RichText.h"
+#include "YUVVideoView.h"
 
 void ExamplePage::init(std::shared_ptr<SkiaUIContext> &context, int width, int height) {
     setContext(context);
@@ -52,6 +54,19 @@ void ExamplePage::initChildren(ViewGroup *root, int width, int height) {
     scrollView->setBackgroundColor(SK_ColorWHITE);
     scrollView->setFlex(1);
     root->addView(scrollView);
+    
+    {
+        auto richText = new RichText();
+        richText->setContext(this->context);
+        richText->setWidth(width);
+        richText->setStyle(SkPaint::kStroke_Style);
+        richText->setBackgroundColor(SK_ColorTRANSPARENT);
+        richText->setStrokeWidth(0);
+        this->setOnPageSizeChangeListener([richText](int width, int height) {
+            richText->setWidth(width);
+        });
+        scrollView->addView(richText);
+    }
     
     {
         auto lottieView = new LottieView();
@@ -132,6 +147,41 @@ void ExamplePage::initChildren(ViewGroup *root, int width, int height) {
                 //            page->exitToTop(Page::EnterExitInfo(0, height));
             });
         }
+    }
+    
+    {
+        auto flexboxLayout = new FlexboxLayout();
+        flexboxLayout->setContext(this->context);
+        flexboxLayout->setWidth(1080);
+        flexboxLayout->setHeight(360 * 1080 / 640);
+        flexboxLayout->setStyle(SkPaint::kStroke_Style);
+        flexboxLayout->setBackgroundColor(SK_ColorTRANSPARENT);
+        flexboxLayout->setStrokeWidth(0);
+        flexboxLayout->setMargin({0, 0, 0, 50});
+        scrollView->addView(flexboxLayout);
+        
+        auto videoView = new YUVVideoView();
+        videoView->setContext(this->context);
+        videoView->setWidthPercent(100);
+        videoView->setHeightPercent(100);
+        videoView->setSource("yiluxiangbei.mp4");
+        videoView->setStyle(SkPaint::kStroke_Style);
+        videoView->setPositionType(YGPositionType::YGPositionTypeAbsolute);
+        flexboxLayout->addView(videoView);
+        
+        auto loadingView = new LoadingView();
+        loadingView->setContext(this->context);
+        loadingView->setWidthPercent(100);
+        loadingView->setHeightPercent(100);
+        loadingView->setStyle(SkPaint::kStroke_Style);
+        loadingView->setBackgroundColor(SK_ColorTRANSPARENT);
+        loadingView->setStrokeWidth(0);
+        loadingView->setPositionType(YGPositionType::YGPositionTypeAbsolute);
+        flexboxLayout->addView(loadingView);
+        
+        videoView->setRenderFirstFrameCallback([loadingView, flexboxLayout]() {
+            flexboxLayout->removeView(loadingView);
+        });
     }
     
     {

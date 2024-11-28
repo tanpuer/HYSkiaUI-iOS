@@ -97,6 +97,7 @@
     if (!sampleBuffer) {
         if (self.assetReader.status == AVAssetReaderStatusCompleted) {
             NSLog(@"Video playback completed");
+            [self seekToTime:0];
         } else if (self.assetReader.status == AVAssetReaderStatusFailed) {
             NSLog(@"Video decoding failed: %@", self.assetReader.error);
         }
@@ -145,6 +146,28 @@
         CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
     }
     CFRelease(sampleBuffer);
+}
+
+- (void)seekToTime:(int64_t)timeMs {
+    NSError *error = nil;
+    AVAsset *asset = self.assetReader.asset;
+    [self.assetReader cancelReading];
+    self.assetReader = [AVAssetReader assetReaderWithAsset:asset error:&error];
+    if (error) {
+        NSLog(@"Failed to create asset reader: %@", error);
+        return;
+    }
+    CMTime startTime = CMTimeMake(timeMs * 1000000, 1000000000);
+    [self.assetReader setTimeRange:CMTimeRangeMake(startTime, kCMTimePositiveInfinity)];
+    AVAssetTrack *videoTrack = [[asset tracksWithMediaType:AVMediaTypeVideo] firstObject];
+    NSDictionary *outputSettings = @{
+        (NSString *)kCVPixelBufferPixelFormatTypeKey: @(kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)
+    };
+    self.videoTrackOutput = [AVAssetReaderTrackOutput assetReaderTrackOutputWithTrack:videoTrack
+                                                                       outputSettings:outputSettings];
+    [self.assetReader addOutput:self.videoTrackOutput];
+    [self.assetReader startReading];
+    self._pts = timeMs;
 }
 
 - (void)setVideoFrameData: (HYVideoFrameData*)data {

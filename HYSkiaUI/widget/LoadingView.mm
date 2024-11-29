@@ -12,7 +12,7 @@ LoadingView::~LoadingView() {
 
 void LoadingView::draw(SkCanvas *canvas) {
     View::draw(canvas);
-    auto time = getContext()->getCurrentTimeMills() % duration;
+    auto time = (int)(getContext()->getCurrentTimeMills() % duration);
     for (int i = 0; i < size; ++i) {
         auto distance = i - size / 2;
         SkRect rect;

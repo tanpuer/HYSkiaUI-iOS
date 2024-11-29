@@ -89,7 +89,7 @@ void TextView::measure() {
                         points,
                         textGradientColors.data(),
                         textGradientPos.data(),
-                        textGradientColors.size(),
+                        (int)textGradientColors.size(),
                         SkTileMode::kClamp
                 );
                 foregroundPaint.setShader(std::move(gradientShader));

@@ -45,7 +45,7 @@ void CanvasTest::draw(SkCanvas *canvas) {
             points,
             colors.data(),
             nullptr,
-            colors.size(),
+            (int)colors.size(),
             SkTileMode::kClamp
     );
     pathPaint->setShader(std::move(gradientShader));

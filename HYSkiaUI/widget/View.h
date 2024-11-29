@@ -58,10 +58,6 @@ public:
 
     virtual void setContext(std::shared_ptr<SkiaUIContext> context);
 
-    /**
-     * 在AlignItems的基础上自定义每个子视图的对齐方式
-     * @param align
-     */
     virtual void setAlignSelf(YGAlign align);
 
     virtual void setPositionType(YGPositionType type);

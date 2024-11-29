@@ -53,7 +53,6 @@ public:
 
     /**
      * 子视图在主轴上的排列对齐方式
-     * @param justify
      */
     virtual void setJustifyContent(YGJustify justify);
 
@@ -61,7 +60,6 @@ public:
 
     /**
      * 子视图在侧轴上的排列方式
-     * @param align
      */
     virtual void setAlignItems(YGAlign align);
 
@@ -69,7 +67,6 @@ public:
 
     /**
      * 子视图行与行之间在侧轴上的对齐方式
-     * @param align
      */
     virtual void setAlignContent(YGAlign align);
 
@@ -85,7 +82,6 @@ public:
 
     /**
      * flex的方向
-     * @param direction
      */
     virtual void setFlexDirection(YGFlexDirection direction);
 

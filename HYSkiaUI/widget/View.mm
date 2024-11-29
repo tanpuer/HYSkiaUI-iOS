@@ -63,7 +63,7 @@ void View::layout(int l, int t, int r, int b) {
                 points,
                 linearGradientColors.data(),
                 nullptr,
-                linearGradientColors.size(),
+                (int)linearGradientColors.size(),
                 SkTileMode::kClamp
         );
         paint->setShader(std::move(gradientShader));
@@ -73,7 +73,7 @@ void View::layout(int l, int t, int r, int b) {
                 (l + r) / 2, (t + b) / 2,
                 swiperGradientColors.data(),
                 nullptr,
-                swiperGradientColors.size());
+                (int)swiperGradientColors.size());
         paint->setShader(std::move(gradientShader));
     }
 }

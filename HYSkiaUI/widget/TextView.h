@@ -71,9 +71,6 @@ public:
 
     /**
      * 功能类似于Android的StringBuilder
-     * @param color
-     * @param fontStyle
-     * @param text
      */
     void pushText(const StringBuilder &stringBuilder);
 

@@ -18,8 +18,8 @@ void AudioFFTView::setSource(const char *path) {
 
 void AudioFFTView::draw(SkCanvas *canvas) {
     View::draw(canvas);
-    auto widthDiff = width * 1.0f / count;
-    auto heightDiff = height * 1.0f / count;
+//    auto widthDiff = width * 1.0f / count;
+//    auto heightDiff = height * 1.0f / count;
     //    if (audioPlayer != nullptr) {
     //        auto jni = context->getJniEnv();
     //        auto fft = static_cast<jfloatArray>(jni->CallObjectMethod(audioPlayer, getFFTDataMethodID));

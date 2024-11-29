@@ -26,6 +26,7 @@
 @property (nonatomic, strong) SkiaPictureWrapper *_picWrapper;
 @property (nonatomic, assign) CGPoint lastTouchLocation;
 @property (nonatomic, strong) NSDate *lastTouchTime;
+@property (nonatomic, assign) BOOL isInBackground;
 
 @end
 
@@ -63,6 +64,14 @@
             }
             [self._displayLinkUI addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
         });
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationDidEnterBackground)
+                                                     name:UIApplicationDidEnterBackgroundNotification
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationWillEnterForeground)
+                                                     name:UIApplicationWillEnterForegroundNotification
+                                                   object:nil];
     }
     return self;
 }
@@ -198,6 +207,22 @@
 - (void)onBackMoved:(float)distance {
     [self performBlockOnUIThread:^{
         self->_skiaUIApp->onBackMoved(distance);
+    }];
+}
+
+- (void)applicationDidEnterBackground {
+    self.isInBackground = YES;
+    [self._displayLinkUI setPaused:YES];
+    [self performBlockOnUIThread:^{
+        self->_skiaUIApp->onHide();
+    }];
+}
+
+- (void)applicationWillEnterForeground {
+    self.isInBackground = NO;
+    [self._displayLinkUI setPaused:NO];
+    [self performBlockOnUIThread:^{
+        self->_skiaUIApp->onShow();
     }];
 }
 

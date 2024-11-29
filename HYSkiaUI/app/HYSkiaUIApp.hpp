@@ -22,6 +22,10 @@ public:
     
     void onBackMoved(float distance);
     
+    void onShow();
+    
+    void onHide();
+    
 private:
     
     int _width = 0;

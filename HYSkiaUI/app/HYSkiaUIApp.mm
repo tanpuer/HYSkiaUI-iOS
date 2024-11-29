@@ -70,3 +70,11 @@ void HYSkiaUIApp::onBackMoved(float distance) {
     auto prePage = _context->getPageStackManager()->getPages()[size - 2];
     prePage->setVisibility(true);
 }
+
+void HYSkiaUIApp::onShow() {
+    _context->getPageStackManager()->showCurrentPage();
+}
+
+void HYSkiaUIApp::onHide() {
+    _context->getPageStackManager()->hideCurrentPage();
+}

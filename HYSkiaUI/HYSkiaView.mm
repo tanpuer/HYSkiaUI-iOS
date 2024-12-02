@@ -24,9 +24,10 @@
 @property int _width;
 @property int _height;
 @property (nonatomic, strong) SkiaPictureWrapper *_picWrapper;
-@property (nonatomic, assign) CGPoint lastTouchLocation;
-@property (nonatomic, strong) NSDate *lastTouchTime;
-@property (nonatomic, assign) BOOL isInBackground;
+@property (nonatomic, assign) BOOL _isInBackground;
+
+@property (nonatomic, strong) NSMutableArray<NSValue *> *_touchPoints;
+@property (nonatomic, strong) NSMutableArray<NSNumber *> *_touchTimes;
 
 @end
 
@@ -72,6 +73,8 @@
                                                  selector:@selector(applicationWillEnterForeground)
                                                      name:UIApplicationWillEnterForegroundNotification
                                                    object:nil];
+        self._touchPoints = [NSMutableArray array];
+        self._touchTimes = [NSMutableArray array];
     }
     return self;
 }
@@ -124,8 +127,12 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self._touchPoints removeAllObjects];
+    [self._touchTimes removeAllObjects];
     for (UITouch *t in touches) {
         CGPoint p = [t locationInView:self];
+        [self._touchPoints addObject:[NSValue valueWithCGPoint:p]];
+        [self._touchTimes addObject:@(CACurrentMediaTime())];
         [self dispatchTouchEvent:TouchEvent::MotionEvent::ACTION_DOWN witchTouchX:p.x withTouchY:p.y];
     }
 }
@@ -134,27 +141,33 @@
     for (UITouch *t in touches) {
         CGPoint p = [t locationInView:self];
         [self dispatchTouchEvent:TouchEvent::MotionEvent::ACTION_MOVE witchTouchX:p.x withTouchY:p.y];
-        self.lastTouchLocation = p;
-        self.lastTouchTime = [NSDate date];
+        [self._touchPoints addObject:[NSValue valueWithCGPoint:p]];
+        [self._touchTimes addObject:@(CACurrentMediaTime())];
     }
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     for (UITouch *t in touches) {
         CGPoint p = [t locationInView:self];
-        NSDate *currentTime = [NSDate date];
-        CGFloat dx = p.x - self.lastTouchLocation.x;
-        CGFloat dy = p.y - self.lastTouchLocation.y;
-        NSTimeInterval dt = [currentTime timeIntervalSinceDate:self.lastTouchTime];
-        if (dt > 0) {
-            CGFloat scale = [[UIScreen mainScreen]scale];
-            CGFloat vx = dx / dt;
-            CGFloat vy = dy / dt;
-            [self performBlockOnUIThread:^{
-                //TODO velocity calculate
-                self->_skiaUIApp->setVelocity(vx * scale, vy * scale);
-            }];
+        CGFloat vx = 0, vy = 0;
+        
+        if (self._touchPoints.count >= 2) {
+            CGPoint firstPoint = [self._touchPoints.firstObject CGPointValue];
+            CGPoint lastPoint = [self._touchPoints.lastObject CGPointValue];
+            NSTimeInterval firstTime = [self._touchTimes.firstObject doubleValue];
+            NSTimeInterval lastTime = [self._touchTimes.lastObject doubleValue];
+            
+            NSTimeInterval dt = lastTime - firstTime;
+            if (dt > 0) {
+                CGFloat scale = [[UIScreen mainScreen] scale];
+                vx = ((lastPoint.x - firstPoint.x) / dt) * scale;
+                vy = ((lastPoint.y - firstPoint.y) / dt) * scale;
+            }
         }
+        
+        [self performBlockOnUIThread:^{
+            self->_skiaUIApp->setVelocity(vx, vy);
+        }];
         [self dispatchTouchEvent:TouchEvent::MotionEvent::ACTION_UP witchTouchX:p.x withTouchY:p.y];
     }
 }
@@ -211,7 +224,7 @@
 }
 
 - (void)applicationDidEnterBackground {
-    self.isInBackground = YES;
+    self._isInBackground = YES;
     [self._displayLinkUI setPaused:YES];
     [self performBlockOnUIThread:^{
         self->_skiaUIApp->onHide();
@@ -219,7 +232,7 @@
 }
 
 - (void)applicationWillEnterForeground {
-    self.isInBackground = NO;
+    self._isInBackground = NO;
     [self._displayLinkUI setPaused:NO];
     [self performBlockOnUIThread:^{
         self->_skiaUIApp->onShow();

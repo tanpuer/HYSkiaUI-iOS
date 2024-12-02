@@ -14,6 +14,17 @@
     [super viewDidLoad];
     int width = [UIScreen mainScreen].bounds.size.width;
     int height = [UIScreen mainScreen].bounds.size.height;
+    CGFloat statusBarHeight = 0;
+    if (@available(iOS 13.0, *)) {
+        UIWindowScene *windowScene = (UIWindowScene *)UIApplication.sharedApplication.connectedScenes.anyObject;
+        statusBarHeight = windowScene.statusBarManager.statusBarFrame.size.height;
+    } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        statusBarHeight = UIApplication.sharedApplication.statusBarFrame.size.height;
+#pragma clang diagnostic pop
+    }
+    height -= statusBarHeight;
     self._skiaView = [[HYSkiaView alloc]initWithFrame:CGRectMake(0, 0, width, height)];
     [self.view addSubview: self._skiaView];
     self._skiaView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -25,7 +36,6 @@
             [self._skiaView.trailingAnchor constraintEqualToAnchor:safeArea.trailingAnchor],
             [self._skiaView.bottomAnchor constraintEqualToAnchor:safeArea.bottomAnchor]
         ]];
-        
     }
     self._leftEdgePanGesture = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftEdgePan:)];
     self._leftEdgePanGesture.edges = UIRectEdgeLeft;

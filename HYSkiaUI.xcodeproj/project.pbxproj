@@ -89,6 +89,7 @@
 		22BF2B832CEF318D00E4F457 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 22BF2B822CEF318D00E4F457 /* Base */; };
 		22BF2B862CEF318D00E4F457 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BF2B852CEF318D00E4F457 /* main.m */; };
 		22D6DCDF2CF0702F00732E57 /* HYSkiaView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22D6DCDE2CF0702F00732E57 /* HYSkiaView.mm */; };
+		22DFFA002CFD399800BFF95D /* ClockView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22DFF9FF2CFD399800BFF95D /* ClockView.mm */; };
 		22F5A0822CF7FAF7005F6F13 /* RichText.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22F5A0812CF7FAF7005F6F13 /* RichText.mm */; };
 		22F5A0852CF7FDB6005F6F13 /* HYVideoDecoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22F5A0842CF7FDB6005F6F13 /* HYVideoDecoder.mm */; };
 		22F5A0882CF81A8A005F6F13 /* YUVVideoView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22F5A0862CF81A8A005F6F13 /* YUVVideoView.mm */; };
@@ -671,6 +672,8 @@
 		22BF2B852CEF318D00E4F457 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		22D6DCDD2CF0702F00732E57 /* HYSkiaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYSkiaView.h; sourceTree = "<group>"; };
 		22D6DCDE2CF0702F00732E57 /* HYSkiaView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HYSkiaView.mm; sourceTree = "<group>"; };
+		22DFF9FE2CFD399700BFF95D /* ClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockView.h; sourceTree = "<group>"; };
+		22DFF9FF2CFD399800BFF95D /* ClockView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ClockView.mm; sourceTree = "<group>"; };
 		22F5A0802CF7FAF7005F6F13 /* RichText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichText.h; sourceTree = "<group>"; };
 		22F5A0812CF7FAF7005F6F13 /* RichText.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RichText.mm; sourceTree = "<group>"; };
 		22F5A0832CF7FDB6005F6F13 /* HYVideoDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYVideoDecoder.h; sourceTree = "<group>"; };
@@ -853,6 +856,8 @@
 		226317F92CF4215200AD9DDB /* test */ = {
 			isa = PBXGroup;
 			children = (
+				22DFF9FF2CFD399800BFF95D /* ClockView.mm */,
+				22DFF9FE2CFD399700BFF95D /* ClockView.h */,
 				226317EA2CF4215200AD9DDB /* CanvasTest.mm */,
 				226317EB2CF4215200AD9DDB /* CanvasTest.h */,
 				226317EE2CF4215200AD9DDB /* CppTest.mm */,
@@ -2075,6 +2080,7 @@
 				22518BC92CF5629300A2FF19 /* Button.mm in Sources */,
 				22246FD02CF376DB0090C0E3 /* Yoga.cpp in Sources */,
 				226317E82CF4203C00AD9DDB /* TranslateAnimator.mm in Sources */,
+				22DFFA002CFD399800BFF95D /* ClockView.mm in Sources */,
 				2263180F2CF452B400AD9DDB /* AssetManager.mm in Sources */,
 				22518BDB2CF5637F00A2FF19 /* LottieView.mm in Sources */,
 				22246FC62CF376DB0090C0E3 /* event.cpp in Sources */,

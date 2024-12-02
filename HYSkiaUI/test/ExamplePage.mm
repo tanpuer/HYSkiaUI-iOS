@@ -17,6 +17,7 @@
 #include "QQMusicPage.h"
 #include "RichText.h"
 #include "YUVVideoView.h"
+#include "ClockView.h"
 
 void ExamplePage::init(std::shared_ptr<SkiaUIContext> &context, int width, int height) {
     setContext(context);
@@ -236,6 +237,15 @@ void ExamplePage::initChildren(ViewGroup *root, int width, int height) {
         canvasTest->setStrokeWidth(2);
         canvasTest->setWidth(600);
         canvasTest->setHeight(800);
+        canvasTest->setMargin({0, 50, 0, 50});
+        scrollView->addView(canvasTest);
+    }
+    
+    {
+        auto canvasTest = new ClockView();
+        canvasTest->setContext(this->context);
+        canvasTest->setWidth(600);
+        canvasTest->setHeight(600);
         canvasTest->setMargin({0, 50, 0, 50});
         scrollView->addView(canvasTest);
     }

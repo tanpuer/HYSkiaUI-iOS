@@ -55,7 +55,7 @@ void HYSkiaUIApp::onBackPressed(float distance) {
     } else {
         auto page = _context->getPageStackManager()->back();
         if (page != nullptr) {
-            page->enterFromRight(Page::EnterExitInfo(page->animTranslateX, 0));
+            page->enterFromRight(Page::EnterExitInfo(page->animTranslateX, 0, 100));
         }
     }
 }

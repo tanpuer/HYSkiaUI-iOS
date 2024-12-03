@@ -3,6 +3,10 @@
 struct ImageData {
     const char *content;
     long length;
+    
+    ~ImageData() {
+        content = nullptr;
+    }
 };
 
 class AssetManager {

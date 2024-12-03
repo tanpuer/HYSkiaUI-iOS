@@ -73,6 +73,7 @@ void RichText::measure() {
                     auto skData = SkData::MakeWithProc(imageData->content, length, nullptr, nullptr);
                     auto androidCodec = SkAndroidCodec::MakeFromData(skData);
                     auto skAnimatedImage = SkAnimatedImage::Make(std::move(androidCodec));
+                    delete imageData;
                     return skAnimatedImage;
                 }, [this, i](const sk_sp<SkAnimatedImage> animatedImage) {
                     auto image = animatedImage->getCurrentFrame();

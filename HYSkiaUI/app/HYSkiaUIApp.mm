@@ -41,6 +41,7 @@ void HYSkiaUIApp::setVelocity(float x, float y) {
     if (page) {
         page->dispatchVelocity(velocity);
     }
+    delete velocity;
 }
 
 void HYSkiaUIApp::onBackPressed(float distance) {

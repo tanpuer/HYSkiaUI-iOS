@@ -16,7 +16,9 @@ void LottieView::setSource(const char *path) {
     getContext()->runOnUIThread<const sk_sp<skottie::Animation> &>([this, path](){
         auto imageData = getContext()->getAssetManager()->readImage(path);
         auto length = imageData->length;
-        return skottie::Animation::Make(reinterpret_cast<const char *>(imageData->content), length);
+        auto animation = skottie::Animation::Make(reinterpret_cast<const char *>(imageData->content), length);
+        delete imageData;
+        return animation;
     }, [this](const sk_sp<skottie::Animation> &){
         auto assetManager = getContext()->getAssetManager();
         auto imageData = assetManager->readImage(source.c_str());

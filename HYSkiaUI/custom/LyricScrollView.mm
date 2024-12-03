@@ -9,7 +9,9 @@ LyricScrollView::LyricScrollView() {
 }
 
 void LyricScrollView::setSourceSRT(const char *source) {
-    const std::string input = getContext()->getAssetManager()->readFile(source);
+    auto fileContent = getContext()->getAssetManager()->readFile(source);
+    const std::string input = fileContent;
+    delete fileContent;
     uint32_t lineIndex = 0;
 
     std::stringstream ss(input);

@@ -31,6 +31,7 @@ void ShaderView::setShaderSource(const char *data, std::vector<std::string> imag
             auto skData = SkData::MakeWithProc(imageData->content, imageData->length, nullptr, nullptr);
             auto codec = SkAndroidCodec::MakeFromData(skData);
             auto animatedImage = SkAnimatedImage::Make(std::move(codec));
+            delete imageData;
             return animatedImage->getCurrentFrame();
         }, [this, i](const auto& skImage) {
             auto shader = skImage->makeShader(SkSamplingOptions());
@@ -55,8 +56,11 @@ void ShaderView::setShaderPath(const char *path, std::vector<std::string> images
         MeasureTime measureTime("setShaderPath");
         return getContext()->getAssetManager()->readFile(path);
     }, [this, images](const char* result) {
-        setShaderSource(result, images);
-        markDirty();
+        if (result != nullptr) {
+            setShaderSource(result, images);
+            delete result;
+            markDirty();
+        }
     });
 }
 

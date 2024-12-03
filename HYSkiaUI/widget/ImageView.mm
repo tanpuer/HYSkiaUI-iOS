@@ -40,6 +40,7 @@ void ImageView::setSource(const char *path) {
         auto skData = SkData::MakeWithProc(imageData->content, length, nullptr, nullptr);
         auto androidCodec = SkAndroidCodec::MakeFromData(skData);
         auto skAnimatedImage = SkAnimatedImage::Make(std::move(androidCodec));
+        delete imageData;
         return skAnimatedImage;
     }, [this](const sk_sp<SkAnimatedImage> animatedImage) {
         //TODO .png can not decode

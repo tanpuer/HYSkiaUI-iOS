@@ -29,6 +29,8 @@ public:
 
     virtual void updateTranslateX(float diffX);
 
+    virtual void setTranslateX(float x);
+
     virtual void setFlexWrap(YGWrap wrap) override;
 
     virtual void setFlexDirection(YGFlexDirection direction) override;
@@ -47,7 +49,7 @@ public:
 
     virtual bool ignoreChildDraw(const View *child);
 
-    void startFling();
+    virtual void startFling();
 
     void stopFling();
 

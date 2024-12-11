@@ -81,6 +81,7 @@
 		229D58D12CF5E2F200694F52 /* ic_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 229D58C82CF5E2F200694F52 /* ic_play.png */; };
 		229D58D42CF5E31700694F52 /* QQMusicPage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 229D58D32CF5E31700694F52 /* QQMusicPage.mm */; };
 		229D58D72CF5E4DF00694F52 /* HYAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 229D58D62CF5E4DF00694F52 /* HYAudioPlayer.m */; };
+		22B051B82D093074003C88FF /* SwiperView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22B051B72D093074003C88FF /* SwiperView.mm */; };
 		22BF2B752CEF318B00E4F457 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BF2B742CEF318B00E4F457 /* AppDelegate.m */; };
 		22BF2B782CEF318B00E4F457 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BF2B772CEF318B00E4F457 /* SceneDelegate.m */; };
 		22BF2B7B2CEF318B00E4F457 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BF2B7A2CEF318B00E4F457 /* ViewController.m */; };
@@ -658,6 +659,8 @@
 		229D58D32CF5E31700694F52 /* QQMusicPage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QQMusicPage.mm; sourceTree = "<group>"; };
 		229D58D52CF5E4DF00694F52 /* HYAudioPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYAudioPlayer.h; sourceTree = "<group>"; };
 		229D58D62CF5E4DF00694F52 /* HYAudioPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYAudioPlayer.m; sourceTree = "<group>"; };
+		22B051B62D093074003C88FF /* SwiperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiperView.h; sourceTree = "<group>"; };
+		22B051B72D093074003C88FF /* SwiperView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SwiperView.mm; sourceTree = "<group>"; };
 		22BF2B702CEF318B00E4F457 /* HYSkiaUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYSkiaUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22BF2B732CEF318B00E4F457 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		22BF2B742CEF318B00E4F457 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -825,6 +828,8 @@
 				22518BED2CF5899F00A2FF19 /* ImageView.h */,
 				22F5A0862CF81A8A005F6F13 /* YUVVideoView.mm */,
 				22F5A0872CF81A8A005F6F13 /* YUVVideoView.h */,
+				22B051B72D093074003C88FF /* SwiperView.mm */,
+				22B051B62D093074003C88FF /* SwiperView.h */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -2099,6 +2104,7 @@
 				226317E32CF41E9E00AD9DDB /* PageStackManager.mm in Sources */,
 				22246FC82CF376DB0090C0E3 /* log.cpp in Sources */,
 				22246FCE2CF376DB0090C0E3 /* YGStyle.cpp in Sources */,
+				22B051B82D093074003C88FF /* SwiperView.mm in Sources */,
 				226317FD2CF4215200AD9DDB /* ExamplePage.mm in Sources */,
 				22246FCD2CF376DB0090C0E3 /* YGNodePrint.cpp in Sources */,
 				22F5A0822CF7FAF7005F6F13 /* RichText.mm in Sources */,

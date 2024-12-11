@@ -18,6 +18,7 @@
 #include "RichText.h"
 #include "YUVVideoView.h"
 #include "ClockView.h"
+#include "SwiperView.h"
 
 void ExamplePage::init(std::shared_ptr<SkiaUIContext> &context, int width, int height) {
     setContext(context);
@@ -492,6 +493,31 @@ void ExamplePage::initChildren(ViewGroup *root, int width, int height) {
                 radio->getClickListener()(radio);
             });
             group->addView(label);
+        }
+    }
+    
+    {
+        auto swiperView = new SwiperView();
+        swiperView->setContext(this->context);
+        swiperView->setFlexDirection(YGFlexDirectionRow);
+        swiperView->setWidth(width);
+        swiperView->setHeight(500);
+        swiperView->setMargin({50, 50, 50, 50});
+        swiperView->setAutoMode(true);
+        swiperView->setStyle(SkPaint::kFill_Style);
+        swiperView->setBackgroundColor(SK_ColorWHITE);
+        swiperView->setStrokeWidth(0);
+        scrollView->addView(swiperView);
+
+        auto colors = {SK_ColorGREEN, SK_ColorYELLOW, SK_ColorMAGENTA, SK_ColorBLUE};
+        for (auto color: colors) {
+            auto view = new View();
+            view->setContext(this->context);
+            view->setWidthPercent(100);
+            view->setHeightPercent(100);
+            view->setBackgroundColor(color);
+            view->setStyle(SkPaint::kFill_Style);
+            swiperView->addView(view);
         }
     }
     

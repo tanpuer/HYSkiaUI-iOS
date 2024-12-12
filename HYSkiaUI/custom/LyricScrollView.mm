@@ -4,8 +4,10 @@
 #include "TextView.h"
 #include "regex"
 
-LyricScrollView::LyricScrollView() {
+namespace HYSkiaUI {
 
+LyricScrollView::LyricScrollView() {
+    
 }
 
 void LyricScrollView::setSourceSRT(const char *source) {
@@ -13,12 +15,12 @@ void LyricScrollView::setSourceSRT(const char *source) {
     const std::string input = fileContent;
     delete fileContent;
     uint32_t lineIndex = 0;
-
+    
     std::stringstream ss(input);
     std::string token;
     std::regex pattern(R"((\d{2}:\d{2}:\d{2},\d{3})(\S+?\d{2}:\d{2}:\d{2},\d{3}\S+))");
     std::smatch match;
-
+    
     std::regex patternTime(R"(\d{2}:\d{2}:\d{2},\d{3})");
     std::regex patternChar(R"(\d{2}:\d{2}:\d{2},\d{3}([^0-9:]+)(?=\d{2}:\d{2}:\d{2},\d{3}|$))");
     while (std::getline(ss, token, '\n')) {
@@ -32,9 +34,9 @@ void LyricScrollView::setSourceSRT(const char *source) {
                 char delimiter;
                 int hours, minutes, seconds, milliseconds;
                 ssTime >> hours >> delimiter >> minutes >> delimiter >> seconds >> delimiter
-                       >> milliseconds;
+                >> milliseconds;
                 long totalMilliseconds =
-                        hours * 3600000 + minutes * 60000 + seconds * 1000 + milliseconds;
+                hours * 3600000 + minutes * 60000 + seconds * 1000 + milliseconds;
                 lyric.timeMills.emplace_back(totalMilliseconds);
                 ++rit;
             }
@@ -116,8 +118,8 @@ void LyricScrollView::draw(SkCanvas *canvas) {
             gradientLength += item.contentList[z].length();
         }
         gradientLength += (duration - item.timeMills[jIndex - 1]) * 1.0f /
-                          (item.timeMills[jIndex] - item.timeMills[jIndex - 1]) *
-                          item.contentList[jIndex - 1].length();
+        (item.timeMills[jIndex] - item.timeMills[jIndex - 1]) *
+        item.contentList[jIndex - 1].length();
         auto percent = gradientLength * 1.0f / totalLength;
         textView->setTextGradient({SK_ColorGREEN, SK_ColorGREEN, SK_ColorWHITE, SK_ColorWHITE},
                                   {0.0, percent, percent, 1.0});
@@ -148,4 +150,6 @@ View *LyricScrollView::initItem(int index) {
 
 void LyricScrollView::setCurrPositionFunc(std::function<long()> &&func) {
     this->currentPositionFunc = std::move(func);
+}
+
 }

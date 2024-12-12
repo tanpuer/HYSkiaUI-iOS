@@ -6,43 +6,45 @@
 #include "core/SkTypeface.h"
 #include "core/SkFont.h"
 
+namespace HYSkiaUI {
+
 ClockView::ClockView() {
     numberPaint = std::make_unique<SkPaint>();
     numberPaint->setAntiAlias(true);
     numberPaint->setColor(SK_ColorBLACK);
     auto fontMgr = SkFontMgr_New_CoreText(nullptr);
     font = std::make_unique<SkFont>(
-            fontMgr->legacyMakeTypeface("Alimama", SkFontStyle::Bold()));
+                                    fontMgr->legacyMakeTypeface("Alimama", SkFontStyle::Bold()));
     font->setSize(60);
-
+    
     circlePaint = std::make_unique<SkPaint>();
     circlePaint->setColor(SK_ColorBLACK);
     circlePaint->setStyle(SkPaint::kStroke_Style);
     circlePaint->setAntiAlias(true);
     circlePaint->setStrokeWidth(5);
-
+    
     detailPaint = std::make_unique<SkPaint>();
     detailPaint->setAntiAlias(true);
     detailPaint->setColor(SK_ColorBLACK);
     detailPaint->setStyle(SkPaint::kStroke_Style);
-
+    
     centerPaint = std::make_unique<SkPaint>();
     centerPaint->setColor(SK_ColorBLACK);
     centerPaint->setStyle(SkPaint::kFill_Style);
     centerPaint->setAntiAlias(true);
-
+    
     handPaint = std::make_unique<SkPaint>();
     handPaint->setStyle(SkPaint::kStroke_Style);
     handPaint->setAntiAlias(true);
 }
 
 ClockView::~ClockView() {
-
+    
 }
 
 void ClockView::draw(SkCanvas *canvas) {
     drawBackground(canvas);
-
+    
     std::time_t now = std::time(nullptr);
     std::tm *now_tm = std::localtime(&now);
     ALOGD("ClockView::currentTime %d %d %d", now_tm->tm_hour, now_tm->tm_min, now_tm->tm_sec)
@@ -54,7 +56,7 @@ void ClockView::draw(SkCanvas *canvas) {
                   SK_ColorYELLOW);
     // 秒针
     drawClockHand(canvas, now_tm->tm_sec * 6, skRect.width() * 0.4, 5, SK_ColorRED);
-
+    
     canvas->drawCircle(skRect.left() + skRect.width() / 2, skRect.top() + skRect.height() / 2, 20, *centerPaint);
 }
 
@@ -111,4 +113,6 @@ void ClockView::drawBackground(SkCanvas *canvas) {
         auto y = skRect.top() + skRect.height() / 2 + radius * 0.7 * sin(radians - M_PI / 2) + 20;
         canvas->drawString(SkString(std::to_string(i)), x, y, *font, *numberPaint);
     }
+}
+
 }

@@ -1,7 +1,9 @@
 #include "LinearAnimator.h"
 
+namespace HYSkiaUI {
+
 LinearAnimator::LinearAnimator(View *view, float startValue, float endValue)
-        : startValue(startValue), endValue(endValue) {
+: startValue(startValue), endValue(endValue) {
     this->targetView = view;
     view->setAnimator(this);
 }
@@ -30,4 +32,6 @@ void LinearAnimator::updateInner() {
         auto value = interpolator * (endValue - startValue) + startValue;
         updateListener(targetView, value);
     }
+}
+
 }

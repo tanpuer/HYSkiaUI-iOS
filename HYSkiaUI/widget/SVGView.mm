@@ -5,6 +5,8 @@
 #include "svg/include/SkSVGDOM.h"
 #include "SkiaUIContext.h"
 
+namespace HYSkiaUI {
+
 SVGView::SVGView() {
     paint->setColor(SK_ColorWHITE);
 }
@@ -63,4 +65,6 @@ const char *SVGView::getSource() {
 
 const char *SVGView::name() {
     return "SVG";
+}
+
 }

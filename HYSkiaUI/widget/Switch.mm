@@ -1,6 +1,8 @@
 #include "Switch.h"
 #include "LinearAnimator.h"
 
+namespace HYSkiaUI {
+
 Switch::Switch() {
     switchPaint = std::make_unique<SkPaint>();
     switchPaint->setAntiAlias(true);
@@ -11,7 +13,7 @@ Switch::Switch() {
 }
 
 Switch::~Switch() {
-
+    
 }
 
 void Switch::setColor(SkColor color) {
@@ -76,4 +78,6 @@ bool Switch::getEnabled() {
 
 void Switch::setOnChangeListener(std::function<void(bool)> &&listener) {
     this->onChangeListener = std::move(listener);
+}
+
 }

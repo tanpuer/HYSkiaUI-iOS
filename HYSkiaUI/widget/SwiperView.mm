@@ -1,5 +1,7 @@
 #include "SwiperView.h"
 
+namespace HYSkiaUI {
+
 SwiperView::SwiperView() {
     indicatorPaint = std::make_unique<SkPaint>();
     indicatorPaint->setAntiAlias(true);
@@ -7,7 +9,7 @@ SwiperView::SwiperView() {
 }
 
 SwiperView::~SwiperView() {
-
+    
 }
 
 void SwiperView::setAutoMode(bool flag) {
@@ -94,4 +96,6 @@ bool SwiperView::onTouchEvent(TouchEvent *touchEvent) {
 
 void SwiperView::setSwipeDuration(long duration) {
     this->autoSwipeDuration = duration;
+}
+
 }

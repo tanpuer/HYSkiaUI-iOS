@@ -2,6 +2,8 @@
 #include "codec/SkAndroidCodec.h"
 #include "android/SkAnimatedImage.h"
 
+namespace HYSkiaUI {
+
 RichText::RichText() : View() {
     defaultStyle = std::make_unique<TextStyle>();
     fontFamily.emplace_back("Alimama");
@@ -9,7 +11,7 @@ RichText::RichText() : View() {
 }
 
 RichText::~RichText() {
-
+    
 }
 
 void RichText::measure() {
@@ -23,14 +25,14 @@ void RichText::measure() {
         textNode.weight = 700;
         textNode.italic = true;
         nodes.push_back(textNode);
-
+        
         auto imageNode = Node();
         imageNode.type = NodeType::Img;
         imageNode.width = 128;
         imageNode.height = 72;
         imageNode.src = "raining.gif";
         nodes.push_back(imageNode);
-
+        
         auto textNode1 = Node();
         textNode1.type = NodeType::Txt;
         textNode1.text = "这是测试普通文字";
@@ -38,14 +40,14 @@ void RichText::measure() {
         textNode1.fontSize = 50;
         textNode1.deleteText = true;
         nodes.push_back(textNode1);
-
+        
         auto imageNode1 = Node();
         imageNode1.type = NodeType::Img;
         imageNode1.width = 128;
         imageNode1.height = 100;
         imageNode1.src = "raining.gif";
         nodes.push_back(imageNode1);
-
+        
         auto textNode2 = Node();
         textNode2.type = NodeType::Txt;
         textNode2.text = "再来一张图片";
@@ -59,7 +61,7 @@ void RichText::measure() {
         paraStyle.setTextStyle(*defaultStyle);
         paraStyle.setTextAlign(TextAlign::kLeft);
         paragraphBuilder = ParagraphBuilder::make(paraStyle, fontCollection);
-
+        
         for (int i = 0; i < nodes.size(); ++i) {
             auto item = nodes[i];
             if (item.type == NodeType::Img) {
@@ -88,7 +90,7 @@ void RichText::measure() {
                 SkFontStyle fontStyle(item.weight,
                                       SkFontStyle::kNormal_Width,
                                       item.italic ? SkFontStyle::Slant::kItalic_Slant
-                                                  : SkFontStyle::Slant::kUpright_Slant);
+                                      : SkFontStyle::Slant::kUpright_Slant);
                 textStyle.setFontStyle(fontStyle);
                 textStyle.setFontSize(item.fontSize);
                 textStyle.setFontFamilies(fontFamily);
@@ -137,4 +139,6 @@ void RichText::draw(SkCanvas *canvas) {
 
 const char *RichText::name() {
     return "RichText";
+}
+
 }

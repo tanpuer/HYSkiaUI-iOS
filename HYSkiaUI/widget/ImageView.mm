@@ -9,6 +9,8 @@
 #include "codec/SkAndroidCodec.h"
 #include "LinearAnimator.h"
 
+namespace HYSkiaUI {
+
 ImageView::ImageView() : View(), radius(0), scaleType(ScaleType::FitXY) {
     imagePaint = std::make_unique<SkPaint>();
     imagePaint->setAntiAlias(true);
@@ -19,7 +21,7 @@ ImageView::ImageView() : View(), radius(0), scaleType(ScaleType::FitXY) {
 }
 
 ImageView::~ImageView() {
-//    ALOGD("~View ImageView")
+    //    ALOGD("~View ImageView")
 }
 
 void ImageView::setAlpha(float alpha) {
@@ -73,7 +75,7 @@ void ImageView::layout(int l, int t, int r, int b) {
     imageMatrix.setIdentity();
     if (scaleType == ScaleType::FitCenter) {
         auto imageRatio =
-                static_cast<float>(skImage->width()) / static_cast<float >(skImage->height());
+        static_cast<float>(skImage->width()) / static_cast<float >(skImage->height());
         auto viewRatio = dstRect.width() / dstRect.height();
         if (imageRatio > viewRatio) {
             imageMatrix.preScale(1.0f, viewRatio / imageRatio, dstRect.centerX(),
@@ -84,7 +86,7 @@ void ImageView::layout(int l, int t, int r, int b) {
         }
     } else if (scaleType == ScaleType::CenterCrop) {
         auto imageRatio =
-                static_cast<float>(skImage->width()) / static_cast<float >(skImage->height());
+        static_cast<float>(skImage->width()) / static_cast<float >(skImage->height());
         auto viewRatio = dstRect.width() / dstRect.height();
         if (imageRatio > viewRatio) {
             imageMatrix.preScale(imageRatio / viewRatio, 1.0f, dstRect.centerX(),
@@ -200,7 +202,7 @@ void ImageView::setOnCompleteFunc(std::function<void(ImageView *imageView)> &&co
 }
 
 void ImageView::setScaleEffect(bool flag) {
-     this->scaleEffectFlag = flag;
+    this->scaleEffectFlag = flag;
 }
 
 bool ImageView::onInterceptTouchEvent(TouchEvent *touchEvent) {
@@ -245,4 +247,4 @@ bool ImageView::onTouchEvent(TouchEvent *touchEvent) {
     return true;
 }
 
-
+}

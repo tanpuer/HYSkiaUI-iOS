@@ -2,6 +2,8 @@
 #include "core/SkFont.h"
 #include "color_util.h"
 
+namespace HYSkiaUI {
+
 Icon::Icon() : View() {
     iconPaint = std::make_unique<SkPaint>();
     iconPaint->setAntiAlias(true);
@@ -9,7 +11,7 @@ Icon::Icon() : View() {
 }
 
 Icon::~Icon() {
-
+    
 }
 
 void Icon::measure() {
@@ -76,3 +78,4 @@ void Icon::setIconColor(const char *color) {
     setIconColor(SkColorSetARGB(a, r, g, b));
 }
 
+}

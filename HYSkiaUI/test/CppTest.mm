@@ -3,6 +3,8 @@
 #include "PageStackManager.h"
 #include "ExamplePage.h"
 
+namespace HYSkiaUI {
+
 void CppTest::doDrawTest(int drawCount, SkCanvas *canvas, int width, int height) {
     if (root == nullptr) {
         ALOGD("doDrawTest %d %d", width, height)
@@ -26,4 +28,6 @@ void CppTest::doDrawTest(int drawCount, SkCanvas *canvas, int width, int height)
         item->layout(0, 0, width, height);
         item->draw(canvas);
     }
+}
+
 }

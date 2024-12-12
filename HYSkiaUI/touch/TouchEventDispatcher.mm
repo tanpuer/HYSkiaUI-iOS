@@ -3,6 +3,8 @@
 #include "ViewGroup.h"
 #include "ScrollView.h"
 
+namespace HYSkiaUI {
+
 TouchEventDispatcher::TouchEventDispatcher(View *view) {
     this->view = view;
     weakTargetView = nullptr;
@@ -81,11 +83,11 @@ bool TouchEventDispatcher::onTouchEvent(TouchEvent *touchEvent) {
 }
 
 void TouchEventDispatcher::requestDisallowInterceptTouchEvent(bool disallowIntercept) {
-
+    
 }
 
 void TouchEventDispatcher::setWeakView(View *view) {
-
+    
 }
 
 void TouchEventDispatcher::findTargetView(TouchEvent *touchEvent) {
@@ -174,7 +176,7 @@ bool TouchEventDispatcher::checkTouchInTargetView(TouchEvent *touchEvent) {
     auto right = weakTargetView->right;
     auto bottom = weakTargetView->bottom;
     return touchEvent->x >= left && touchEvent->x <= right
-           && touchEvent->y >= top && touchEvent->y <= bottom;
+    && touchEvent->y >= top && touchEvent->y <= bottom;
 }
 
 bool TouchEventDispatcher::dispatchVelocity(Velocity *velocity) {
@@ -183,4 +185,6 @@ bool TouchEventDispatcher::dispatchVelocity(Velocity *velocity) {
         return true;
     }
     return false;
+}
+
 }

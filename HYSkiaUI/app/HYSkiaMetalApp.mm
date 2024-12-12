@@ -13,6 +13,8 @@
 #import <include/core/SkColorSpace.h>
 #import "native_log.h"
 
+namespace HYSkiaUI {
+
 HYSkiaMetalApp::HYSkiaMetalApp(int width, int height) {
     _layer = [CAMetalLayer layer];
     _width = width;
@@ -82,4 +84,6 @@ void HYSkiaMetalApp::draw(SkPicture* picture) {
 
 CAMetalLayer* HYSkiaMetalApp::getLayer() {
     return _layer;
+}
+
 }

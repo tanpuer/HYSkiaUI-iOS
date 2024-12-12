@@ -7,6 +7,8 @@
 #include "effects/SkGradientShader.h"
 #include "skparagraph/include/TypefaceFontProvider.h"
 
+namespace HYSkiaUI {
+
 TextView::TextView() : View(), maxLine(0), skColor(SK_ColorBLACK) {
     defaultStyle = std::make_unique<TextStyle>();
     fontFamily.emplace_back("Alimama");
@@ -83,15 +85,15 @@ void TextView::measure() {
             if (!textGradientColors.empty()) {
                 SkPaint foregroundPaint;
                 SkPoint points[2]{
-                        SkPoint::Make(left, top), SkPoint::Make(right, top)
+                    SkPoint::Make(left, top), SkPoint::Make(right, top)
                 };
                 auto gradientShader = SkGradientShader::MakeLinear(
-                        points,
-                        textGradientColors.data(),
-                        textGradientPos.data(),
-                        (int)textGradientColors.size(),
-                        SkTileMode::kClamp
-                );
+                                                                   points,
+                                                                   textGradientColors.data(),
+                                                                   textGradientPos.data(),
+                                                                   (int)textGradientColors.size(),
+                                                                   SkTileMode::kClamp
+                                                                   );
                 foregroundPaint.setShader(std::move(gradientShader));
                 textStyle.setForegroundPaint(foregroundPaint);
             }
@@ -124,7 +126,7 @@ void TextView::measure() {
             height = paragraph->getHeight();
         }
         setMeasuredDimension(static_cast<int>(width), static_cast<int>(height));
-//        ALOGD("TextView setSize %f %f", width, height)
+        //        ALOGD("TextView setSize %f %f", width, height)
     }
 }
 
@@ -210,4 +212,6 @@ void TextView::setFontFamily(const char *fontFamily) {
 void TextView::setEllipsis(const char *ellipsis) {
     this->ellipsis = ellipsis;
     markDirty();
+}
+
 }

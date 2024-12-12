@@ -7,6 +7,8 @@
 #include "core/SkColorFilter.h"
 //#include "PluginManager.h"
 
+namespace HYSkiaUI {
+
 Page::Page() {
     pageId = PAGE_ID++;
     ALOGD("Page create %d", pageId)
@@ -31,7 +33,7 @@ void Page::enterFromRight(const EnterExitInfo &info) {
     });
     animator->start();
     context->getPageStackManager()->showCurrentPage();
-//    context->getPluginManager()->invokeMethod("toast", "show", "push");
+    //    context->getPluginManager()->invokeMethod("toast", "show", "push");
 }
 
 void Page::exitToLeft(const EnterExitInfo &info) {
@@ -44,7 +46,7 @@ void Page::exitToLeft(const EnterExitInfo &info) {
     });
     animator->start();
     context->getPageStackManager()->showLastPage();
-//    context->getPluginManager()->invokeMethod("toast", "show", "pop");
+    //    context->getPluginManager()->invokeMethod("toast", "show", "pop");
 }
 
 void Page::enterFromBottom(const Page::EnterExitInfo &info) {
@@ -56,7 +58,7 @@ void Page::enterFromBottom(const Page::EnterExitInfo &info) {
     });
     animator->start();
     context->getPageStackManager()->showCurrentPage();
-//    context->getPluginManager()->invokeMethod("toast", "show", "push");
+    //    context->getPluginManager()->invokeMethod("toast", "show", "push");
 }
 
 void Page::exitToTop(const Page::EnterExitInfo &info) {
@@ -69,7 +71,7 @@ void Page::exitToTop(const Page::EnterExitInfo &info) {
     });
     animator->start();
     context->getPageStackManager()->showLastPage();
-//    context->getPluginManager()->invokeMethod("toast", "show", "pop");
+    //    context->getPluginManager()->invokeMethod("toast", "show", "pop");
 }
 
 void Page::measure() {
@@ -116,22 +118,6 @@ void Page::draw(SkCanvas *canvas) {
     canvas->restore();
 }
 
-//bool Page::dispatchTouchEvent(TouchEvent *touchEvent) {
-//    if (children.size() == 1) {
-//        auto root = static_cast<ViewGroup *>(children[0]);
-//        return root->dispatchTouchEvent(touchEvent);
-//    }
-//    return false;
-//}
-//
-//bool Page::dispatchVelocity(Velocity *velocity) {
-//    if (children.size() == 1) {
-//        auto root = static_cast<ViewGroup *>(children[0]);
-//        return root->dispatchVelocity(velocity);
-//    }
-//    return false;
-//}
-
 void Page::setVisibility(bool visible) {
     this->visible = visible;
 }
@@ -142,10 +128,10 @@ bool Page::getVisibility() {
 
 void Page::setBlackWhiteMode() {
     auto rowMajor = {
-            0.2126f, 0.7152f, 0.0722f, 0.0f, 0.0f,
-            0.2126f, 0.7152f, 0.0722f, 0.0f, 0.0f,
-            0.2126f, 0.7152f, 0.0722f, 0.0f, 0.0f,
-            0.0f, 0.0f, 0.0f, 1.0f, 0.0f
+        0.2126f, 0.7152f, 0.0722f, 0.0f, 0.0f,
+        0.2126f, 0.7152f, 0.0722f, 0.0f, 0.0f,
+        0.2126f, 0.7152f, 0.0722f, 0.0f, 0.0f,
+        0.0f, 0.0f, 0.0f, 1.0f, 0.0f
     };
     auto colorFilter = SkColorFilters::Matrix(data(rowMajor));
     pagePaint->setColorFilter(colorFilter);
@@ -178,3 +164,5 @@ void Page::setOnPageSizeChangeListener(std::function<void(int, int)> &&callback)
 }
 
 #pragma mark LifeCycle Callback end
+
+}

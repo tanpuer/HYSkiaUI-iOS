@@ -5,6 +5,7 @@
 #include "LinearAnimator.h"
 #include "SVGView.h"
 
+namespace HYSkiaUI {
 
 void QQMusicPage::init(std::shared_ptr<SkiaUIContext> &context, int width, int height) {
     setContext(context);
@@ -12,7 +13,7 @@ void QQMusicPage::init(std::shared_ptr<SkiaUIContext> &context, int width, int h
     setHeight(height);
     setStyle(SkPaint::kFill_Style);
     setBackgroundColor(SK_ColorTRANSPARENT);
-
+    
     auto flexboxLayout = new FlexboxLayout();
     flexboxLayout->setContext(this->context);
     flexboxLayout->setFlexWrap(YGWrapWrap);
@@ -22,7 +23,7 @@ void QQMusicPage::init(std::shared_ptr<SkiaUIContext> &context, int width, int h
     flexboxLayout->setAlignItems(YGAlignCenter);
     flexboxLayout->setFlex(1);
     this->addView(flexboxLayout);
-
+    
     {
         auto imageView = new ImageView();
         imageView->setContext(this->context);
@@ -34,7 +35,7 @@ void QQMusicPage::init(std::shared_ptr<SkiaUIContext> &context, int width, int h
         imageView->blur(10.0f);
         flexboxLayout->addView(imageView);
     }
-
+    
     {
         auto imageView = new ImageView();
         imageView->setContext(this->context);
@@ -50,7 +51,7 @@ void QQMusicPage::init(std::shared_ptr<SkiaUIContext> &context, int width, int h
         imageView->setMargin({20, 20, 0, 0});
         flexboxLayout->addView(imageView);
     }
-
+    
     {
         auto svgView = new SVGView();
         svgView->setContext(this->context);
@@ -64,7 +65,7 @@ void QQMusicPage::init(std::shared_ptr<SkiaUIContext> &context, int width, int h
         svgView->setMargin({50, 200, 0, 0});
         flexboxLayout->addView(svgView);
     }
-
+    
     {
         auto imageView = new ImageView();
         imageView->setContext(this->context);
@@ -86,7 +87,7 @@ void QQMusicPage::init(std::shared_ptr<SkiaUIContext> &context, int width, int h
         });
         recordOutAnimator->start();
     }
-
+    
     {
         auto imageView = new ImageView();
         imageView->setContext(this->context);
@@ -109,7 +110,7 @@ void QQMusicPage::init(std::shared_ptr<SkiaUIContext> &context, int width, int h
         });
         recordInnerAnimator->start();
     }
-
+    
     {
         armView = new ImageView();
         armView->setContext(this->context);
@@ -129,7 +130,7 @@ void QQMusicPage::init(std::shared_ptr<SkiaUIContext> &context, int width, int h
         });
         updateArmView(true);
     }
-
+    
     lyricView = new LyricScrollView();
     lyricView->setContext(this->context);
     lyricView->setBackgroundColor("#00000000");
@@ -138,7 +139,7 @@ void QQMusicPage::init(std::shared_ptr<SkiaUIContext> &context, int width, int h
     lyricView->setSourceSRT("feng.srt");
     lyricView->setMargin({0, 300, 0, 0});
     flexboxLayout->addView(lyricView);
-
+    
     fftView = new AudioFFTView();
     fftView->setContext(this->context);
     fftView->setWidthPercent(100);
@@ -149,7 +150,7 @@ void QQMusicPage::init(std::shared_ptr<SkiaUIContext> &context, int width, int h
     lyricView->setCurrPositionFunc([this]() -> long {
         return fftView->getCurrPosition();
     });
-
+    
     {
         auto controlView = new FlexboxLayout();
         controlView->setContext(this->context);
@@ -223,7 +224,7 @@ void QQMusicPage::init(std::shared_ptr<SkiaUIContext> &context, int width, int h
             controlView->addView(imageView);
         }
     }
-
+    
     {
         progressBar = new ProgressBar();
         progressBar->setContext(this->context);
@@ -286,4 +287,6 @@ void QQMusicPage::updateArmView(bool play) {
             recordInnerAnimator->pause();
         }
     }
+}
+
 }

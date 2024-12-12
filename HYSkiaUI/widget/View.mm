@@ -9,14 +9,16 @@
 #include "core/SkBlurTypes.h"
 #include "color_util.h"
 
+namespace HYSkiaUI {
+
 View::View() : width(0.0), height(0.0), skRect(SkIRect::MakeEmpty()), cornerRadius(0),
-               skRectWithBorder(SkRect::MakeEmpty()),
-               minWidth(0), minHeight(0),
-               parentId(0),
-               marginLeft(0), marginTop(0), marginRight(0), marginBottom(0),
-               paddingLeft(0), paddingTop(0), paddingRight(0), paddingBottom(0),
-               isDirty(false),
-               widthPercent(0.0f), heightPercent(0.0f) {
+skRectWithBorder(SkRect::MakeEmpty()),
+minWidth(0), minHeight(0),
+parentId(0),
+marginLeft(0), marginTop(0), marginRight(0), marginBottom(0),
+paddingLeft(0), paddingTop(0), paddingRight(0), paddingBottom(0),
+isDirty(false),
+widthPercent(0.0f), heightPercent(0.0f) {
     viewId = VIEW_ID++;
     paint = std::make_unique<SkPaint>();
     paint->setAntiAlias(true);
@@ -35,7 +37,7 @@ View::~View() {
 #pragma mark yoga
 
 void View::measure() {
-
+    
 }
 
 void View::setMeasuredDimension(int _measuredWidth, int _measuredHeight) {
@@ -53,27 +55,27 @@ void View::layout(int l, int t, int r, int b) {
     bottom = b;
     width = r - l;
     height = b - t;
-
+    
     if (viewLayoutCallback != nullptr) {
         viewLayoutCallback(l, t, r, b);
     }
     if (!linearGradientColors.empty()) {
         SkPoint points[2]{SkPoint::Make(l, t), SkPoint::Make(r, b)};
         auto gradientShader = SkGradientShader::MakeLinear(
-                points,
-                linearGradientColors.data(),
-                nullptr,
-                (int)linearGradientColors.size(),
-                SkTileMode::kClamp
-        );
+                                                           points,
+                                                           linearGradientColors.data(),
+                                                           nullptr,
+                                                           (int)linearGradientColors.size(),
+                                                           SkTileMode::kClamp
+                                                           );
         paint->setShader(std::move(gradientShader));
     }
     if (!swiperGradientColors.empty()) {
         auto gradientShader = SkGradientShader::MakeSweep(
-                (l + r) / 2, (t + b) / 2,
-                swiperGradientColors.data(),
-                nullptr,
-                (int)swiperGradientColors.size());
+                                                          (l + r) / 2, (t + b) / 2,
+                                                          swiperGradientColors.data(),
+                                                          nullptr,
+                                                          (int)swiperGradientColors.size());
         paint->setShader(std::move(gradientShader));
     }
 }
@@ -397,11 +399,11 @@ const char *View::getBackgroundColor() {
 }
 
 void View::onShow() {
-
+    
 }
 
 void View::onHide() {
-
+    
 }
 
 void View::markDirty() {
@@ -437,4 +439,6 @@ void View::performAnimations() {
 
 View *View::getParent() {
     return parent;
+}
+
 }

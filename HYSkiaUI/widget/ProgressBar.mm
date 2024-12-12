@@ -3,9 +3,11 @@
 #include "effects/SkGradientShader.h"
 #include "color_util.h"
 
+namespace HYSkiaUI {
+
 ProgressBar::ProgressBar()
-        : View(), progressRect(SkRect::MakeEmpty()), autoMode(true), progress(0), index(0),
-          type(ProgressBarType::CIRCLE), pressed(false), progressCallback(nullptr) {
+: View(), progressRect(SkRect::MakeEmpty()), autoMode(true), progress(0), index(0),
+type(ProgressBarType::CIRCLE), pressed(false), progressCallback(nullptr) {
     paint->setStroke(true);
     gradientColors = std::vector<SkColor>();
     gradientColorSize = 0;
@@ -47,8 +49,8 @@ void ProgressBar::layout(int l, int t, int r, int b) {
         if (!setShader && gradientColorSize > 0) {
             setShader = true;
             paint->setShader(
-                    SkGradientShader::MakeSweep(progressRect.centerX(), progressRect.centerY(),
-                                                &gradientColors[0], nullptr, gradientColorSize));
+                             SkGradientShader::MakeSweep(progressRect.centerX(), progressRect.centerY(),
+                                                         &gradientColors[0], nullptr, gradientColorSize));
         }
     } else if (type == ProgressBarType::LINEAR) {
         auto diff = height / 3.0f;
@@ -59,8 +61,8 @@ void ProgressBar::layout(int l, int t, int r, int b) {
             points.emplace_back(SkPoint::Make(progressRect.left(), progressRect.centerY()));
             points.emplace_back(SkPoint::Make(progressRect.right(), progressRect.centerY()));
             paint->setShader(
-                    SkGradientShader::MakeLinear(&points[0], &gradientColors[0], nullptr,
-                                                 gradientColorSize, SkTileMode::kClamp));
+                             SkGradientShader::MakeLinear(&points[0], &gradientColors[0], nullptr,
+                                                          gradientColorSize, SkTileMode::kClamp));
         }
     }
 }
@@ -188,4 +190,6 @@ const char *ProgressBar::getBarColor() {
 
 const char *ProgressBar::name() {
     return "ProgressBar";
+}
+
 }

@@ -2,6 +2,8 @@
 
 #include "ScrollView.h"
 
+namespace HYSkiaUI {
+
 enum class LyricType {
     Lrc,
     Srt,
@@ -16,27 +18,29 @@ struct Lyric {
 };
 
 class LyricScrollView : public ScrollView {
-
+    
 public:
-
+    
     LyricScrollView();
-
+    
     void setSourceSRT(const char *source);
-
+    
     void draw(SkCanvas *canvas) override;
-
+    
     void setCurrPositionFunc(std::function<long()>&& func);
-
+    
 private:
-
+    
     View* initItem(int index);
-
+    
     std::vector<Lyric> result;
-
+    
     long startTimeMills = 0L;
-
+    
     std::function<long()> currentPositionFunc = nullptr;
-
+    
     int currentIndex = -1;
-
+    
 };
+
+}

@@ -1,5 +1,7 @@
 #include "IAnimator.h"
 
+namespace HYSkiaUI {
+
 long IAnimator::currTime = 0L;
 
 IAnimator::IAnimator() : duration(500L), end(true), startTime(-1L), endTime(-1), loopCount(1) {
@@ -7,7 +9,7 @@ IAnimator::IAnimator() : duration(500L), end(true), startTime(-1L), endTime(-1),
 }
 
 IAnimator::~IAnimator() {
-
+    
 }
 
 void IAnimator::setDuration(long duration) {
@@ -60,3 +62,4 @@ uint32_t IAnimator::getAnimatorId() {
     return animatorId;
 }
 
+}

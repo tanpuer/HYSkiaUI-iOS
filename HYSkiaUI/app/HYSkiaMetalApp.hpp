@@ -6,6 +6,7 @@
 #import <include/core/SkSurface.h>
 #import <include/core/SkPicture.h>
 
+namespace HYSkiaUI {
 
 class HYSkiaMetalApp {
     
@@ -40,3 +41,5 @@ private:
     sk_sp<SkSurface> _skSurface = nullptr;
     
 };
+
+}

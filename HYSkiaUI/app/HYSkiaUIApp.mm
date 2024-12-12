@@ -4,6 +4,8 @@
 #import <include/core/SkPaint.h>
 #include "CppTest.h"
 
+namespace HYSkiaUI {
+
 HYSkiaUIApp::HYSkiaUIApp(int width, int height, NSThread *skiaUIThread) {
     _width = width;
     _height = height;
@@ -78,4 +80,6 @@ void HYSkiaUIApp::onShow() {
 
 void HYSkiaUIApp::onHide() {
     _context->getPageStackManager()->hideCurrentPage();
+}
+
 }

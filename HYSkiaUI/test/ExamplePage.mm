@@ -20,6 +20,8 @@
 #include "ClockView.h"
 #include "SwiperView.h"
 
+namespace HYSkiaUI {
+
 void ExamplePage::init(std::shared_ptr<SkiaUIContext> &context, int width, int height) {
     setContext(context);
     setWidth(width);
@@ -508,7 +510,7 @@ void ExamplePage::initChildren(ViewGroup *root, int width, int height) {
         swiperView->setBackgroundColor(SK_ColorWHITE);
         swiperView->setStrokeWidth(0);
         scrollView->addView(swiperView);
-
+        
         auto colors = {SK_ColorGREEN, SK_ColorYELLOW, SK_ColorMAGENTA, SK_ColorBLUE};
         for (auto color: colors) {
             auto view = new View();
@@ -521,4 +523,6 @@ void ExamplePage::initChildren(ViewGroup *root, int width, int height) {
         }
     }
     
+}
+
 }

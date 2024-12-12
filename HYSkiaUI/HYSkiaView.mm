@@ -5,6 +5,8 @@
 #import "native_log.h"
 #import "touch/TouchEvent.h"
 
+using namespace HYSkiaUI;
+
 @interface TouchEventeWrapper : NSObject
 @property (nonatomic, assign) TouchEvent* touchEvent;
 @end

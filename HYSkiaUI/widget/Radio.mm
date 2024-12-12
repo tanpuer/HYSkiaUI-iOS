@@ -1,5 +1,7 @@
 #include "Radio.h"
 
+namespace HYSkiaUI {
+
 Radio::Radio() {
     radioPaint = std::make_unique<SkPaint>();
     radioPaint->setAntiAlias(true);
@@ -14,7 +16,7 @@ Radio::Radio() {
 }
 
 Radio::~Radio() {
-
+    
 }
 
 void Radio::setOnChangeListener(std::function<void(bool)> &&changeFunc) {
@@ -55,4 +57,6 @@ void Radio::setOnClickListener(std::function<void(View *)> clickListener) {
 void Radio::setSelected(bool selected) {
     this->selected = selected;
     markDirty();
+}
+
 }

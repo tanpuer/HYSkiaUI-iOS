@@ -2,8 +2,10 @@
 #include <base/native_log.h>
 #include "ViewGroup.h"
 
-ViewGroup::ViewGroup() : View() {
+namespace HYSkiaUI {
 
+ViewGroup::ViewGroup() : View() {
+    
 }
 
 ViewGroup::~ViewGroup() {
@@ -90,13 +92,13 @@ void ViewGroup::draw(SkCanvas *canvas) {
     children.erase(std::remove_if(children.begin(),
                                   children.end(),
                                   [](View *child) {
-                                      if (child->markForDelete) {
-                                          delete child;
-                                          return true;
-                                      } else {
-                                          return false;
-                                      }
-                                  }), children.end());
+        if (child->markForDelete) {
+            delete child;
+            return true;
+        } else {
+            return false;
+        }
+    }), children.end());
 }
 
 void ViewGroup::setAlignItems(YGAlign align) {
@@ -237,3 +239,4 @@ void ViewGroup::performAnimations() {
     }
 }
 
+}

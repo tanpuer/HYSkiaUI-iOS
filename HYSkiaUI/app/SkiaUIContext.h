@@ -10,6 +10,8 @@
 #include "skparagraph/include/ParagraphBuilder.h"
 #include "MeasureTime.h"
 
+namespace HYSkiaUI {
+
 using namespace skia::textlayout;
 
 class SkiaUIContext {
@@ -129,3 +131,5 @@ private:
     NSThread *_skiaUIThread = nullptr;
     
 };
+
+}

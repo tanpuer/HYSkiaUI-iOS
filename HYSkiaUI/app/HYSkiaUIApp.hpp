@@ -4,6 +4,8 @@
 #include "SkiaUIContext.h"
 #include "ITestDraw.h"
 
+namespace HYSkiaUI {
+
 class HYSkiaUIApp {
     
 public:
@@ -40,3 +42,5 @@ private:
     
     std::unique_ptr<TouchEvent> mTouchEvent;
 };
+
+}

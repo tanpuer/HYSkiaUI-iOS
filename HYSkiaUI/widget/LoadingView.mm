@@ -1,5 +1,7 @@
 #include "LoadingView.h"
 
+namespace HYSkiaUI {
+
 LoadingView::LoadingView() {
     paint = std::make_unique<SkPaint>();
     paint->setStyle(SkPaint::Style::kStrokeAndFill_Style);
@@ -24,7 +26,7 @@ void LoadingView::draw(SkCanvas *canvas) {
             rectHeight = loadingHeight;
         } else {
             rectHeight = std::min(abs(time - startTime), abs(time - endTime)) * loadingHeight * 2 /
-                         (middleTime - startTime) + loadingHeight;
+            (middleTime - startTime) + loadingHeight;
         }
         rect.setXYWH(left + width / 2 + loadingWidth * distance + loadingMargin * distance,
                      top + height / 2 - rectHeight / 2,
@@ -57,4 +59,6 @@ void LoadingView::setLoadingDuration(int duration) {
 
 const char *LoadingView::name() {
     return "Loading";
+}
+
 }

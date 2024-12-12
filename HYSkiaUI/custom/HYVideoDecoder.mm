@@ -3,6 +3,8 @@
 #include "memory"
 #include "HYAudioPlayer.h"
 
+using namespace HYSkiaUI;
+
 @interface HYVideoDecoder ()
 
 @property (nonatomic, strong) AVAssetReader *assetReader;

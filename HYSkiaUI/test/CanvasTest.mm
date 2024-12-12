@@ -2,6 +2,8 @@
 #include "core/SkPath.h"
 #include "effects/SkGradientShader.h"
 
+namespace HYSkiaUI {
+
 CanvasTest::CanvasTest() {
     paint = std::make_unique<SkPaint>();
     paint->setAntiAlias(true);
@@ -25,7 +27,7 @@ void CanvasTest::draw(SkCanvas *canvas) {
     canvas->translate(-size / 2, size);
     paint->setColor(SK_ColorYELLOW);
     canvas->drawCircle(left + size, top + size, size, *paint);
-
+    
     canvas->translate(-size / 2, size * 2);
     testIndex++;
     SkPath path;
@@ -42,15 +44,15 @@ void CanvasTest::draw(SkCanvas *canvas) {
     SkPoint points[2]{SkPoint::Make(firstX, firstY), SkPoint::Make(lastX, lastY)};
     std::vector<SkColor> colors{SK_ColorGREEN, SK_ColorBLUE, SK_ColorMAGENTA};
     auto gradientShader = SkGradientShader::MakeLinear(
-            points,
-            colors.data(),
-            nullptr,
-            (int)colors.size(),
-            SkTileMode::kClamp
-    );
+                                                       points,
+                                                       colors.data(),
+                                                       nullptr,
+                                                       (int)colors.size(),
+                                                       SkTileMode::kClamp
+                                                       );
     pathPaint->setShader(std::move(gradientShader));
     canvas->drawPath(path, *pathPaint);
-
+    
     canvas->restore();
     View::draw(canvas);
 }
@@ -58,4 +60,6 @@ void CanvasTest::draw(SkCanvas *canvas) {
 void CanvasTest::setCircleSize(int size) {
     this->size = size;
     markDirty();
+}
+
 }

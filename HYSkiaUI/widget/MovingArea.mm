@@ -1,12 +1,14 @@
 #include "MovingArea.h"
 #include "LinearAnimator.h"
 
-MovingArea::MovingArea() : FlexboxLayout() {
+namespace HYSkiaUI {
 
+MovingArea::MovingArea() : FlexboxLayout() {
+    
 }
 
 MovingArea::~MovingArea() {
-
+    
 }
 
 bool MovingArea::onInterceptTouchEvent(TouchEvent *touchEvent) {
@@ -40,4 +42,6 @@ void MovingArea::layout(int l, int t, int r, int b) {
 
 const char *MovingArea::name() {
     return "MovingArea";
+}
+
 }

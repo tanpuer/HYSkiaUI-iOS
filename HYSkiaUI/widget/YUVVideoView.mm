@@ -2,6 +2,8 @@
 #include "core/SkPictureRecorder.h"
 #include "core/SkPicture.h"
 
+namespace HYSkiaUI {
+
 YUVVideoView::YUVVideoView() {
     videoPaint = std::make_unique<SkPaint>();
     videoPaint->setAntiAlias(true);
@@ -65,8 +67,8 @@ void YUVVideoView::draw(SkCanvas *canvas) {
         if (!uv_image) {
             ALOGD("Failed to create UV texture. Possible reasons:");
             ALOGD("1. Stride alignment: %d", yuvData->uvStride);
-            ALOGD("2. Required size: %zu, Actual size: %zu", 
-                  uv_imageInfo.computeMinByteSize(), 
+            ALOGD("2. Required size: %zu, Actual size: %zu",
+                  uv_imageInfo.computeMinByteSize(),
                   uv_data->size());
             return;
         }
@@ -125,4 +127,6 @@ const char *YUVVideoView::name() {
 
 void YUVVideoView::setRenderFirstFrameCallback(std::function<void()> &&callback) {
     this->renderFirstFrameCallback = std::move(callback);
+}
+
 }

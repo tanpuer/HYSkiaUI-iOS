@@ -3,6 +3,8 @@
 #include "algorithm"
 #include "LinearAnimator.h"
 
+namespace HYSkiaUI {
+
 float ScrollView::DECELERATION_RATE = (float) (log(0.78) / log(0.9));
 
 ScrollView::ScrollView() : isFling(false), startTime(0L) {
@@ -102,7 +104,7 @@ void ScrollView::updateTranslateX(float diffX) {
 bool ScrollView::addView(View *view) {
     markDirty();
     auto index = YGNodeGetChildCount(node);
-//    ALOGD("RecyclerView addView at %d %ld", index, children.size())
+    //    ALOGD("RecyclerView addView at %d %ld", index, children.size())
     return FlexboxLayout::addViewAt(view, index);
 }
 
@@ -163,14 +165,14 @@ void ScrollView::stopFling() {
 float ScrollView::calculateFlingTranslate() {
     auto _velocity = _direction == YGFlexDirectionColumn ? yVelocity : -xVelocity;
     float velocity = _velocity - (_velocity > 0 ? 1.0f : -1.0f) * GRAVITY *
-                                 (IAnimator::currTime - startTime); //v' = v + gt;
+    (IAnimator::currTime - startTime); //v' = v + gt;
     if (_velocity / velocity <= 0 || abs(velocity) <= MIN_VELOCITY) {
         _velocity = .0f;
         isFling = false;
         onFlingStopped();
     }
-//    float ppi = context.getResources().getDisplayMetrics().density * 160.0f;
-//  see OverScroller.java
+    //    float ppi = context.getResources().getDisplayMetrics().density * 160.0f;
+    //  see OverScroller.java
     float ppi = 2.625 * 160.0f;
     auto mPhysicalCoeff = GRAVITY * 39.37f * ppi * 0.84f;
     auto l = log(INFLEXION * abs(velocity) / (FLING_FRICTION * mPhysicalCoeff));
@@ -296,5 +298,7 @@ int ScrollView::getDistanceByIndex(int index) {
 }
 
 void ScrollView::onFlingStopped() {
+    
+}
 
 }

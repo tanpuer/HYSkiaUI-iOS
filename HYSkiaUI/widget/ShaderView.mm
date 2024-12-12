@@ -5,6 +5,8 @@
 #include "codec/SkAndroidCodec.h"
 #include "android/SkAnimatedImage.h"
 
+namespace HYSkiaUI {
+
 ShaderView::ShaderView() {
     
 }
@@ -162,4 +164,6 @@ void ShaderView::createEffect() {
         markDirty();
     };
     createEffect();
+}
+
 }

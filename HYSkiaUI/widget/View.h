@@ -82,6 +82,10 @@ public:
     
     virtual void clearDirty();
     
+    virtual void markMeasure();
+    
+    virtual void clearMeasure();
+    
     virtual View* getParent();
     
     YGNodeRef node;
@@ -209,6 +213,8 @@ public:
 protected:
     
     bool isDirty;
+    
+    bool needToMeasure = false;
     
     std::string backgroundColor;
     

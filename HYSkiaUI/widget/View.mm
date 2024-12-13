@@ -242,7 +242,6 @@ void View::removeLayoutCallback() {
 
 void View::setOnClickListener(std::function<void(View *)> clickListener) {
     viewClickListener = clickListener;
-    markDirty();
 }
 
 void View::removeClickListener() {
@@ -408,10 +407,19 @@ void View::onHide() {
 
 void View::markDirty() {
     isDirty = true;
+    getContext()->markDirty();
 }
 
 void View::clearDirty() {
     isDirty = false;
+}
+
+void View::markMeasure() {
+    needToMeasure = true;
+}
+
+void View::clearMeasure() {
+    needToMeasure = false;
 }
 
 void View::setAnimator(IAnimator *animator) {

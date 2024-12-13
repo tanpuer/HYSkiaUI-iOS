@@ -55,7 +55,7 @@ void RichText::measure() {
         textNode2.fontSize = 50;
         nodes.push_back(textNode2);
     }
-    if (isDirty && paragraphWidth != width) {
+    if (needToMeasure && paragraphWidth != width) {
         auto fontCollection = getContext()->getFontCollection();
         skia::textlayout::ParagraphStyle paraStyle;
         paraStyle.setTextStyle(*defaultStyle);
@@ -80,6 +80,7 @@ void RichText::measure() {
                 }, [this, i](const sk_sp<SkAnimatedImage> animatedImage) {
                     auto image = animatedImage->getCurrentFrame();
                     this->nodes[i].skImage = image;
+                    markDirty();
                 });
                 TextStyle textStyle;
                 paragraphBuilder->pushStyle(textStyle);
@@ -108,7 +109,7 @@ void RichText::measure() {
         height = paragraph->getHeight();
         setMeasuredDimension(static_cast<int>(width), static_cast<int>(height));
         paragraphWidth = width;
-        clearDirty();
+        clearMeasure();
     }
 }
 

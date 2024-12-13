@@ -97,6 +97,7 @@ void ShaderView::draw(SkCanvas *canvas) {
         canvas->translate(left, top);
         canvas->drawPicture(picture);
         canvas->restore();
+        markDirty();
     }
 }
 

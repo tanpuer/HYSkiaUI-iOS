@@ -33,6 +33,7 @@ bool MovingArea::onTouchEvent(TouchEvent *touchEvent) {
             break;
         }
     }
+    markDirty();
     return true;
 }
 

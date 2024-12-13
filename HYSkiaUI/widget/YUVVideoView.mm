@@ -96,6 +96,7 @@ void YUVVideoView::draw(SkCanvas *canvas) {
                 renderFirstFrameCallback();
             }
         }
+        markDirty();
     }
 }
 

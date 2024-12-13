@@ -111,6 +111,18 @@ public:
         }
     }
     
+    void markDirty() {
+        dirty = true;
+    }
+    
+    void clearDirty() {
+        dirty = false;
+    }
+    
+    bool isDirty() {
+        return dirty;
+    }
+    
     
 private:
     
@@ -129,6 +141,8 @@ private:
     sk_sp<SkTypeface> iconFontTypeFace = nullptr;
     
     NSThread *_skiaUIThread = nullptr;
+    
+    bool dirty = true;
     
 };
 

@@ -21,6 +21,10 @@ HYSkiaUIApp::~HYSkiaUIApp() {
 SkPicture* HYSkiaUIApp::doFrame(long time) {
     IAnimator::currTime = time;
     _context->setTimeMills(time);
+    if (!_context->isDirty()) {
+        return nullptr;
+    }
+    _context->clearDirty();
     SkPictureRecorder recorder;
     auto recordingCanvas = recorder.beginRecording(_width, _height);
     testDraw->doDrawTest(drawCount, recordingCanvas, _width, _height);

@@ -126,6 +126,7 @@ void ImageView::draw(SkCanvas *canvas) {
             currentFrameIndex = 0;
         }
         skImage = skImages[currentFrameIndex];
+        markDirty();
     }
     canvas->save();
     clipRect.setRectXY(dstRect, radius, radius);
@@ -244,6 +245,7 @@ bool ImageView::onTouchEvent(TouchEvent *touchEvent) {
             break;
         }
     }
+    markDirty();
     return true;
 }
 

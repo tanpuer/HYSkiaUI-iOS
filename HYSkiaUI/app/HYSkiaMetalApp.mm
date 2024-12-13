@@ -65,15 +65,14 @@ sk_sp<SkSurface> HYSkiaMetalApp::getSurface() {
 }
 
 void HYSkiaMetalApp::draw(SkPicture* picture) {
+    if (picture == nullptr) {
+        return;
+    }
     auto surface = getSurface();
     auto skCanvas = surface->getCanvas();
     skCanvas->clear(SK_ColorWHITE);
-    
-    if (picture != nullptr) {
-        picture->playback(skCanvas);
-        picture->unref();
-    }
-    
+    picture->playback(skCanvas);
+    picture->unref();
     _skContext->flushAndSubmit();
     
     id<MTLCommandBuffer> commandBuffer([_commandQueue commandBuffer]);

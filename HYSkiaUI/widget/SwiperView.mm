@@ -43,7 +43,7 @@ void SwiperView::draw(SkCanvas *canvas) {
 }
 
 void SwiperView::drawIndicators(SkCanvas *canvas) {
-    int size = children.size();
+    int size = (int)children.size();
     if (size == 0) {
         return;
     }

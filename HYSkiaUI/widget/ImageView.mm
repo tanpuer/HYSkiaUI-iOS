@@ -118,7 +118,7 @@ void ImageView::draw(SkCanvas *canvas) {
             startTime = currentTimeMills;
             endTime = startTime + duration;
         }
-        currentFrameIndex = (currentTimeMills - startTime) * frameCount / duration;
+        currentFrameIndex = (int)((currentTimeMills - startTime) * frameCount / duration);
         if (currentFrameIndex >= skImages.size()) {
             if (completeFunc != nullptr) {
                 completeFunc(this);

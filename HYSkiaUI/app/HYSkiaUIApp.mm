@@ -80,6 +80,7 @@ void HYSkiaUIApp::onBackMoved(float distance) {
 
 void HYSkiaUIApp::onShow() {
     _context->getPageStackManager()->showCurrentPage();
+    _context->markDirty();
 }
 
 void HYSkiaUIApp::onHide() {

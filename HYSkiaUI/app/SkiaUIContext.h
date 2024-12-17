@@ -12,6 +12,18 @@
 
 namespace HYSkiaUI {
 
+struct TimerData {
+    std::function<void()> callback;
+    bool repeat;
+    long delay;
+    
+    TimerData(std::function<void()>&& callback, bool repeat, long delay) {
+        this->callback = std::move(callback);
+        this->repeat = repeat;
+        this->delay = delay;
+    }
+};
+
 using namespace skia::textlayout;
 
 class SkiaUIContext {
@@ -89,12 +101,6 @@ public:
         return iconFontTypeFace;
     }
     
-    void runOnMainThread(std::function<void()> func) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            func();
-        });
-    }
-    
     template<typename T>
     void runOnUIThread(std::function<T()> backgroundTask, std::function<void(T)> uiTask) {
         if (_skiaUIThread) {
@@ -112,17 +118,47 @@ public:
     }
     
     void markDirty() {
-        dirty = true;
+        _dirty = true;
     }
     
     void clearDirty() {
-        dirty = false;
+        _dirty = false;
     }
     
     bool isDirty() {
-        return dirty;
+        return _dirty;
     }
     
+    long setTimer(std::function<void()>&& callback, long delay, bool repeat) {
+        auto id = timerId++;
+        _timerMap.emplace(id, TimerData(std::move(callback), repeat, delay));
+        void (^block)(void) = ^{
+            this->performTimer(id);
+        };
+        [block performSelector:@selector(invoke) withObject:nil afterDelay:(NSTimeInterval)(delay / 1000.0)];
+        return id;
+    }
+    
+    void clearTimer(long id) {
+        if (_timerMap.find(id) != _timerMap.cend()) {
+            _timerMap.erase(id);
+        }
+    }
+    
+    void performTimer(long id) {
+        auto itr = _timerMap.find(id);
+        if (itr != _timerMap.cend()) {
+            auto timerData = itr->second;
+            timerData.callback();
+            if (!timerData.repeat) {
+                return;
+            }
+            void (^block)(void) = ^{
+                this->performTimer(id);
+            };
+            [block performSelector:@selector(invoke) withObject:nil afterDelay:(NSTimeInterval)(timerData.delay / 1000.0)];
+        }
+    }
     
 private:
     
@@ -142,7 +178,11 @@ private:
     
     NSThread *_skiaUIThread = nullptr;
     
-    bool dirty = true;
+    bool _dirty = true;
+    
+    std::unordered_map<long, TimerData> _timerMap;
+    
+    long timerId = 0L;
     
 };
 

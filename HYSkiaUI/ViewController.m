@@ -1,10 +1,12 @@
 #import "ViewController.h"
 #import "HYSkiaView.h"
 
-@interface ViewController ()
+@interface ViewController () <HYSkiaViewDelegate>
 
 @property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *_leftEdgePanGesture;
 @property (nonatomic, strong) HYSkiaView *_skiaView;
+
+@property (nonatomic, strong) UITextView *_fpsView;
 
 @end
 
@@ -26,6 +28,7 @@
     }
     height -= statusBarHeight;
     self._skiaView = [[HYSkiaView alloc]initWithFrame:CGRectMake(0, 0, width, height)];
+    self._skiaView.delegate = self;
     [self.view addSubview: self._skiaView];
     self._skiaView.translatesAutoresizingMaskIntoConstraints = NO;
     if (@available(iOS 11.0, *)) {
@@ -41,6 +44,21 @@
     self._leftEdgePanGesture.edges = UIRectEdgeLeft;
     self._leftEdgePanGesture.delegate = (id)self;
     [self.view addGestureRecognizer:self._leftEdgePanGesture];
+    
+    self._fpsView = [[UITextView alloc] init];
+    self._fpsView.text = @"";
+    self._fpsView.textColor = [UIColor redColor];
+    self._fpsView.editable = YES;
+    self._fpsView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
+    self._fpsView.font = [UIFont systemFontOfSize:20];
+    self._fpsView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self._fpsView];
+    [NSLayoutConstraint activateConstraints:@[
+        [self._fpsView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:statusBarHeight], // 距离顶部10
+        [self._fpsView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:0], // 距离左边10
+        [self._fpsView.widthAnchor constraintEqualToConstant:200], // 设置宽度为200
+        [self._fpsView.heightAnchor constraintLessThanOrEqualToConstant:100], // 设置最大高度为100
+    ]];
 }
 
 - (void)handleLeftEdgePan:(UIScreenEdgePanGestureRecognizer *)recognizer {
@@ -61,6 +79,12 @@
         }
         default:
             break;
+    }
+}
+
+- (void)skiaViewRenderUpdate:(int)renderCount withDrawCount:(int)drawCount {
+    if (self._fpsView != nil) {
+        [self._fpsView setText: [NSString stringWithFormat:@"render: %d, draw: %d", renderCount, drawCount]];
     }
 }
 

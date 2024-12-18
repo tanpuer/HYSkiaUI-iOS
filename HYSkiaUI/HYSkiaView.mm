@@ -31,6 +31,10 @@ using namespace HYSkiaUI;
 @property (nonatomic, strong) NSMutableArray<NSValue *> *_touchPoints;
 @property (nonatomic, strong) NSMutableArray<NSNumber *> *_touchTimes;
 
+@property int _drawCount;
+@property int _renderCount;
+@property int _vsyncCount;
+
 @end
 
 @implementation HYSkiaView {
@@ -90,6 +94,16 @@ using namespace HYSkiaUI;
 - (void)onVsync {
     [self performSelector:@selector(draw) onThread:self->_skiaUIThread withObject:nullptr waitUntilDone:NO];
     [self performSelector:@selector(render) onThread:self->_skiaMetalThread withObject:nullptr waitUntilDone:NO];
+    self._vsyncCount++;
+    if (self._vsyncCount == 60) {
+        ALOGD("drawCount: %d, renderCount: %d", self._drawCount, self._renderCount)
+        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(skiaViewRenderUpdate:withDrawCount:)]) {
+            [self.delegate skiaViewRenderUpdate:self._renderCount withDrawCount:self._drawCount];
+        }
+        self._drawCount = 0;
+        self._renderCount = 0;
+        self._vsyncCount = 0;
+    }
 }
 
 - (void)drawLoop {
@@ -108,14 +122,23 @@ using namespace HYSkiaUI;
     CFTimeInterval time = CACurrentMediaTime() * 1000;
     IAnimator::currTime = time;
     auto picture = _skiaUIApp->doFrame(time);
+    if (picture == nullptr) {
+        return;
+    }
     SkiaPictureWrapper *wrapper = [[SkiaPictureWrapper alloc] init];
     wrapper.picture = picture;
     [self performSelector:@selector(setPic:) onThread:self->_skiaMetalThread withObject:wrapper waitUntilDone:NO];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self->__drawCount++;
+    });
 }
 
 - (void)render {
     if (self._picWrapper != nil) {
         _skiaMetalApp->draw(self._picWrapper.picture);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self->__renderCount++;
+        });
     }
     self._picWrapper = nil;
 }

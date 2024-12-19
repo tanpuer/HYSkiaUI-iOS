@@ -19,6 +19,7 @@
 #include "YUVVideoView.h"
 #include "ClockView.h"
 #include "SwiperView.h"
+#include "PickerView.h"
 
 namespace HYSkiaUI {
 
@@ -559,6 +560,36 @@ void ExamplePage::initChildren(ViewGroup *root, int width, int height) {
             view->setStyle(SkPaint::kFill_Style);
             swiperView->addView(view);
         }
+    }
+    
+    {
+        auto pickerView = new PickerView();
+        pickerView->setContext(this->context);
+        pickerView->setWidth(width);
+        for (int i = 0; i < 17; ++i) {
+            auto fbLayout = new FlexboxLayout();
+            fbLayout->setContext(this->context);
+            fbLayout->setAlignItems(YGAlign::YGAlignCenter);
+            fbLayout->setJustifyContent(YGJustify::YGJustifyCenter);
+            fbLayout->setWidthPercent(100);
+            fbLayout->setHeight(120);
+            pickerView->addView(fbLayout);
+            
+            auto value = 2008 + i;
+            auto textView = new TextView();
+            textView->setContext(this->context);
+            textView->setText(std::to_string(value).c_str());
+            textView->setTextColor(SK_ColorBLACK);
+            textView->setTextSize(50);
+            if (i == 0) {
+                fbLayout->setMargin({0, 120 * 3, 0, 0});
+            } else if (i == 16) {
+                fbLayout->setMargin({0, 0, 0, 120 * 3});
+            }
+            textView->setTextAlign(skia::textlayout::TextAlign::kCenter);
+            fbLayout->addView(textView);
+        }
+        scrollView->addView(pickerView);
     }
     
 }

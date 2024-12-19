@@ -107,5 +107,15 @@ void SwiperView::clearTimer() {
     }
 }
 
+void SwiperView::onShow() {
+    if (autoMode) {
+        setAutoMode(true);
+    }
+}
+
+void SwiperView::onHide() {
+    clearTimer();
+}
+
 }
 

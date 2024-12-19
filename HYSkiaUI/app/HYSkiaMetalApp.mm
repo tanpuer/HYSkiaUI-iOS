@@ -42,7 +42,7 @@ HYSkiaMetalApp::HYSkiaMetalApp(int width, int height) {
 }
 
 HYSkiaMetalApp::~HYSkiaMetalApp() {
-    
+    _layer = nil;
 }
 
 sk_sp<SkSurface> HYSkiaMetalApp::getSurface() {

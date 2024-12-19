@@ -86,6 +86,12 @@ using namespace HYSkiaUI;
 }
 
 - (void)dealloc {
+    [self performBlockOnUIThread:^{
+        self->_skiaUIApp = nullptr;
+    }];
+    [self performBlockOnMetalThread:^{
+        self->_skiaMetalApp = nullptr;
+    }];
     [self._displayLinkUI invalidate];
     [self->_skiaUIThread cancel];
     [self->_skiaMetalThread cancel];
@@ -119,6 +125,9 @@ using namespace HYSkiaUI;
 }
 
 - (void)draw {
+    if (_skiaUIApp == nullptr) {
+        return;
+    }
     CFTimeInterval time = CACurrentMediaTime() * 1000;
     IAnimator::currTime = time;
     auto picture = _skiaUIApp->doFrame(time);
@@ -134,6 +143,9 @@ using namespace HYSkiaUI;
 }
 
 - (void)render {
+    if (_skiaMetalApp == nullptr) {
+        return;
+    }
     if (self._picWrapper != nil) {
         _skiaMetalApp->draw(self._picWrapper.picture);
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -215,11 +227,6 @@ using namespace HYSkiaUI;
     }];
 }
 
-- (void)setTouchEventToUI: (TouchEventeWrapper*) wrappper {
-    _skiaUIApp->dispatchTouchEvent(wrappper.touchEvent);
-    wrappper = nil;
-}
-
 - (void)performBlockOnUIThread:(void(^)(void))block {
     if ([NSThread currentThread] == self->_skiaUIThread) {
         block();
@@ -227,6 +234,18 @@ using namespace HYSkiaUI;
         void (^blockCopy)(void) = [block copy];
         [self performSelector:@selector(executeBlockOnUIThread:)
                      onThread:self->_skiaUIThread
+                   withObject:blockCopy
+                waitUntilDone:NO];
+    }
+}
+
+- (void)performBlockOnMetalThread:(void(^)(void))block {
+    if ([NSThread currentThread] == self->_skiaUIThread) {
+        block();
+    } else {
+        void (^blockCopy)(void) = [block copy];
+        [self performSelector:@selector(executeBlockOnUIThread:)
+                     onThread:self->_skiaMetalThread
                    withObject:blockCopy
                 waitUntilDone:NO];
     }
@@ -252,6 +271,9 @@ using namespace HYSkiaUI;
     self._isInBackground = YES;
     [self._displayLinkUI setPaused:YES];
     [self performBlockOnUIThread:^{
+        if (self->_skiaUIApp == nullptr) {
+            return;
+        }
         self->_skiaUIApp->onHide();
     }];
 }
@@ -260,6 +282,9 @@ using namespace HYSkiaUI;
     self._isInBackground = NO;
     [self._displayLinkUI setPaused:NO];
     [self performBlockOnUIThread:^{
+        if (self->_skiaUIApp == nullptr) {
+            return;
+        }
         self->_skiaUIApp->onShow();
     }];
 }

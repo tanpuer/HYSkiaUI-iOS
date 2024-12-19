@@ -77,6 +77,7 @@ void HYSkiaUIApp::onBackMoved(float distance) {
     auto size = _context->getPageStackManager()->getPages().size();
     auto prePage = _context->getPageStackManager()->getPages()[size - 2];
     prePage->setVisibility(true);
+    _context->markDirty();
 }
 
 void HYSkiaUIApp::onShow() {

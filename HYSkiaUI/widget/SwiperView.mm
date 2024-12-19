@@ -114,10 +114,12 @@ void SwiperView::onShow() {
     if (autoMode) {
         setAutoMode(true);
     }
+    ViewGroup::onHide();
 }
 
 void SwiperView::onHide() {
     clearTimer();
+    ViewGroup::onShow();
 }
 
 }

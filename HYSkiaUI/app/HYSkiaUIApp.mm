@@ -65,6 +65,7 @@ void HYSkiaUIApp::onBackPressed(float distance) {
             page->enterFromRight(Page::EnterExitInfo(page->animTranslateX, 0, 100));
         }
     }
+    _context->markDirty();
 }
 
 void HYSkiaUIApp::onBackMoved(float distance) {

@@ -15,6 +15,9 @@ SwiperView::~SwiperView() {
 void SwiperView::setAutoMode(bool flag) {
     this->autoMode = flag;
     if (autoMode) {
+        if (timerId != -1L) {
+            return;
+        }
         timerId = getContext()->setTimer([this]() {
             auto targetIndex = currentIndex + 1;
             if (targetIndex >= children.size()) {

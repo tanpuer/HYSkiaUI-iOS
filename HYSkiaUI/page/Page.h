@@ -95,7 +95,7 @@ public:
     
     virtual void init(std::shared_ptr<SkiaUIContext> &context, int width, int height) {}
     
-    virtual void drawOnFrame(int drawCount) {}
+    virtual void drawOneFrame(int drawCount) {}
     
 };
 

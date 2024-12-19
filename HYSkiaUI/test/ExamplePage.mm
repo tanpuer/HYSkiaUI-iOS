@@ -42,8 +42,8 @@ void ExamplePage::init(std::shared_ptr<SkiaUIContext> &context, int width, int h
     initChildren(this, width, height);
 }
 
-void ExamplePage::drawOnFrame(int drawCount) {
-    Page::drawOnFrame(drawCount);
+void ExamplePage::drawOneFrame(int drawCount) {
+    Page::drawOneFrame(drawCount);
 }
 
 void ExamplePage::initChildren(ViewGroup *root, int width, int height) {

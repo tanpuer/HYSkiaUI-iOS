@@ -19,6 +19,7 @@
 		22246FCE2CF376DB0090C0E3 /* YGStyle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22246FBE2CF376DB0090C0E3 /* YGStyle.cpp */; };
 		22246FCF2CF376DB0090C0E3 /* YGValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22246FC02CF376DB0090C0E3 /* YGValue.cpp */; };
 		22246FD02CF376DB0090C0E3 /* Yoga.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22246FC32CF376DB0090C0E3 /* Yoga.cpp */; };
+		222BF6922D2E058600EAAA9D /* CameraUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 222BF6912D2E058600EAAA9D /* CameraUtil.mm */; };
 		222DF3B42CF497B5004BF728 /* sincos.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 222DF3B32CF497B5004BF728 /* sincos.glsl */; };
 		222DF3B72CF497EB004BF728 /* ShaderView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 222DF3B62CF497EB004BF728 /* ShaderView.mm */; };
 		222DF3BD2CF4A4AB004BF728 /* TextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 222DF3BB2CF4A4AB004BF728 /* TextView.mm */; };
@@ -130,6 +131,9 @@
 		22246FC22CF376DB0090C0E3 /* Yoga-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Yoga-internal.h"; sourceTree = "<group>"; };
 		22246FC32CF376DB0090C0E3 /* Yoga.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Yoga.cpp; sourceTree = "<group>"; };
 		22246FC42CF376DB0090C0E3 /* Yoga.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yoga.h; sourceTree = "<group>"; };
+		222BF6902D2E058600EAAA9D /* CameraUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraUtil.h; sourceTree = "<group>"; };
+		222BF6912D2E058600EAAA9D /* CameraUtil.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CameraUtil.mm; sourceTree = "<group>"; };
+		222BF6932D2E0AD500EAAA9D /* CameraData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraData.h; sourceTree = "<group>"; };
 		222DF3B32CF497B5004BF728 /* sincos.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sincos.glsl; sourceTree = "<group>"; };
 		222DF3B52CF497EB004BF728 /* ShaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderView.h; sourceTree = "<group>"; };
 		222DF3B62CF497EB004BF728 /* ShaderView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShaderView.mm; sourceTree = "<group>"; };
@@ -1904,6 +1908,9 @@
 				229D58D52CF5E4DF00694F52 /* HYAudioPlayer.h */,
 				22F5A0832CF7FDB6005F6F13 /* HYVideoDecoder.h */,
 				22F5A0842CF7FDB6005F6F13 /* HYVideoDecoder.mm */,
+				222BF6902D2E058600EAAA9D /* CameraUtil.h */,
+				222BF6912D2E058600EAAA9D /* CameraUtil.mm */,
+				222BF6932D2E0AD500EAAA9D /* CameraData.h */,
 			);
 			path = custom;
 			sourceTree = "<group>";
@@ -2083,6 +2090,7 @@
 				229D58BB2CF5DF6B00694F52 /* AudioFFTView.mm in Sources */,
 				22246FCA2CF376DB0090C0E3 /* YGEnums.cpp in Sources */,
 				226317FC2CF4215200AD9DDB /* CppTest.mm in Sources */,
+				222BF6922D2E058600EAAA9D /* CameraUtil.mm in Sources */,
 				22F5A0852CF7FDB6005F6F13 /* HYVideoDecoder.mm in Sources */,
 				22760C362CF058680084E042 /* HYSkiaMetalApp.mm in Sources */,
 				22BF2B752CEF318B00E4F457 /* AppDelegate.m in Sources */,

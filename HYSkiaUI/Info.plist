@@ -21,5 +21,8 @@
 			</array>
 		</dict>
 	</dict>
+	<!-- 添加相机权限 -->
+    <key>NSCameraUsageDescription</key>
+    <string>需要访问摄像头以展示Demo</string>
 </dict>
 </plist>

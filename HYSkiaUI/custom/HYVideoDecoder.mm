@@ -137,10 +137,8 @@ using namespace HYSkiaUI;
         if (self->_context == nullptr) {
             delete frameData;
         } else {
-            self->_context->runOnUIThread<HYVideoFrameData*>([frameData](){
-                return frameData;
-            }, [self](HYVideoFrameData* data) {
-                [self setVideoFrameData:data];
+            self->_context->sendToUIThread([self, frameData](){
+                [self setVideoFrameData:frameData];
             });
         }
         // 解锁 buffer

@@ -117,6 +117,18 @@ public:
         }
     }
     
+    void sendToUIThread(std::function<void()> uiTask) {
+        if (_skiaUIThread) {
+            void (^block)(void) = ^{
+                uiTask();
+            };
+            [block performSelector:@selector(invoke)
+                          onThread:_skiaUIThread
+                        withObject:nil
+                     waitUntilDone:NO];
+        }
+    }
+    
     void markDirty() {
         _dirty = true;
     }

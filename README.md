@@ -1,35 +1,29 @@
-https://github.com/tanpuer/SkiaUI2 for iOS
+# SkiaUI
 
-Just a git commit, just for fun, no further development.
+Using Skia, Yoga to build a simple Flexbox-UI framework for iOS.
 
 steps：
 
-1. Using Skia Metal context.
-2. Two threads: ui-thread & render-thread.
-3. Only support FlexboxLayout. Measure/Layout/Draw are triggered by Vsync.
-4. TouchEvents: dispatchTouchEvent/interceptTouchEvent/onTouchEvent.
-5. Animations support scale/rotate/translate，the interpolator will be executed in Layout then update SkRect.
-6. Supported Widgets:   
-   View: rect, cornerRadius.  
-   ImageView: support png/gif, scaleType，cornerRadius, blur.  
-   TextView: use SkParagraph, use AlimamaFangYuanTiVF-Thin.ttf by default.  
-   Icon: use the iconfont.woff by default.  
-   ProgressBar: circle and linear style，also can be dragged.  
-   SVGView: svg file.  
-   ShaderView: render simple fragment-shader.  
-   Lottie: render lottie.json.  
-   YUVVideoView: render video by AVFoundation/SkRuntimeEffect.  
-   LyricView: parse .srt files, use RecyclerView to render lyric.  
-   MovingArea: intercept TouchEvents by default and can move.  
-   Swiper: just like ViewPager.  
-   Other CustomsViews: Loading, Switch, Radio, Picker...  
-   PlatformView: TODO!!!  
-   ...
-8. scrollView: scroll, fling，for more optimizations.
-9. RecyclerView: adapter，ViewHolder，for more optimizations.
-10. Page: act as the same role as Activity.
-11. C++: See CppTest.cpp.
-14. Dirty-Render: markDirty after "draw" if necessary.
+1. Compile skia https://skia.org/docs/user/build/
+2. Using Skia Metal context.
+3. Two threads: ui-thread & render-thread.
+4. Only support FlexboxLayout. Measure/Layout/Draw are triggered by Vsync.
+5. TouchEvents: dispatchTouchEvent/interceptTouchEvent/onTouchEvent.
+6. Animations support scale/rotate/translate，and will be performed before measure.
+7. TouchEvents: dispatchTouchEvent/interceptTouchEvent/onTouchEvent.
+8. Animations support scale/rotate/translate，and will be performed before measure.
+9. Dirty-Render: markDirty if next draw is necessary.
+10. **Supported Widgets**:   
+   View, ImageView, TextView, Icon, ProgressBar, SVGView, ShaderView, Lottie,
+   YUVVideoView, scrollView, MovingArea, RecyclerView, Swiper, Loading, Switch, Radio, Picker,
+   LyricView, FlexboxLayout, Page...
+11. **PlatformView**:  
+   TODO!
+12. **Development**:  
+    C++: See CppTest.cpp.  
+    js: TODO!
+13. **Cross Platform**  
+    Android: https://github.com/tanpuer/SkiaUI2   
 
 ![image](https://github.com/tanpuer/HYSkiaUI-iOS/blob/main/example1.jpeg)
 ![image](https://github.com/tanpuer/HYSkiaUI-iOS/blob/main/example2.jpeg)

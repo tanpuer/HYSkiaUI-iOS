@@ -32,7 +32,7 @@ HYSkiaMetalApp::HYSkiaMetalApp(int width, int height) {
         return;
     }
     _layer.framebufferOnly = NO;
-    _layer.device = MTLCreateSystemDefaultDevice();
+    _layer.device = _device;
     _layer.opaque = false;
     _layer.contentsScale = [UIScreen mainScreen].scale;
     _layer.pixelFormat = MTLPixelFormatBGRA8Unorm;

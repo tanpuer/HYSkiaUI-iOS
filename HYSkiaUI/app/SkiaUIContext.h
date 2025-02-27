@@ -52,11 +52,11 @@ public:
         return _currentTimeMills;
     }
     
-    const std::shared_ptr<PageStackManager> getPageStackManager() {
+    const std::shared_ptr<PageStackManager>& getPageStackManager() {
         return _pageStackManager;
     }
     
-    std::shared_ptr<AssetManager> getAssetManager() {
+    std::shared_ptr<AssetManager>& getAssetManager() {
         return _assetManager;
     }
     

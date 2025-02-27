@@ -230,7 +230,7 @@ void View::setCustomTouchEventDispatcher(TouchEventDispatcher *touchEventDispatc
     this->touchEventDispatcher->setWeakView(this);
 }
 
-void View::setLayoutCallback(std::function<void(int, int, int, int)> callback) {
+void View::setLayoutCallback(std::function<void(int, int, int, int)>&& callback) {
     viewLayoutCallback = callback;
     markDirty();
 }
@@ -241,7 +241,7 @@ void View::removeLayoutCallback() {
 }
 
 void View::setOnClickListener(std::function<void(View *)> clickListener) {
-    viewClickListener = clickListener;
+    viewClickListener = std::move(clickListener);
 }
 
 void View::removeClickListener() {
@@ -255,7 +255,7 @@ void View::performClick() {
     }
 }
 
-std::function<void(View *)> View::getClickListener() {
+const std::function<void(View *)>& View::getClickListener() {
     return viewClickListener;
 }
 
@@ -371,18 +371,17 @@ void View::setAspectRatio(float ratio) {
     markDirty();
 }
 
-const std::shared_ptr<SkiaUIContext> View::getContext() {
+const std::shared_ptr<SkiaUIContext>& View::getContext() {
     return context;
 }
 
-void View::setContext(std::shared_ptr<SkiaUIContext> context) {
+void View::setContext(std::shared_ptr<SkiaUIContext>& context) {
     this->context = context;
     if (this->config != nullptr) {
         ALOGD("multi set config error, pls check")
         return;
     }
     this->config = context->getConfig();
-    //todo setConfig之后才会进行node的创建
     node = YGNodeNewWithConfig(config);
 }
 

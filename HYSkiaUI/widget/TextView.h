@@ -9,9 +9,9 @@
 #include "skparagraph/include/ParagraphBuilder.h"
 #include "skparagraph/include/TypefaceFontProvider.h"
 
-namespace HYSkiaUI {
-
 using namespace skia::textlayout;
+
+namespace HYSkiaUI {
 
 class TextView : public View {
     
@@ -25,7 +25,8 @@ public:
         SkString fontFamily;
         
         StringBuilder(SkString text, SkFontStyle fontStyle,
-                      SkScalar textSize, SkPaint foregroundPaint, SkString fontFamily = SkString("Alimama")) noexcept {
+                      SkScalar textSize, SkPaint foregroundPaint,
+                      SkString fontFamily = SkString("Alimama")) noexcept {
             this->text = std::move(text);
             this->fontStyle = std::move(fontStyle);
             this->textSize = textSize;
@@ -61,6 +62,10 @@ public:
     
     virtual void setTextColor(SkColor color);
     
+    virtual void setTextColor(const std::string &hexColor);
+    
+    virtual const char *getTextColor();
+    
     virtual void setTextSize(SkScalar textSize);
     
     virtual void setTextAlign(TextAlign textAlign);
@@ -69,10 +74,15 @@ public:
     
     virtual void setAlpha(float alpha) override;
     
+    virtual float getAlpha() override;
+    
     void setMaxLines(int maxLine);
     
     /**
      * 功能类似于Android的StringBuilder
+     * @param color
+     * @param fontStyle
+     * @param text
      */
     void pushText(const StringBuilder &stringBuilder);
     
@@ -111,7 +121,7 @@ public:
     
     void setFontFamily(const char *fontFamily);
     
-    void setEllipsis(const char* ellipsis);
+    void setEllipsis(const char *ellipsis);
     
 protected:
     
@@ -144,6 +154,10 @@ protected:
     TextAlign textAlign = TextAlign::kLeft;
     
     SkString ellipsis = SkString("\u2026");
+    
+    std::string textColor;
+    
 };
 
 }
+

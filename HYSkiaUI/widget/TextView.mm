@@ -6,6 +6,7 @@
 #include "ports/SkFontMgr_android.h"
 #include "effects/SkGradientShader.h"
 #include "skparagraph/include/TypefaceFontProvider.h"
+#include "color_util.h"
 
 namespace HYSkiaUI {
 
@@ -31,7 +32,6 @@ void TextView::setText(SkString text) {
     this->text = std::move(text);
     stringBuilders.clear();
     markDirty();
-    markMeasure();
 }
 
 SkString TextView::getText() {
@@ -42,14 +42,18 @@ void TextView::setTextColor(SkColor color) {
     skColor = color;
     defaultStyle->setColor(color);
     markDirty();
+    markMeasure();
 }
 
 void TextView::setAlpha(float alpha) {
-    View::setAlpha(alpha);
     defaultStyle->setColor(SkColorSetARGB(alpha * 255, SkColorGetR(skColor), SkColorGetG(skColor),
                                           SkColorGetB(skColor)));
     markDirty();
     markMeasure();
+}
+
+float TextView::getAlpha() {
+    return SkColorGetA(defaultStyle->getColor()) / 255.0f;
 }
 
 void TextView::measure() {
@@ -80,22 +84,22 @@ void TextView::measure() {
             }
         } else {
             TextStyle textStyle;
-            textStyle.setColor(skColor);
+            textStyle.setColor(defaultStyle->getColor());
             textStyle.setFontStyle(defaultStyle->getFontStyle());
             textStyle.setFontSize(getTextSize());
             textStyle.setFontFamilies(fontFamily);
             if (!textGradientColors.empty()) {
                 SkPaint foregroundPaint;
                 SkPoint points[2]{
-                    SkPoint::Make(left, top), SkPoint::Make(right, top)
+                        SkPoint::Make(left, top), SkPoint::Make(right, top)
                 };
                 auto gradientShader = SkGradientShader::MakeLinear(
-                                                                   points,
-                                                                   textGradientColors.data(),
-                                                                   textGradientPos.data(),
-                                                                   (int)textGradientColors.size(),
-                                                                   SkTileMode::kClamp
-                                                                   );
+                        points,
+                        textGradientColors.data(),
+                        textGradientPos.data(),
+                        textGradientColors.size(),
+                        SkTileMode::kClamp
+                );
                 foregroundPaint.setShader(std::move(gradientShader));
                 textStyle.setForegroundPaint(foregroundPaint);
             }
@@ -128,7 +132,7 @@ void TextView::measure() {
             height = paragraph->getHeight();
         }
         setMeasuredDimension(static_cast<int>(width), static_cast<int>(height));
-        //        ALOGD("TextView setSize %f %f", width, height)
+        ALOGD("TextView setSize %f %f", width, height)
         clearMeasure();
     }
 }
@@ -224,4 +228,16 @@ void TextView::setEllipsis(const char *ellipsis) {
     markMeasure();
 }
 
+void TextView::setTextColor(const std::string &hexColor) {
+    textColor = hexColor;
+    int r, g, b, a;
+    hexToRGBA(hexColor, r, g, b, a);
+    setTextColor(SkColorSetARGB(a, r, g, b));
 }
+
+const char *TextView::getTextColor() {
+    return textColor.c_str();
+}
+
+}
+

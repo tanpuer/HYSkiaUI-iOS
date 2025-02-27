@@ -15,12 +15,11 @@ PickerView::PickerView() {
 }
 
 PickerView::~PickerView() {
-
+    
 }
 
-void PickerView::setContext(std::shared_ptr<SkiaUIContext> context) {
+void PickerView::setContext(std::shared_ptr<SkiaUIContext>& context) {
     View::setContext(context);
-//    setJustifyContent(YGJustify::YGJustifyCenter);
     setAlignItems(YGAlign::YGAlignCenter);
 }
 
@@ -60,12 +59,12 @@ void PickerView::layout(int l, int t, int r, int b) {
     ScrollView::layout(l, t, r, b);
     SkPoint points[2]{SkPoint::Make(l, t), SkPoint::Make(l, b)};
     auto shader = SkGradientShader::MakeLinear(
-            points,
-            maskColor.data(),
-            nullptr,
-            3,
-            SkTileMode::kClamp
-    );
+                                               points,
+                                               maskColor.data(),
+                                               nullptr,
+                                               3,
+                                               SkTileMode::kClamp
+                                               );
     bottomPaint->setShader(std::move(shader));
     centerMask.setLTRB(skRect.left(), skRect.top() + skRect.height() / 2 - centerHeight / 2,
                        skRect.right(), skRect.top() + skRect.height() / 2 + centerHeight / 2);

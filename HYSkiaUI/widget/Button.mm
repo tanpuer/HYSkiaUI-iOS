@@ -31,10 +31,15 @@ const char *Button::name() {
     return "Button";
 }
 
-void Button::setContext(std::shared_ptr<SkiaUIContext> context) {
+void Button::setContext(std::shared_ptr<SkiaUIContext>& context) {
     View::setContext(context);
     setBackgroundColor(SkColorSetARGB(255, 31, 132, 226));
     setTextColor(SK_ColorWHITE);
 }
 
+void Button::setAlpha(float alpha) {
+    View::setAlpha(alpha);
 }
+
+}
+

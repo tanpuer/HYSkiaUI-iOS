@@ -14,7 +14,7 @@ steps：
 8. Dirty-Render: markDirty if next draw is necessary.
 9. **Supported Widgets**:   
    View, ImageView, TextView, Icon, ProgressBar, SVGView, ShaderView, Lottie,
-   YUVVideoView, scrollView, MovingArea, RecyclerView, Swiper, Loading, Switch, Radio, Picker,
+   YUVVideoView, ScrollView, MovingArea, RecyclerView, Swiper, Loading, Switch, Radio, Picker,
    LyricView, FlexboxLayout, Page...
 10. **PlatformView**:  
    TODO!

@@ -9,20 +9,20 @@ steps：
 3. Two threads: ui-thread & render-thread.
 4. Only support FlexboxLayout. Measure/Layout/Draw are triggered by Vsync.
 5. TouchEvents: dispatchTouchEvent/interceptTouchEvent/onTouchEvent.
-6. Animations support scale/rotate/translate，and will be performed before measure.
-7. TouchEvents: dispatchTouchEvent/interceptTouchEvent/onTouchEvent.
-8. Animations support scale/rotate/translate，and will be performed before measure.
-9. Dirty-Render: markDirty if next draw is necessary.
-10. **Supported Widgets**:   
+6. TouchEvents: dispatchTouchEvent/interceptTouchEvent/onTouchEvent.
+7. Animations support scale/rotate/translate，and will be performed before measure.
+8. Dirty-Render: markDirty if next draw is necessary.
+9. **Supported Widgets**:   
    View, ImageView, TextView, Icon, ProgressBar, SVGView, ShaderView, Lottie,
    YUVVideoView, scrollView, MovingArea, RecyclerView, Swiper, Loading, Switch, Radio, Picker,
    LyricView, FlexboxLayout, Page...
-11. **PlatformView**:  
+10. **PlatformView**:  
    TODO!
-12. **Development**:  
+11. **Development**:  
     C++: See CppTest.cpp.  
-    js: TODO!
-13. **Cross Platform**  
+    js: TODO!  
+    SwiftUI: TODO!  
+12. **Cross Platform**  
     Android: https://github.com/tanpuer/SkiaUI2   
 
 ![image](https://github.com/tanpuer/HYSkiaUI-iOS/blob/main/example1.jpeg)

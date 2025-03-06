@@ -54,9 +54,10 @@ void ShaderView::setShaderSource(const char *data, std::vector<std::string> imag
 }
 
 void ShaderView::setShaderPath(const char *path, std::vector<std::string> images) {
-    getContext()->runOnUIThread<char *>([this, path]() {
+    this->path = path;
+    getContext()->runOnUIThread<char *>([this]() {
         MeasureTime measureTime("setShaderPath");
-        return getContext()->getAssetManager()->readFile(path);
+        return getContext()->getAssetManager()->readFile(this->path.c_str());
     }, [this, images](const char* result) {
         if (result != nullptr) {
             setShaderSource(result, images);

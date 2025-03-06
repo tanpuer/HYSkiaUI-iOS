@@ -17,9 +17,9 @@ SVGView::~SVGView() {
 
 void SVGView::setSource(const char *path) {
     src = path;
-    getContext()->runOnUIThread<sk_sp<SkSVGDOM>>([this, path]() {
+    getContext()->runOnUIThread<sk_sp<SkSVGDOM>>([this]() {
         MeasureTime measureTime("SVG setSource");
-        auto imageData = getContext()->getAssetManager()->readImage(path);
+        auto imageData = getContext()->getAssetManager()->readImage(this->src.c_str());
         auto length = imageData->length;
         auto skData = SkData::MakeWithProc(imageData->content, length, nullptr, nullptr);
         auto stream = SkMemoryStream::Make(skData);

@@ -172,6 +172,27 @@ public:
         }
     }
     
+    int getWidth() {
+        return width;
+    }
+    
+    int getHeight() {
+        return height;
+    }
+    
+    void setSize(int width, int height) {
+        this->width = width;
+        this->height = height;
+    }
+    
+//    void setRuntime(std::shared_ptr<JSCoreRuntime>& runtime) {
+//        this->runtime = runtime;
+//    }
+//    
+//    const std::shared_ptr<JSCoreRuntime>& getRuntime() {
+//        return runtime;
+//    }
+    
 private:
     
     long _currentTimeMills = 0L;
@@ -195,6 +216,12 @@ private:
     std::unordered_map<long, TimerData> _timerMap;
     
     long timerId = 0L;
+    
+    int width = 0;
+    
+    int height = 0;
+    
+//    std::shared_ptr<JSCoreRuntime> runtime = nullptr;
     
 };
 

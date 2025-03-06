@@ -36,8 +36,8 @@ float ImageView::getAlpha() {
 void ImageView::setSource(const char *path) {
     MeasureTime measureTime("ImageView setSource");
     this->source = std::string(path);
-    getContext()->runOnUIThread<const sk_sp<SkAnimatedImage>>([this, path](){
-        auto imageData = getContext()->getAssetManager()->readImage(path);
+    getContext()->runOnUIThread<const sk_sp<SkAnimatedImage>>([this](){
+        auto imageData = getContext()->getAssetManager()->readImage(this->source.c_str());
         auto length = imageData->length;
         auto skData = SkData::MakeWithProc(imageData->content, length, nullptr, nullptr);
         auto androidCodec = SkAndroidCodec::MakeFromData(skData);

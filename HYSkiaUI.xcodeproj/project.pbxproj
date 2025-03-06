@@ -24,6 +24,11 @@
 		222DF3B72CF497EB004BF728 /* ShaderView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 222DF3B62CF497EB004BF728 /* ShaderView.mm */; };
 		222DF3BD2CF4A4AB004BF728 /* TextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 222DF3BB2CF4A4AB004BF728 /* TextView.mm */; };
 		222FC4852CF69A1500419CBF /* bg.gif in Resources */ = {isa = PBXBuildFile; fileRef = 222FC4842CF69A1500419CBF /* bg.gif */; };
+		2239FCA82D70530E0050F9DF /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2239FCA72D70530E0050F9DF /* JavaScriptCore.framework */; };
+		2239FCB02D7056B60050F9DF /* JSCoreRuntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2239FCAE2D7056B60050F9DF /* JSCoreRuntime.mm */; };
+		2239FCB32D7135CF0050F9DF /* ReactjsTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2239FCB12D7135CF0050F9DF /* ReactjsTest.mm */; };
+		2239FCB52D713C000050F9DF /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = 2239FCB42D713C000050F9DF /* test.js */; };
+		2239FCBB2D7185960050F9DF /* JSViewBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2239FCB92D7185960050F9DF /* JSViewBinding.mm */; };
 		22518BBF2CF54C8B00A2FF19 /* AlimamaFangYuanTiVF-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22518BBC2CF54C8B00A2FF19 /* AlimamaFangYuanTiVF-Thin.ttf */; };
 		22518BC02CF54C8B00A2FF19 /* iconfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 22518BBD2CF54C8B00A2FF19 /* iconfont.woff */; };
 		22518BC12CF54C8B00A2FF19 /* NotoColorEmoji.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22518BBE2CF54C8B00A2FF19 /* NotoColorEmoji.ttf */; };
@@ -68,6 +73,21 @@
 		22760C2D2CF01FB70084E042 /* libskunicode_libgrapheme.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22760C222CF01FB70084E042 /* libskunicode_libgrapheme.xcframework */; };
 		22760C2E2CF01FB70084E042 /* libsvg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22760C232CF01FB70084E042 /* libsvg.xcframework */; };
 		22760C362CF058680084E042 /* HYSkiaMetalApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22760C342CF058680084E042 /* HYSkiaMetalApp.mm */; };
+		22846EC12D791CAC00E6A330 /* JSLottieBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22846EBF2D791CAC00E6A330 /* JSLottieBinding.mm */; };
+		22846EC42D79246A00E6A330 /* JSVideoViewBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22846EC22D79246A00E6A330 /* JSVideoViewBinding.mm */; };
+		22846EC72D792EFB00E6A330 /* JSTextViewBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22846EC52D792EFB00E6A330 /* JSTextViewBinding.mm */; };
+		22846ECA2D79309C00E6A330 /* JSButtonBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22846EC82D79309C00E6A330 /* JSButtonBinding.mm */; };
+		22846ECD2D79386000E6A330 /* JSImageViewBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22846ECB2D79386000E6A330 /* JSImageViewBinding.mm */; };
+		22846ECF2D79447400E6A330 /* react.svg in Resources */ = {isa = PBXBuildFile; fileRef = 22846ECE2D79447400E6A330 /* react.svg */; };
+		22846ED22D7944B100E6A330 /* JSSVGBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22846ED02D7944B100E6A330 /* JSSVGBinding.mm */; };
+		22846ED52D7949D000E6A330 /* JSFlexboxLayoutBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22846ED32D7949D000E6A330 /* JSFlexboxLayoutBinding.mm */; };
+		22846ED82D794D6700E6A330 /* JSShaderViewBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22846ED62D794D6700E6A330 /* JSShaderViewBinding.mm */; };
+		22846EDB2D79623600E6A330 /* JSLinearAnimatorBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22846ED92D79623600E6A330 /* JSLinearAnimatorBinding.mm */; };
+		22846EE12D7972B400E6A330 /* JSAudioPlayerBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22846EDF2D7972B400E6A330 /* JSAudioPlayerBinding.mm */; };
+		22846EE42D7974C800E6A330 /* JSAudioPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22846EE22D7974C800E6A330 /* JSAudioPlayer.mm */; };
+		22846EE62D797F7A00E6A330 /* react_bundle.js in Resources */ = {isa = PBXBuildFile; fileRef = 22846EE52D797F7A00E6A330 /* react_bundle.js */; };
+		22846EE92D79827E00E6A330 /* JSFileBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22846EE72D79827E00E6A330 /* JSFileBinding.mm */; };
+		22846EEC2D79837700E6A330 /* JSFile.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22846EEA2D79837700E6A330 /* JSFile.mm */; };
 		229D58B82CF5DE3E00694F52 /* LyricScrollView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 229D58B72CF5DE3E00694F52 /* LyricScrollView.mm */; };
 		229D58BB2CF5DF6B00694F52 /* AudioFFTView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 229D58B92CF5DF6B00694F52 /* AudioFFTView.mm */; };
 		229D58BE2CF5E03E00694F52 /* feng.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 229D58BC2CF5E03E00694F52 /* feng.mp4 */; };
@@ -91,8 +111,12 @@
 		22BF2B802CEF318D00E4F457 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22BF2B7F2CEF318D00E4F457 /* Assets.xcassets */; };
 		22BF2B832CEF318D00E4F457 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 22BF2B822CEF318D00E4F457 /* Base */; };
 		22BF2B862CEF318D00E4F457 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BF2B852CEF318D00E4F457 /* main.m */; };
+		22C9482F2D76920800AD59FB /* JSEnterExitInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22C9482D2D76920800AD59FB /* JSEnterExitInfo.mm */; };
 		22D6DCDF2CF0702F00732E57 /* HYSkiaView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22D6DCDE2CF0702F00732E57 /* HYSkiaView.mm */; };
 		22DFFA002CFD399800BFF95D /* ClockView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22DFF9FF2CFD399800BFF95D /* ClockView.mm */; };
+		22E5199D2D78563D0087430F /* JSViewGroupBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22E5199B2D78563D0087430F /* JSViewGroupBinding.mm */; };
+		22E519A02D7856A50087430F /* JSPageBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22E5199E2D7856A50087430F /* JSPageBinding.mm */; };
+		22E519A62D786D710087430F /* JSScrollViewBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22E519A42D786D710087430F /* JSScrollViewBinding.mm */; };
 		22F5A0822CF7FAF7005F6F13 /* RichText.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22F5A0812CF7FAF7005F6F13 /* RichText.mm */; };
 		22F5A0852CF7FDB6005F6F13 /* HYVideoDecoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22F5A0842CF7FDB6005F6F13 /* HYVideoDecoder.mm */; };
 		22F5A0882CF81A8A005F6F13 /* YUVVideoView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22F5A0862CF81A8A005F6F13 /* YUVVideoView.mm */; };
@@ -140,6 +164,14 @@
 		222DF3BB2CF4A4AB004BF728 /* TextView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TextView.mm; sourceTree = "<group>"; };
 		222DF3BC2CF4A4AB004BF728 /* TextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextView.h; sourceTree = "<group>"; };
 		222FC4842CF69A1500419CBF /* bg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bg.gif; sourceTree = "<group>"; };
+		2239FCA72D70530E0050F9DF /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		2239FCAE2D7056B60050F9DF /* JSCoreRuntime.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSCoreRuntime.mm; sourceTree = "<group>"; };
+		2239FCAF2D7056B60050F9DF /* JSCoreRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCoreRuntime.h; sourceTree = "<group>"; };
+		2239FCB12D7135CF0050F9DF /* ReactjsTest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ReactjsTest.mm; sourceTree = "<group>"; };
+		2239FCB22D7135CF0050F9DF /* ReactjsTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactjsTest.h; sourceTree = "<group>"; };
+		2239FCB42D713C000050F9DF /* test.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
+		2239FCB92D7185960050F9DF /* JSViewBinding.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSViewBinding.mm; sourceTree = "<group>"; };
+		2239FCBA2D7185960050F9DF /* JSViewBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSViewBinding.h; sourceTree = "<group>"; };
 		22518BBC2CF54C8B00A2FF19 /* AlimamaFangYuanTiVF-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlimamaFangYuanTiVF-Thin.ttf"; sourceTree = "<group>"; };
 		22518BBD2CF54C8B00A2FF19 /* iconfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.woff; sourceTree = "<group>"; };
 		22518BBE2CF54C8B00A2FF19 /* NotoColorEmoji.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NotoColorEmoji.ttf; sourceTree = "<group>"; };
@@ -646,6 +678,34 @@
 		22760C232CF01FB70084E042 /* libsvg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libsvg.xcframework; sourceTree = "<group>"; };
 		22760C342CF058680084E042 /* HYSkiaMetalApp.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HYSkiaMetalApp.mm; sourceTree = "<group>"; };
 		22760C352CF058680084E042 /* HYSkiaMetalApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HYSkiaMetalApp.hpp; sourceTree = "<group>"; };
+		22846EBF2D791CAC00E6A330 /* JSLottieBinding.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSLottieBinding.mm; sourceTree = "<group>"; };
+		22846EC02D791CAC00E6A330 /* JSLottieBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLottieBinding.h; sourceTree = "<group>"; };
+		22846EC22D79246A00E6A330 /* JSVideoViewBinding.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSVideoViewBinding.mm; sourceTree = "<group>"; };
+		22846EC32D79246A00E6A330 /* JSVideoViewBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSVideoViewBinding.h; sourceTree = "<group>"; };
+		22846EC52D792EFB00E6A330 /* JSTextViewBinding.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSTextViewBinding.mm; sourceTree = "<group>"; };
+		22846EC62D792EFB00E6A330 /* JSTextViewBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSTextViewBinding.h; sourceTree = "<group>"; };
+		22846EC82D79309C00E6A330 /* JSButtonBinding.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSButtonBinding.mm; sourceTree = "<group>"; };
+		22846EC92D79309C00E6A330 /* JSButtonBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSButtonBinding.h; sourceTree = "<group>"; };
+		22846ECB2D79386000E6A330 /* JSImageViewBinding.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSImageViewBinding.mm; sourceTree = "<group>"; };
+		22846ECC2D79386000E6A330 /* JSImageViewBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSImageViewBinding.h; sourceTree = "<group>"; };
+		22846ECE2D79447400E6A330 /* react.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = react.svg; sourceTree = "<group>"; };
+		22846ED02D7944B100E6A330 /* JSSVGBinding.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSSVGBinding.mm; sourceTree = "<group>"; };
+		22846ED12D7944B100E6A330 /* JSSVGBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSSVGBinding.h; sourceTree = "<group>"; };
+		22846ED32D7949D000E6A330 /* JSFlexboxLayoutBinding.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSFlexboxLayoutBinding.mm; sourceTree = "<group>"; };
+		22846ED42D7949D000E6A330 /* JSFlexboxLayoutBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSFlexboxLayoutBinding.h; sourceTree = "<group>"; };
+		22846ED62D794D6700E6A330 /* JSShaderViewBinding.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSShaderViewBinding.mm; sourceTree = "<group>"; };
+		22846ED72D794D6700E6A330 /* JSShaderViewBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSShaderViewBinding.h; sourceTree = "<group>"; };
+		22846ED92D79623600E6A330 /* JSLinearAnimatorBinding.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSLinearAnimatorBinding.mm; sourceTree = "<group>"; };
+		22846EDA2D79623600E6A330 /* JSLinearAnimatorBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLinearAnimatorBinding.h; sourceTree = "<group>"; };
+		22846EDF2D7972B400E6A330 /* JSAudioPlayerBinding.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSAudioPlayerBinding.mm; sourceTree = "<group>"; };
+		22846EE02D7972B400E6A330 /* JSAudioPlayerBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAudioPlayerBinding.h; sourceTree = "<group>"; };
+		22846EE22D7974C800E6A330 /* JSAudioPlayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSAudioPlayer.mm; sourceTree = "<group>"; };
+		22846EE32D7974C800E6A330 /* JSAudioPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAudioPlayer.h; sourceTree = "<group>"; };
+		22846EE52D797F7A00E6A330 /* react_bundle.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = react_bundle.js; sourceTree = "<group>"; };
+		22846EE72D79827E00E6A330 /* JSFileBinding.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSFileBinding.mm; sourceTree = "<group>"; };
+		22846EE82D79827E00E6A330 /* JSFileBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSFileBinding.h; sourceTree = "<group>"; };
+		22846EEA2D79837700E6A330 /* JSFile.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSFile.mm; sourceTree = "<group>"; };
+		22846EEB2D79837700E6A330 /* JSFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSFile.h; sourceTree = "<group>"; };
 		229D58B62CF5DE3E00694F52 /* LyricScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LyricScrollView.h; sourceTree = "<group>"; };
 		229D58B72CF5DE3E00694F52 /* LyricScrollView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LyricScrollView.mm; sourceTree = "<group>"; };
 		229D58B92CF5DF6B00694F52 /* AudioFFTView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioFFTView.mm; sourceTree = "<group>"; };
@@ -680,10 +740,20 @@
 		22BF2B822CEF318D00E4F457 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22BF2B842CEF318D00E4F457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22BF2B852CEF318D00E4F457 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		22C948292D7688FD00AD59FB /* w3c_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = w3c_util.h; sourceTree = "<group>"; };
+		22C9482D2D76920800AD59FB /* JSEnterExitInfo.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSEnterExitInfo.mm; sourceTree = "<group>"; };
+		22C9482E2D76920800AD59FB /* JSEnterExitInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSEnterExitInfo.h; sourceTree = "<group>"; };
+		22C948302D77176B00AD59FB /* JSSkiaUIContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSSkiaUIContext.h; sourceTree = "<group>"; };
 		22D6DCDD2CF0702F00732E57 /* HYSkiaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYSkiaView.h; sourceTree = "<group>"; };
 		22D6DCDE2CF0702F00732E57 /* HYSkiaView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HYSkiaView.mm; sourceTree = "<group>"; };
 		22DFF9FE2CFD399700BFF95D /* ClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockView.h; sourceTree = "<group>"; };
 		22DFF9FF2CFD399800BFF95D /* ClockView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ClockView.mm; sourceTree = "<group>"; };
+		22E5199B2D78563D0087430F /* JSViewGroupBinding.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSViewGroupBinding.mm; sourceTree = "<group>"; };
+		22E5199C2D78563D0087430F /* JSViewGroupBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSViewGroupBinding.h; sourceTree = "<group>"; };
+		22E5199E2D7856A50087430F /* JSPageBinding.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSPageBinding.mm; sourceTree = "<group>"; };
+		22E5199F2D7856A50087430F /* JSPageBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSPageBinding.h; sourceTree = "<group>"; };
+		22E519A42D786D710087430F /* JSScrollViewBinding.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSScrollViewBinding.mm; sourceTree = "<group>"; };
+		22E519A52D786D710087430F /* JSScrollViewBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSScrollViewBinding.h; sourceTree = "<group>"; };
 		22F5A0802CF7FAF7005F6F13 /* RichText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichText.h; sourceTree = "<group>"; };
 		22F5A0812CF7FAF7005F6F13 /* RichText.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RichText.mm; sourceTree = "<group>"; };
 		22F5A0832CF7FDB6005F6F13 /* HYVideoDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYVideoDecoder.h; sourceTree = "<group>"; };
@@ -701,6 +771,7 @@
 			files = (
 				22760C2E2CF01FB70084E042 /* libsvg.xcframework in Frameworks */,
 				22760C2C2CF01FB70084E042 /* libskunicode_core.xcframework in Frameworks */,
+				2239FCA82D70530E0050F9DF /* JavaScriptCore.framework in Frameworks */,
 				22760C2B2CF01FB70084E042 /* libskshaper.xcframework in Frameworks */,
 				22760C2D2CF01FB70084E042 /* libskunicode_libgrapheme.xcframework in Frameworks */,
 				22760C272CF01FB70084E042 /* libskia.xcframework in Frameworks */,
@@ -770,6 +841,8 @@
 		222DF3B22CF49750004BF728 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				22846ECE2D79447400E6A330 /* react.svg */,
+				2239FCB42D713C000050F9DF /* test.js */,
 				222FC4842CF69A1500419CBF /* bg.gif */,
 				222DF3B32CF497B5004BF728 /* sincos.glsl */,
 				22518BBC2CF54C8B00A2FF19 /* AlimamaFangYuanTiVF-Thin.ttf */,
@@ -792,8 +865,63 @@
 				229D58C32CF5E2F200694F52 /* record_player_verydark_highlight.png */,
 				22F5A0892CF81EA9005F6F13 /* nv12_fragment_shader.glsl */,
 				22F5A08C2CF828D9005F6F13 /* yiluxiangbei.mp4 */,
+				22846EE52D797F7A00E6A330 /* react_bundle.js */,
 			);
 			path = resources;
+			sourceTree = "<group>";
+		};
+		2239FCA62D70530E0050F9DF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2239FCA72D70530E0050F9DF /* JavaScriptCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2239FCA92D7055AC0050F9DF /* js */ = {
+			isa = PBXGroup;
+			children = (
+				2239FCAE2D7056B60050F9DF /* JSCoreRuntime.mm */,
+				2239FCAF2D7056B60050F9DF /* JSCoreRuntime.h */,
+				2239FCB92D7185960050F9DF /* JSViewBinding.mm */,
+				2239FCBA2D7185960050F9DF /* JSViewBinding.h */,
+				22C9482D2D76920800AD59FB /* JSEnterExitInfo.mm */,
+				22C9482E2D76920800AD59FB /* JSEnterExitInfo.h */,
+				22C948302D77176B00AD59FB /* JSSkiaUIContext.h */,
+				22E5199B2D78563D0087430F /* JSViewGroupBinding.mm */,
+				22E5199C2D78563D0087430F /* JSViewGroupBinding.h */,
+				22E5199E2D7856A50087430F /* JSPageBinding.mm */,
+				22E5199F2D7856A50087430F /* JSPageBinding.h */,
+				22E519A42D786D710087430F /* JSScrollViewBinding.mm */,
+				22E519A52D786D710087430F /* JSScrollViewBinding.h */,
+				22846EBF2D791CAC00E6A330 /* JSLottieBinding.mm */,
+				22846EC02D791CAC00E6A330 /* JSLottieBinding.h */,
+				22846EC22D79246A00E6A330 /* JSVideoViewBinding.mm */,
+				22846EC32D79246A00E6A330 /* JSVideoViewBinding.h */,
+				22846EC52D792EFB00E6A330 /* JSTextViewBinding.mm */,
+				22846EC62D792EFB00E6A330 /* JSTextViewBinding.h */,
+				22846EC82D79309C00E6A330 /* JSButtonBinding.mm */,
+				22846EC92D79309C00E6A330 /* JSButtonBinding.h */,
+				22846ECB2D79386000E6A330 /* JSImageViewBinding.mm */,
+				22846ECC2D79386000E6A330 /* JSImageViewBinding.h */,
+				22846ED02D7944B100E6A330 /* JSSVGBinding.mm */,
+				22846ED12D7944B100E6A330 /* JSSVGBinding.h */,
+				22846ED32D7949D000E6A330 /* JSFlexboxLayoutBinding.mm */,
+				22846ED42D7949D000E6A330 /* JSFlexboxLayoutBinding.h */,
+				22846ED62D794D6700E6A330 /* JSShaderViewBinding.mm */,
+				22846ED72D794D6700E6A330 /* JSShaderViewBinding.h */,
+				22846ED92D79623600E6A330 /* JSLinearAnimatorBinding.mm */,
+				22846EDA2D79623600E6A330 /* JSLinearAnimatorBinding.h */,
+				22846EDF2D7972B400E6A330 /* JSAudioPlayerBinding.mm */,
+				22846EE02D7972B400E6A330 /* JSAudioPlayerBinding.h */,
+				22846EE22D7974C800E6A330 /* JSAudioPlayer.mm */,
+				22846EE32D7974C800E6A330 /* JSAudioPlayer.h */,
+				22846EE72D79827E00E6A330 /* JSFileBinding.mm */,
+				22846EE82D79827E00E6A330 /* JSFileBinding.h */,
+				22846EEA2D79837700E6A330 /* JSFile.mm */,
+				22846EEB2D79837700E6A330 /* JSFile.h */,
+			);
+			path = js;
 			sourceTree = "<group>";
 		};
 		226317C82CF4187700AD9DDB /* widget */ = {
@@ -881,6 +1009,8 @@
 				226317F22CF4215200AD9DDB /* ITestDraw.h */,
 				229D58D32CF5E31700694F52 /* QQMusicPage.mm */,
 				229D58D22CF5E31600694F52 /* QQMusicPage.h */,
+				2239FCB12D7135CF0050F9DF /* ReactjsTest.mm */,
+				2239FCB22D7135CF0050F9DF /* ReactjsTest.h */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -1918,6 +2048,7 @@
 		22BA9DDB2CF1B132000AF87B /* app */ = {
 			isa = PBXGroup;
 			children = (
+				22C948292D7688FD00AD59FB /* w3c_util.h */,
 				22760C342CF058680084E042 /* HYSkiaMetalApp.mm */,
 				22760C352CF058680084E042 /* HYSkiaMetalApp.hpp */,
 				22246F972CF21D3D0090C0E3 /* HYSkiaUIApp.mm */,
@@ -1932,6 +2063,7 @@
 			children = (
 				22BF2B722CEF318B00E4F457 /* HYSkiaUI */,
 				22BF2B712CEF318B00E4F457 /* Products */,
+				2239FCA62D70530E0050F9DF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1946,6 +2078,7 @@
 		22BF2B722CEF318B00E4F457 /* HYSkiaUI */ = {
 			isa = PBXGroup;
 			children = (
+				2239FCA92D7055AC0050F9DF /* js */,
 				229D58B52CF5DE3200694F52 /* custom */,
 				222DF3B22CF49750004BF728 /* resources */,
 				2263180A2CF42A7200AD9DDB /* touch */,
@@ -2052,11 +2185,14 @@
 				22760C262CF01FB70084E042 /* BUILD.bazel in Resources */,
 				22BF2B7E2CEF318B00E4F457 /* Base in Resources */,
 				229D58BE2CF5E03E00694F52 /* feng.mp4 in Resources */,
+				22846ECF2D79447400E6A330 /* react.svg in Resources */,
 				229D58CF2CF5E2F200694F52 /* mv_definition_super.svg in Resources */,
 				22518BDD2CF5647300A2FF19 /* WorkspacePlanet.json in Resources */,
 				22F5A08D2CF828D9005F6F13 /* yiluxiangbei.mp4 in Resources */,
 				229D58BF2CF5E03E00694F52 /* feng.srt in Resources */,
+				22846EE62D797F7A00E6A330 /* react_bundle.js in Resources */,
 				229D58CD2CF5E2F200694F52 /* ic_pause.png in Resources */,
+				2239FCB52D713C000050F9DF /* test.js in Resources */,
 				229D58D12CF5E2F200694F52 /* ic_play.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2068,7 +2204,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E5199D2D78563D0087430F /* JSViewGroupBinding.mm in Sources */,
 				22246FC72CF376DB0090C0E3 /* inspect_utils.cpp in Sources */,
+				22846EDB2D79623600E6A330 /* JSLinearAnimatorBinding.mm in Sources */,
 				22518BD22CF5636000A2FF19 /* Radio.mm in Sources */,
 				22246FC92CF376DB0090C0E3 /* YGConfig.cpp in Sources */,
 				22518BD82CF5636E00A2FF19 /* Switch.mm in Sources */,
@@ -2076,7 +2214,13 @@
 				22518BC62CF5628100A2FF19 /* ProgressBar.mm in Sources */,
 				229D58D72CF5E4DF00694F52 /* HYAudioPlayer.m in Sources */,
 				2263180B2CF42A7200AD9DDB /* ScrollDispatcher.mm in Sources */,
+				22E519A02D7856A50087430F /* JSPageBinding.mm in Sources */,
+				22846ED82D794D6700E6A330 /* JSShaderViewBinding.mm in Sources */,
 				222DF3B72CF497EB004BF728 /* ShaderView.mm in Sources */,
+				22846ED52D7949D000E6A330 /* JSFlexboxLayoutBinding.mm in Sources */,
+				2239FCBB2D7185960050F9DF /* JSViewBinding.mm in Sources */,
+				2239FCB02D7056B60050F9DF /* JSCoreRuntime.mm in Sources */,
+				22846EC12D791CAC00E6A330 /* JSLottieBinding.mm in Sources */,
 				22518BEF2CF5899F00A2FF19 /* ImageView.mm in Sources */,
 				226317D32CF41A7700AD9DDB /* IAnimator.cpp in Sources */,
 				22246FCF2CF376DB0090C0E3 /* YGValue.cpp in Sources */,
@@ -2085,11 +2229,14 @@
 				226317E92CF4203C00AD9DDB /* LinearAnimator.mm in Sources */,
 				226317E22CF41E9E00AD9DDB /* Page.mm in Sources */,
 				226318032CF42A4E00AD9DDB /* ScrollView.mm in Sources */,
+				22846EE12D7972B400E6A330 /* JSAudioPlayerBinding.mm in Sources */,
 				22246F992CF21D3D0090C0E3 /* HYSkiaUIApp.mm in Sources */,
 				226317FA2CF4215200AD9DDB /* CanvasTest.mm in Sources */,
+				22846EC42D79246A00E6A330 /* JSVideoViewBinding.mm in Sources */,
 				229D58BB2CF5DF6B00694F52 /* AudioFFTView.mm in Sources */,
 				22246FCA2CF376DB0090C0E3 /* YGEnums.cpp in Sources */,
 				226317FC2CF4215200AD9DDB /* CppTest.mm in Sources */,
+				22846ED22D7944B100E6A330 /* JSSVGBinding.mm in Sources */,
 				222BF6922D2E058600EAAA9D /* CameraUtil.mm in Sources */,
 				22F5A0852CF7FDB6005F6F13 /* HYVideoDecoder.mm in Sources */,
 				22760C362CF058680084E042 /* HYSkiaMetalApp.mm in Sources */,
@@ -2099,24 +2246,33 @@
 				22246FD02CF376DB0090C0E3 /* Yoga.cpp in Sources */,
 				226317E82CF4203C00AD9DDB /* TranslateAnimator.mm in Sources */,
 				22DFFA002CFD399800BFF95D /* ClockView.mm in Sources */,
+				22846ECD2D79386000E6A330 /* JSImageViewBinding.mm in Sources */,
+				22E519A62D786D710087430F /* JSScrollViewBinding.mm in Sources */,
 				2263180F2CF452B400AD9DDB /* AssetManager.mm in Sources */,
 				22518BDB2CF5637F00A2FF19 /* LottieView.mm in Sources */,
 				22246FC62CF376DB0090C0E3 /* event.cpp in Sources */,
 				226317CB2CF4199600AD9DDB /* View.mm in Sources */,
+				22846EC72D792EFB00E6A330 /* JSTextViewBinding.mm in Sources */,
+				22C9482F2D76920800AD59FB /* JSEnterExitInfo.mm in Sources */,
+				2239FCB32D7135CF0050F9DF /* ReactjsTest.mm in Sources */,
 				22518BD52CF5636800A2FF19 /* SVGView.mm in Sources */,
 				229D58D42CF5E31700694F52 /* QQMusicPage.mm in Sources */,
 				22246FCB2CF376DB0090C0E3 /* YGLayout.cpp in Sources */,
+				22846EE42D7974C800E6A330 /* JSAudioPlayer.mm in Sources */,
 				2263180C2CF42A7200AD9DDB /* TouchEventDispatcher.mm in Sources */,
 				22D6DCDF2CF0702F00732E57 /* HYSkiaView.mm in Sources */,
 				22518BCF2CF562B300A2FF19 /* LoadingView.mm in Sources */,
 				222DF3BD2CF4A4AB004BF728 /* TextView.mm in Sources */,
 				22BF2B862CEF318D00E4F457 /* main.m in Sources */,
+				22846ECA2D79309C00E6A330 /* JSButtonBinding.mm in Sources */,
 				226317DC2CF41E9200AD9DDB /* FlexboxLayout.mm in Sources */,
+				22846EE92D79827E00E6A330 /* JSFileBinding.mm in Sources */,
 				22518BCC2CF562A500A2FF19 /* Icon.mm in Sources */,
 				226317D92CF41E8900AD9DDB /* ViewGroup.mm in Sources */,
 				226317E32CF41E9E00AD9DDB /* PageStackManager.mm in Sources */,
 				22246FC82CF376DB0090C0E3 /* log.cpp in Sources */,
 				22246FCE2CF376DB0090C0E3 /* YGStyle.cpp in Sources */,
+				22846EEC2D79837700E6A330 /* JSFile.mm in Sources */,
 				22B051B82D093074003C88FF /* SwiperView.mm in Sources */,
 				226317FD2CF4215200AD9DDB /* ExamplePage.mm in Sources */,
 				22B8FC532D13A09D0034AC3D /* PickerView.mm in Sources */,

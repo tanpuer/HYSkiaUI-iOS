@@ -20,7 +20,7 @@ steps：
    TODO!
 11. **Development**:  
     C++: See CppTest.cpp.  
-    js: TODO!  
+    **React**: Import react/react-reconciler to run. https://github.com/tanpuer/skia-ui-react.  
     SwiftUI: TODO!  
 12. **Cross Platform**  
     Android: https://github.com/tanpuer/SkiaUI2   

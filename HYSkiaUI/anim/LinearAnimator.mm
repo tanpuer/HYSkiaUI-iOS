@@ -8,6 +8,15 @@ LinearAnimator::LinearAnimator(View *view, float startValue, float endValue)
     view->setAnimator(this);
 }
 
+LinearAnimator::~LinearAnimator() {
+    if (ctx && jsCallback) {
+        JSGlobalContextRef globalCtx = JSContextGetGlobalContext(ctx);
+        JSValueUnprotect(globalCtx, jsCallback);
+        jsCallback = nullptr;
+        ctx = nullptr;
+    }
+}
+
 void LinearAnimator::update(SkIRect &rect) {
     if (currTime > endTime && !paused) {
         if (loopCount == -1) {
@@ -35,6 +44,11 @@ void LinearAnimator::updateInner() {
             targetView->markDirty();
         }
     }
+}
+
+void LinearAnimator::protectCallback(JSContextRef ctx, JSObjectRef callback) {
+    this->ctx = ctx;
+    this->jsCallback = callback;
 }
 
 }

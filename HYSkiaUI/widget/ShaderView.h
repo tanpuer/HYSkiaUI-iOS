@@ -50,6 +50,8 @@ private:
     
     std::string shaderStr;
     
+    std::string path;
+    
     long imageSize = 0;
     
 };

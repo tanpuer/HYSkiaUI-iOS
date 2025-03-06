@@ -3,6 +3,7 @@
 #import <include/core/SkCanvas.h>
 #import <include/core/SkPaint.h>
 #include "CppTest.h"
+#include "ReactjsTest.h"
 
 namespace HYSkiaUI {
 
@@ -10,7 +11,9 @@ HYSkiaUIApp::HYSkiaUIApp(int width, int height, NSThread *skiaUIThread) {
     _width = width;
     _height = height;
     _context = std::make_shared<SkiaUIContext>(skiaUIThread);
+    _context->setSize(width, height);
     testDraw = std::make_unique<CppTest>();
+//    testDraw = std::make_unique<ReactjsTest>();
     testDraw->setContext(_context);
 }
 

@@ -14,6 +14,7 @@
 #include "core/SkBlurTypes.h"
 #include "SkiaUIContext.h"
 #include "MeasureTime.h"
+#import <JavaScriptCore/JavaScriptCore.h>
 
 static int64_t VIEW_ID = 0;
 
@@ -63,6 +64,8 @@ public:
     virtual void setAlignSelf(YGAlign align);
     
     virtual void setPositionType(YGPositionType type);
+    
+    YGPositionType getPositionType();
     
     virtual void setDisplay(YGDisplay display);
     
@@ -135,6 +138,22 @@ public:
     virtual void setMargin(std::vector<int> margins);
     
     virtual void setPadding(std::vector<int> paddings);
+    
+    virtual void setMarginTop(int marginTop);
+
+    virtual int getMarginTop();
+
+    virtual void setMarginLeft(int marginLeft);
+
+    virtual int getMarginLeft();
+
+    virtual void setMarginRight(int marginRight);
+
+    virtual int getMarginRight();
+
+    virtual void setMarginBottom(int marginBottom);
+
+    virtual int getMarginBottom();
     
     std::unique_ptr<SkPaint> paint;
     
@@ -252,6 +271,16 @@ public:
     
     virtual void onHide();
     
+#pragma mark JavaScriptCore
+public:
+    
+    void protectClickCallback(JSContextRef ctx, JSObjectRef callback);
+    
+protected:
+    
+    JSObjectRef jsClickCallback = nullptr;
+    
+    JSContextRef ctx = nullptr;
     
 };
 

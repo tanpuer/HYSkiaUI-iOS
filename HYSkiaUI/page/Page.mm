@@ -18,6 +18,7 @@ Page::Page() {
 
 void Page::setContext(std::shared_ptr<SkiaUIContext>& context) {
     View::setContext(context);
+    setBackgroundColor(SK_ColorTRANSPARENT);
 }
 
 Page::~Page() {

@@ -48,7 +48,6 @@ void ExamplePage::drawOneFrame(int drawCount) {
 
 void ExamplePage::initChildren(ViewGroup *root, int width, int height) {
     auto scrollView = new ScrollView();
-    config = YGConfigNew();
     scrollView->setContext(this->context);
     scrollView->setFlexWrap(YGWrapNoWrap);
     scrollView->setFlexDirection(YGFlexDirectionColumn);

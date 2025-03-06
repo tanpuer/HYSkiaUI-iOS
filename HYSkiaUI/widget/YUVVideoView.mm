@@ -27,7 +27,7 @@ void YUVVideoView::setSource(const char *path) {
     runtimeEffect = effect;
     firstFrame = true;
     videoDecoder = [[HYVideoDecoder alloc]init:(void *)(getContext().get())];
-    [videoDecoder setSource:path];
+    [videoDecoder setSource:src.c_str()];
 }
 
 const char *YUVVideoView::getSource() {

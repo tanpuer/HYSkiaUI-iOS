@@ -32,6 +32,12 @@ View::~View() {
     }
     viewLayoutCallback = nullptr;
     viewClickListener = nullptr;
+    if (ctx && jsClickCallback) {
+        JSGlobalContextRef globalCtx = JSContextGetGlobalContext(ctx);
+        JSValueUnprotect(globalCtx, jsClickCallback);
+        jsClickCallback = nullptr;
+        ctx = nullptr;
+    }
 }
 
 #pragma mark yoga
@@ -272,6 +278,10 @@ void View::setPositionType(YGPositionType type) {
     markDirty();
 }
 
+YGPositionType View::getPositionType() {
+    return YGNodeStyleGetPositionType(node);
+}
+
 void View::setDisplay(YGDisplay display) {
     YGAssert(node, "view is null, pls check");
     if (node == nullptr) {
@@ -450,6 +460,51 @@ void View::performAnimations() {
 
 View *View::getParent() {
     return parent;
+}
+
+void View::setMarginTop(int marginTop) {
+    this->marginTop = marginTop;
+    YGNodeStyleSetMargin(node, YGEdge::YGEdgeTop, marginTop);
+    markDirty();
+}
+
+int View::getMarginTop() {
+    return marginTop;
+}
+
+void View::setMarginLeft(int marginLeft) {
+    this->marginLeft = marginLeft;
+    YGNodeStyleSetMargin(node, YGEdge::YGEdgeLeft, marginLeft);
+    markDirty();
+}
+
+int View::getMarginLeft() {
+    return marginLeft;
+}
+
+void View::setMarginRight(int marginRight) {
+    this->marginRight = marginRight;
+    YGNodeStyleSetMargin(node, YGEdge::YGEdgeRight, marginRight);
+    markDirty();
+}
+
+int View::getMarginRight() {
+    return marginRight;
+}
+
+void View::setMarginBottom(int marginBottom) {
+    this->marginBottom = marginBottom;
+    YGNodeStyleSetMargin(node, YGEdge::YGEdgeBottom, marginBottom);
+    markDirty();
+}
+
+int View::getMarginBottom() {
+    return marginBottom;
+}
+
+void View::protectClickCallback(JSContextRef ctx, JSObjectRef callback) {
+    this->ctx = ctx;
+    this->jsClickCallback = callback;
 }
 
 }

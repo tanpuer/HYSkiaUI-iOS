@@ -97,6 +97,22 @@ public:
     
     virtual void drawOneFrame(int drawCount) {}
     
+public:
+
+    void protectJSOnCreateCallback(JSContextRef ctx, JSObjectRef callback);
+    void protectJSOnDestroyCallback(JSContextRef ctx, JSObjectRef callback);
+    void protectJSOnShowCallback(JSContextRef ctx, JSObjectRef callback);
+    void protectJSOnHideCallback(JSContextRef ctx, JSObjectRef callback);
+    
+protected:
+    
+    JSObjectRef jsOnCreateCallback = nullptr;
+    JSObjectRef jsOnDestroyCallback = nullptr;
+    JSObjectRef jsOnShowCallback = nullptr;
+    JSObjectRef jsOnHideCallback = nullptr;
+    
+    JSContextRef ctx = nullptr;
+    
 };
 
 }

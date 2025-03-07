@@ -30,7 +30,7 @@ JSValueRef JSPageBinding::PageGetProperty(
         {"onShow", 2},
         {"onHide", 3},
         {"onCreate", 4},
-        {"onDestory", 4}
+        {"onDestroy", 5}
     };
     if (methodsList.find(name) != methodsList.end()) {
         JSValueRef pushValue = JSObjectGetPrototype(ctx, object);
@@ -66,24 +66,28 @@ static JSValueRef pop(JSContextRef ctx, JSObjectRef function, JSObjectRef thisOb
 static JSValueRef onShow(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject, size_t argumentCount, const JSValueRef arguments[], JSValueRef* exception) {
     assert(argumentCount == 1);
     Page* page = static_cast<Page*>(JSObjectGetPrivate(thisObject));
+    page->protectJSOnShowCallback(ctx, JSValueToObject(ctx, arguments[0], nullptr));
     return JSValueMakeUndefined(ctx);
 }
 
 static JSValueRef onHide(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject, size_t argumentCount, const JSValueRef arguments[], JSValueRef* exception) {
     assert(argumentCount == 1);
     Page* page = static_cast<Page*>(JSObjectGetPrivate(thisObject));
+    page->protectJSOnHideCallback(ctx, JSValueToObject(ctx, arguments[0], nullptr));
     return JSValueMakeUndefined(ctx);
 }
 
 static JSValueRef onCreate(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject, size_t argumentCount, const JSValueRef arguments[], JSValueRef* exception) {
     assert(argumentCount == 1);
     Page* page = static_cast<Page*>(JSObjectGetPrivate(thisObject));
+    page->protectJSOnCreateCallback(ctx, JSValueToObject(ctx, arguments[0], nullptr));
     return JSValueMakeUndefined(ctx);
 }
 
 static JSValueRef onDestroy(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject, size_t argumentCount, const JSValueRef arguments[], JSValueRef* exception) {
     assert(argumentCount == 1);
     Page* page = static_cast<Page*>(JSObjectGetPrivate(thisObject));
+    page->protectJSOnDestroyCallback(ctx, JSValueToObject(ctx, arguments[0], nullptr));
     return JSValueMakeUndefined(ctx);
 }
 
@@ -131,15 +135,15 @@ void JSPageBinding::registerPage(JSGlobalContextRef ctx, JSObjectRef SkiaUI, std
     JSObjectSetProperty(ctx, pagePrototype, onShowName, onShowFunc, kJSPropertyAttributeReadOnly,nullptr);
     JSStringRelease(onShowName);
     JSStringRef onHideName = JSStringCreateWithUTF8CString("onHide");
-    JSObjectRef onHideFunc = JSObjectMakeFunctionWithCallback(ctx, onHideName, onShow);
+    JSObjectRef onHideFunc = JSObjectMakeFunctionWithCallback(ctx, onHideName, onHide);
     JSObjectSetProperty(ctx, pagePrototype, onHideName, onHideFunc, kJSPropertyAttributeReadOnly,nullptr);
     JSStringRelease(onHideName);
     JSStringRef onCreateName = JSStringCreateWithUTF8CString("onCreate");
-    JSObjectRef onCreateFunc = JSObjectMakeFunctionWithCallback(ctx, onCreateName, onShow);
+    JSObjectRef onCreateFunc = JSObjectMakeFunctionWithCallback(ctx, onCreateName, onCreate);
     JSObjectSetProperty(ctx, pagePrototype, onCreateName, onCreateFunc, kJSPropertyAttributeReadOnly,nullptr);
     JSStringRelease(onCreateName);
     JSStringRef onDestroyName = JSStringCreateWithUTF8CString("onDestroy");
-    JSObjectRef onDestroyFunc = JSObjectMakeFunctionWithCallback(ctx, onDestroyName, onShow);
+    JSObjectRef onDestroyFunc = JSObjectMakeFunctionWithCallback(ctx, onDestroyName, onDestroy);
     JSObjectSetProperty(ctx, pagePrototype, onDestroyName, onDestroyFunc, kJSPropertyAttributeReadOnly,nullptr);
     JSStringRelease(onDestroyName);
     // 6. 注册全局对象

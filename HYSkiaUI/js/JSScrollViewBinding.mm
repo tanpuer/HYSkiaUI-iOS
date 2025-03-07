@@ -74,7 +74,7 @@ void JSScrollViewBinding::registerScrollView(JSGlobalContextRef ctx, JSObjectRef
     JSObjectSetProperty(ctx, scrollPrototype, scrollToName, scrollToFunc, kJSPropertyAttributeReadOnly,nullptr);
     JSStringRelease(scrollToName);
     JSStringRef getDistanceByIndexName = JSStringCreateWithUTF8CString("getDistanceByIndex");
-    JSObjectRef getDistanceByIndexFunc = JSObjectMakeFunctionWithCallback(ctx, getDistanceByIndexName, scrollTo);
+    JSObjectRef getDistanceByIndexFunc = JSObjectMakeFunctionWithCallback(ctx, getDistanceByIndexName, getDistanceByIndex);
     JSObjectSetProperty(ctx, scrollPrototype, getDistanceByIndexName, getDistanceByIndexFunc, kJSPropertyAttributeReadOnly,nullptr);
     JSStringRelease(getDistanceByIndexName);
     

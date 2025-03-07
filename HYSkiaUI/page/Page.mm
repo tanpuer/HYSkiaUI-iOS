@@ -19,10 +19,30 @@ Page::Page() {
 void Page::setContext(std::shared_ptr<SkiaUIContext>& context) {
     View::setContext(context);
     setBackgroundColor(SK_ColorTRANSPARENT);
+    if (ctx && jsOnCreateCallback) {
+        JSObjectCallAsFunction(ctx, JSValueToObject(ctx, jsOnCreateCallback, nullptr), nullptr, 0, nullptr, nullptr);
+    }
 }
 
 Page::~Page() {
     ALOGD("page destroy %d", pageId)
+    if (ctx && jsOnDestroyCallback) {
+        JSObjectCallAsFunction(ctx, JSValueToObject(ctx, jsOnDestroyCallback, nullptr), nullptr, 0, nullptr, nullptr);
+        JSValueUnprotect(ctx, jsOnDestroyCallback);
+        jsOnDestroyCallback = nullptr;
+    }
+    if (ctx && jsOnCreateCallback) {
+        JSValueUnprotect(ctx, jsOnCreateCallback);
+        jsOnCreateCallback = nullptr;
+    }
+    if (ctx && jsOnShowCallback) {
+        JSValueUnprotect(ctx, jsOnShowCallback);
+        jsOnShowCallback = nullptr;
+    }
+    if (ctx && jsOnDestroyCallback) {
+        JSValueUnprotect(ctx, jsOnDestroyCallback);
+        jsOnDestroyCallback = nullptr;
+    }
 }
 
 void Page::enterFromRight(const EnterExitInfo &info) {
@@ -145,10 +165,16 @@ void Page::setBlackWhiteMode() {
 #pragma mark LifeCycle Callback start
 
 void Page::onShow() {
+    if (ctx && jsOnShowCallback) {
+        JSObjectCallAsFunction(ctx, JSValueToObject(ctx, jsOnShowCallback, nullptr), nullptr, 0, nullptr, nullptr);
+    }
     ViewGroup::onShow();
 }
 
 void Page::onHide() {
+    if (ctx && jsOnHideCallback) {
+        JSObjectCallAsFunction(ctx, JSValueToObject(ctx, jsOnHideCallback, nullptr), nullptr, 0, nullptr, nullptr);
+    }
     ViewGroup::onHide();
 }
 
@@ -169,5 +195,33 @@ void Page::setOnPageSizeChangeListener(std::function<void(int, int)> &&callback)
 }
 
 #pragma mark LifeCycle Callback end
+
+#pragma mark JSCallback start
+
+void Page::protectJSOnCreateCallback(JSContextRef ctx, JSObjectRef callback) {
+    JSValueProtect(ctx, callback);
+    this->ctx = ctx;
+    this->jsOnCreateCallback = callback;
+}
+
+void Page::protectJSOnDestroyCallback(JSContextRef ctx, JSObjectRef callback) {
+    JSValueProtect(ctx, callback);
+    this->ctx = ctx;
+    this->jsOnDestroyCallback = callback;
+}
+
+void Page::protectJSOnShowCallback(JSContextRef ctx, JSObjectRef callback) {
+    JSValueProtect(ctx, callback);
+    this->ctx = ctx;
+    this->jsOnShowCallback = callback;
+}
+
+void Page::protectJSOnHideCallback(JSContextRef ctx, JSObjectRef callback) {
+    JSValueProtect(ctx, callback);
+    this->ctx = ctx;
+    this->jsOnHideCallback = callback;
+}
+
+#pragma mark JSCallback end
 
 }

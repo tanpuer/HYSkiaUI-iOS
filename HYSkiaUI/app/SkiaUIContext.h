@@ -185,13 +185,13 @@ public:
         this->height = height;
     }
     
-//    void setRuntime(std::shared_ptr<JSCoreRuntime>& runtime) {
-//        this->runtime = runtime;
-//    }
-//    
-//    const std::shared_ptr<JSCoreRuntime>& getRuntime() {
-//        return runtime;
-//    }
+    void setBackPressedInterceptor(std::function<void()> &&callback) {
+        this->backPressedInterceptor = std::move(callback);
+    }
+    
+    std::function<void()> &getBackPressedInterceptor() {
+        return this->backPressedInterceptor;
+    }
     
 private:
     
@@ -221,7 +221,7 @@ private:
     
     int height = 0;
     
-//    std::shared_ptr<JSCoreRuntime> runtime = nullptr;
+    std::function<void()> backPressedInterceptor = nullptr;
     
 };
 

@@ -47,6 +47,8 @@ private:
     
     void injectViews();
     
+    void injectBackPressedCallback();
+    
 private:
     
     JSContext* jsContext = nullptr;
@@ -60,6 +62,10 @@ private:
     long TIMER_INDEX = 0;
     
     std::unordered_map<long, JSValue*> timerCallbackMap;
+    
+    long BACK_PRESSED_INDEX = 0;
+    
+    std::unordered_map<long, JSValue*> backPressedCallbackMap;
     
 private:
     

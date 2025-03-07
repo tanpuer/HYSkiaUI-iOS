@@ -20,6 +20,7 @@ JSCoreRuntime::JSCoreRuntime(std::shared_ptr<SkiaUIContext>& context) {
     injectFrameCallback();
     injectTimer();
     injectViews();
+    injectBackPressedCallback();
 }
 
 JSCoreRuntime::~JSCoreRuntime() {
@@ -172,6 +173,21 @@ void JSCoreRuntime::injectViews() {
     jsAudioPlayerBinding->registerAudioPlayer(ctx, SkiaUI, context);
     jsFileBinding = std::make_unique<JSFileBinding>();
     jsFileBinding->registerFile(ctx, SkiaUI, context);
+}
+
+void JSCoreRuntime::injectBackPressedCallback() {
+    context->setBackPressedInterceptor([this](){
+        auto ctx = jsContext.JSGlobalContextRef;
+        for (auto& item: backPressedCallbackMap) {
+            JSObjectCallAsFunction(ctx, JSValueToObject(ctx, item.second.JSValueRef, nullptr), nullptr, 0, nullptr, nullptr);
+        }
+    });
+    jsContext[@"SkiaUI"][@"setBackPressedCallback"] = ^long(JSValue *callback) {
+        auto callbackId = BACK_PRESSED_INDEX++;
+        JSValueProtect(jsContext.JSGlobalContextRef, callback.JSValueRef);
+        backPressedCallbackMap.emplace(callbackId, callback);
+        return callbackId;
+    };
 }
 
 }

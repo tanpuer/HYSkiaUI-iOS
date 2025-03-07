@@ -58,6 +58,9 @@ void HYSkiaUIApp::onBackPressed(float distance) {
         return;
     }
     if (distance > 100) {
+        if (_context->getBackPressedInterceptor() != nullptr) {
+            _context->getBackPressedInterceptor()();
+        }
         auto page = _context->getPageStackManager()->back();
         if (page != nullptr) {
             page->exitToLeft(Page::EnterExitInfo(page->animTranslateX, _width));

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)onBackMoved: (float)distance;
 
+- (instancetype)initWithFrame:(CGRect)frame type:(NSInteger)type;
+
 @property (nonatomic, weak) id<HYSkiaViewDelegate> delegate;
 
 @end

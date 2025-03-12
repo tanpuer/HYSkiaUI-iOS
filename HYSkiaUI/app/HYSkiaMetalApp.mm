@@ -42,7 +42,10 @@ HYSkiaMetalApp::HYSkiaMetalApp(int width, int height) {
 }
 
 HYSkiaMetalApp::~HYSkiaMetalApp() {
-    _layer = nil;
+    ALOGD("HYSkiaUI dealloc HYSkiaMetalApp")
+    _currentDrawable = nil;
+    _commandQueue = nil;
+    _device = nil;
 }
 
 sk_sp<SkSurface> HYSkiaMetalApp::getSurface() {

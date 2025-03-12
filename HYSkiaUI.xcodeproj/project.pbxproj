@@ -103,6 +103,8 @@
 		229D58D42CF5E31700694F52 /* QQMusicPage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 229D58D32CF5E31700694F52 /* QQMusicPage.mm */; };
 		229D58D72CF5E4DF00694F52 /* HYAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 229D58D62CF5E4DF00694F52 /* HYAudioPlayer.m */; };
 		22B051B82D093074003C88FF /* SwiperView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22B051B72D093074003C88FF /* SwiperView.mm */; };
+		22B8D1332D801A7E008C75B2 /* ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B8D1322D801A7E008C75B2 /* ExampleViewController.m */; };
+		22B8D1362D802BFD008C75B2 /* SkiaUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B8D1352D802BFD008C75B2 /* SkiaUIViewController.m */; };
 		22B8FC532D13A09D0034AC3D /* PickerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22B8FC512D13A09D0034AC3D /* PickerView.mm */; };
 		22BF2B752CEF318B00E4F457 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BF2B742CEF318B00E4F457 /* AppDelegate.m */; };
 		22BF2B782CEF318B00E4F457 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BF2B772CEF318B00E4F457 /* SceneDelegate.m */; };
@@ -726,6 +728,10 @@
 		229D58D62CF5E4DF00694F52 /* HYAudioPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYAudioPlayer.m; sourceTree = "<group>"; };
 		22B051B62D093074003C88FF /* SwiperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiperView.h; sourceTree = "<group>"; };
 		22B051B72D093074003C88FF /* SwiperView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SwiperView.mm; sourceTree = "<group>"; };
+		22B8D1312D801A7E008C75B2 /* ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleViewController.h; sourceTree = "<group>"; };
+		22B8D1322D801A7E008C75B2 /* ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleViewController.m; sourceTree = "<group>"; };
+		22B8D1342D802BFD008C75B2 /* SkiaUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkiaUIViewController.h; sourceTree = "<group>"; };
+		22B8D1352D802BFD008C75B2 /* SkiaUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkiaUIViewController.m; sourceTree = "<group>"; };
 		22B8FC512D13A09D0034AC3D /* PickerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PickerView.mm; sourceTree = "<group>"; };
 		22B8FC522D13A09D0034AC3D /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
 		22BF2B702CEF318B00E4F457 /* HYSkiaUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYSkiaUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2097,6 +2103,10 @@
 				22BF2B742CEF318B00E4F457 /* AppDelegate.m */,
 				22BF2B762CEF318B00E4F457 /* SceneDelegate.h */,
 				22BF2B772CEF318B00E4F457 /* SceneDelegate.m */,
+				22B8D1312D801A7E008C75B2 /* ExampleViewController.h */,
+				22B8D1322D801A7E008C75B2 /* ExampleViewController.m */,
+				22B8D1342D802BFD008C75B2 /* SkiaUIViewController.h */,
+				22B8D1352D802BFD008C75B2 /* SkiaUIViewController.m */,
 				22BF2B7C2CEF318B00E4F457 /* Main.storyboard */,
 				22BF2B7F2CEF318D00E4F457 /* Assets.xcassets */,
 				22BF2B812CEF318D00E4F457 /* LaunchScreen.storyboard */,
@@ -2216,6 +2226,7 @@
 				2263180B2CF42A7200AD9DDB /* ScrollDispatcher.mm in Sources */,
 				22E519A02D7856A50087430F /* JSPageBinding.mm in Sources */,
 				22846ED82D794D6700E6A330 /* JSShaderViewBinding.mm in Sources */,
+				22B8D1332D801A7E008C75B2 /* ExampleViewController.m in Sources */,
 				222DF3B72CF497EB004BF728 /* ShaderView.mm in Sources */,
 				22846ED52D7949D000E6A330 /* JSFlexboxLayoutBinding.mm in Sources */,
 				2239FCBB2D7185960050F9DF /* JSViewBinding.mm in Sources */,
@@ -2237,6 +2248,7 @@
 				22246FCA2CF376DB0090C0E3 /* YGEnums.cpp in Sources */,
 				226317FC2CF4215200AD9DDB /* CppTest.mm in Sources */,
 				22846ED22D7944B100E6A330 /* JSSVGBinding.mm in Sources */,
+				22B8D1362D802BFD008C75B2 /* SkiaUIViewController.m in Sources */,
 				222BF6922D2E058600EAAA9D /* CameraUtil.mm in Sources */,
 				22F5A0852CF7FDB6005F6F13 /* HYVideoDecoder.mm in Sources */,
 				22760C362CF058680084E042 /* HYSkiaMetalApp.mm in Sources */,

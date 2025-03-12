@@ -10,7 +10,7 @@ class HYSkiaUIApp {
     
 public:
     
-    HYSkiaUIApp(int width, int height, NSThread *skiaUIThread);
+    HYSkiaUIApp(int width, int height, NSThread *skiaUIThread, int type);
     
     ~HYSkiaUIApp();
     

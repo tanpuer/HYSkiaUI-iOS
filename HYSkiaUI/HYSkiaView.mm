@@ -44,8 +44,7 @@ using namespace HYSkiaUI;
     NSThread *_skiaUIThread;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (nonnull instancetype)initWithFrame:(CGRect)frame type:(NSInteger)type {
     if (self = [super initWithFrame:frame]) {
         self->_skiaUIThread = [[NSThread alloc]initWithTarget:self selector:@selector(drawLoop) object:nullptr];
         [self->_skiaUIThread setName:@"skia-ui"];
@@ -57,7 +56,7 @@ using namespace HYSkiaUI;
         CGFloat scale = [[UIScreen mainScreen]scale];
         self._width = frame.size.width * scale;
         self._height = frame.size.height * scale;
-        _skiaUIApp = std::make_shared<HYSkiaUIApp>(self._width, self._height, self->_skiaUIThread);
+        _skiaUIApp = std::make_shared<HYSkiaUIApp>(self._width, self._height, self->_skiaUIThread, type);
         _skiaMetalApp = std::make_shared<HYSkiaMetalApp>(self._width, self._height);
         [self.layer addSublayer:_skiaMetalApp->getLayer()];
         
@@ -85,7 +84,7 @@ using namespace HYSkiaUI;
     return self;
 }
 
-- (void)dealloc {
+- (void)removeFromSuperview {
     [self performBlockOnUIThread:^{
         self->_skiaUIApp = nullptr;
     }];
@@ -95,6 +94,10 @@ using namespace HYSkiaUI;
     [self._displayLinkUI invalidate];
     [self->_skiaUIThread cancel];
     [self->_skiaMetalThread cancel];
+}
+
+- (void)dealloc {
+    ALOGD("HYSkiaUI dealloc HYSkiaView")
 }
 
 - (void)onVsync {

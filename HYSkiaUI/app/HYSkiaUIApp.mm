@@ -7,18 +7,21 @@
 
 namespace HYSkiaUI {
 
-HYSkiaUIApp::HYSkiaUIApp(int width, int height, NSThread *skiaUIThread) {
+HYSkiaUIApp::HYSkiaUIApp(int width, int height, NSThread *skiaUIThread, int type) {
     _width = width;
     _height = height;
     _context = std::make_shared<SkiaUIContext>(skiaUIThread);
     _context->setSize(width, height);
-    testDraw = std::make_unique<CppTest>();
-//    testDraw = std::make_unique<ReactjsTest>();
+    if (type == 1) {
+        testDraw = std::make_unique<ReactjsTest>();
+    } else {
+        testDraw = std::make_unique<CppTest>();
+    }
     testDraw->setContext(_context);
 }
 
 HYSkiaUIApp::~HYSkiaUIApp() {
-    
+    ALOGD("HYSkiaUI dealloc HYSkiaUIApp")
 }
 
 SkPicture* HYSkiaUIApp::doFrame(long time) {

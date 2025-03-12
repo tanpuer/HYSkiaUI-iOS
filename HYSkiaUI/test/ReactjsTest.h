@@ -12,7 +12,10 @@ public:
 
     ReactjsTest() = default;
 
-    ~ReactjsTest() = default;
+    ~ReactjsTest() {
+        auto page = context->getPageStackManager()->back();
+        delete page;
+    }
 
     void doDrawTest(int drawCount, SkCanvas *canvas, int width, int height) override;
     

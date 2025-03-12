@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import "ExampleViewController.h"
 
 @interface AppDelegate ()
 
@@ -8,7 +9,28 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    // 创建窗口
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    // 直接初始化你的主 ViewController
+    ExampleViewController *mainVC = [[ExampleViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mainVC];
+    // 设置为根控制器
+    self.window.rootViewController = nav;
+    [self.window makeKeyAndVisible];
+    
+    // 全局导航栏样式
+//    if (@available(iOS 13.0, *)) {
+//        UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
+//        [appearance configureWithOpaqueBackground];
+//        appearance.backgroundColor = [UIColor whiteColor];
+//        appearance.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor blackColor]};
+//        [UINavigationBar appearance].standardAppearance = appearance;
+//        [UINavigationBar appearance].scrollEdgeAppearance = appearance;
+//    } else {
+//        [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
+//        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
+//        [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+//    }
     return YES;
 }
 

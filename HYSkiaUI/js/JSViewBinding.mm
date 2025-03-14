@@ -48,7 +48,7 @@ JSValueRef JSViewBinding::ViewGetProperty(JSContextRef ctx, JSObjectRef object, 
     } else if (propName == "marginBottom") {
         return JSValueMakeNumber(ctx, view->marginBottom);
     } else if (propName == "rotateZ") {
-        return JSValueMakeNumber(ctx, view->rotateZ);
+        return JSValueMakeNumber(ctx, view->getRotateZ());
     } else if (propName == "setOnClickListener") {
         JSValueRef addViewValue = JSObjectGetPrototype(ctx, object);
         JSObjectRef addViewMethod = JSValueToObject(ctx, addViewValue, exception);
@@ -91,7 +91,7 @@ bool JSViewBinding::ViewSetProperty(JSContextRef ctx, JSObjectRef object, JSStri
         view->setMarginBottom(JSValueToNumber(ctx, value, exception));
         return true;
     } else if (propName == "rotateZ") {
-        view->rotateZ = JSValueToNumber(ctx, value, exception);
+        view->setRotateZ(JSValueToNumber(ctx, value, exception));
         return true;
     } else if (propName == "position") {
         JSStringRef jsString = JSValueToStringCopy(ctx, value, nullptr);

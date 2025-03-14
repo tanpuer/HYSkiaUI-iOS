@@ -85,6 +85,8 @@ using namespace HYSkiaUI;
 }
 
 - (void)removeFromSuperview {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
     [self performBlockOnUIThread:^{
         self->_skiaUIApp = nullptr;
     }];

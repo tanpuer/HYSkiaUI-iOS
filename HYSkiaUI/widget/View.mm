@@ -84,9 +84,14 @@ void View::layout(int l, int t, int r, int b) {
                                                           (int)swiperGradientColors.size());
         paint->setShader(std::move(gradientShader));
     }
+    viewMatrix.setIdentity();
+    viewMatrix.preScale(scaleX, scaleY, left + width / 2, top + height / 2);
+    viewMatrix.preRotate(rotateZ, left + width / 2, top + height / 2);
 }
 
 void View::draw(SkCanvas *canvas) {
+    canvas->save();
+    canvas->setMatrix(viewMatrix);
     if (YGFloatsEqual(paint->getStrokeWidth(), 0.0f)) {
         canvas->drawIRect(skRect, *paint);
     } else {
@@ -100,6 +105,7 @@ void View::draw(SkCanvas *canvas) {
             canvas->drawRect(skRectWithBorder, *paint);
         }
     }
+    canvas->restore();
 }
 
 void View::setAlignSelf(YGAlign align) {
@@ -505,6 +511,35 @@ int View::getMarginBottom() {
 void View::protectClickCallback(JSContextRef ctx, JSObjectRef callback) {
     this->ctx = ctx;
     this->jsClickCallback = callback;
+}
+
+#pragma mark SkMatrix
+
+float View::getRotateZ() {
+    return rotateZ;
+}
+
+void View::setRotateZ(float z) {
+    rotateZ = z;
+    markDirty();
+}
+
+float View::getScaleX() {
+    return scaleX;
+}
+
+void View::setScaleX(float scale) {
+    scaleX = scale;
+    markDirty();
+}
+
+float View::getScaleY() {
+    return scaleY;
+}
+
+void View::setScaleY(float scale) {
+    scaleY = scale;
+    markDirty();
 }
 
 }

@@ -26,6 +26,7 @@
 - (void)dealloc {
     NSLog(@"~SkiaUIViewController");
     [self.view removeGestureRecognizer:self._leftEdgePanGesture];
+    self._leftEdgePanGesture = nil;
     [self._skiaView removeFromSuperview];
     self._skiaView = nil;
 }

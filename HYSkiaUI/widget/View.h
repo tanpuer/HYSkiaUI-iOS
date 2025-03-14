@@ -223,9 +223,6 @@ protected:
 public:
     float animTranslateX = 0.0f;
     float animTranslateY = 0.0f;
-    float rotateX = 0.0f;
-    float rotateY = 0.0f;
-    float rotateZ = 0.0f;
     
     void setAnimator(IAnimator *animator);
     
@@ -281,6 +278,33 @@ protected:
     JSObjectRef jsClickCallback = nullptr;
     
     JSContextRef ctx = nullptr;
+
+    
+#pragma mark SkMatrix
+protected:
+
+    SkMatrix viewMatrix;
+
+    float rotateX = 0.0f;
+    float rotateY = 0.0f;
+    float rotateZ = 0.0f;
+    float scaleX = 1.0f;
+    float scaleY = 1.0f;
+
+public:
+
+    float getRotateZ();
+
+    void setRotateZ(float z);
+
+    float getScaleX();
+
+    void setScaleX(float scale);
+
+    float getScaleY();
+
+    void setScaleY(float scale);
+    
     
 };
 

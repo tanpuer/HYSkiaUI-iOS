@@ -88,10 +88,10 @@ using namespace HYSkiaUI;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
     [self performBlockOnUIThread:^{
-        self->_skiaUIApp = nullptr;
+        self->_skiaUIApp.reset();
     }];
     [self performBlockOnMetalThread:^{
-        self->_skiaMetalApp = nullptr;
+        self->_skiaMetalApp.reset();
     }];
     [self._displayLinkUI invalidate];
     [self->_skiaUIThread cancel];

@@ -47,6 +47,10 @@
 		22518BE92CF587CD00A2FF19 /* raining.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 22518BE82CF587CD00A2FF19 /* raining.glsl */; };
 		22518BEC2CF588DD00A2FF19 /* raining.gif in Resources */ = {isa = PBXBuildFile; fileRef = 22518BEB2CF588DD00A2FF19 /* raining.gif */; };
 		22518BEF2CF5899F00A2FF19 /* ImageView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22518BEE2CF5899F00A2FF19 /* ImageView.mm */; };
+		225610C42DA6171F0028B652 /* MatrixTestPage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 225610BC2DA6171E0028B652 /* MatrixTestPage.mm */; };
+		225610C52DA6171F0028B652 /* EasingTestPage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 225610BD2DA6171E0028B652 /* EasingTestPage.mm */; };
+		225610C62DA6171F0028B652 /* BlendTestView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 225610BE2DA6171E0028B652 /* BlendTestView.mm */; };
+		225610C72DA6171F0028B652 /* BlendTestPage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 225610C22DA6171F0028B652 /* BlendTestPage.mm */; };
 		226317CB2CF4199600AD9DDB /* View.mm in Sources */ = {isa = PBXBuildFile; fileRef = 226317CA2CF4199600AD9DDB /* View.mm */; };
 		226317D32CF41A7700AD9DDB /* IAnimator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 226317CC2CF41A7700AD9DDB /* IAnimator.cpp */; };
 		226317D92CF41E8900AD9DDB /* ViewGroup.mm in Sources */ = {isa = PBXBuildFile; fileRef = 226317D82CF41E8900AD9DDB /* ViewGroup.mm */; };
@@ -202,6 +206,15 @@
 		22518BEB2CF588DD00A2FF19 /* raining.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = raining.gif; sourceTree = "<group>"; };
 		22518BED2CF5899F00A2FF19 /* ImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageView.h; sourceTree = "<group>"; };
 		22518BEE2CF5899F00A2FF19 /* ImageView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageView.mm; sourceTree = "<group>"; };
+		225610BC2DA6171E0028B652 /* MatrixTestPage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MatrixTestPage.mm; sourceTree = "<group>"; };
+		225610BD2DA6171E0028B652 /* EasingTestPage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EasingTestPage.mm; sourceTree = "<group>"; };
+		225610BE2DA6171E0028B652 /* BlendTestView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BlendTestView.mm; sourceTree = "<group>"; };
+		225610BF2DA6171E0028B652 /* BlendTestPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlendTestPage.h; sourceTree = "<group>"; };
+		225610C02DA6171E0028B652 /* BlendTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlendTestView.h; sourceTree = "<group>"; };
+		225610C12DA6171F0028B652 /* EasingTestPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasingTestPage.h; sourceTree = "<group>"; };
+		225610C22DA6171F0028B652 /* BlendTestPage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BlendTestPage.mm; sourceTree = "<group>"; };
+		225610C32DA6171F0028B652 /* MatrixTestPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixTestPage.h; sourceTree = "<group>"; };
+		225610C82DA617560028B652 /* EaseType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EaseType.h; sourceTree = "<group>"; };
 		226317C62CF4125F00AD9DDB /* SkiaUIContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkiaUIContext.h; sourceTree = "<group>"; };
 		226317C72CF4168700AD9DDB /* MeasureTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeasureTime.h; sourceTree = "<group>"; };
 		226317C92CF4199600AD9DDB /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View.h; sourceTree = "<group>"; };
@@ -980,6 +993,7 @@
 		226317D22CF41A7700AD9DDB /* anim */ = {
 			isa = PBXGroup;
 			children = (
+				225610C82DA617560028B652 /* EaseType.h */,
 				226317CC2CF41A7700AD9DDB /* IAnimator.cpp */,
 				226317CD2CF41A7700AD9DDB /* IAnimator.h */,
 				226317E52CF4203C00AD9DDB /* LinearAnimator.mm */,
@@ -1004,6 +1018,14 @@
 		226317F92CF4215200AD9DDB /* test */ = {
 			isa = PBXGroup;
 			children = (
+				225610C22DA6171F0028B652 /* BlendTestPage.mm */,
+				225610BF2DA6171E0028B652 /* BlendTestPage.h */,
+				225610BE2DA6171E0028B652 /* BlendTestView.mm */,
+				225610C02DA6171E0028B652 /* BlendTestView.h */,
+				225610BD2DA6171E0028B652 /* EasingTestPage.mm */,
+				225610C12DA6171F0028B652 /* EasingTestPage.h */,
+				225610BC2DA6171E0028B652 /* MatrixTestPage.mm */,
+				225610C32DA6171F0028B652 /* MatrixTestPage.h */,
 				22DFF9FF2CFD399800BFF95D /* ClockView.mm */,
 				22DFF9FE2CFD399700BFF95D /* ClockView.h */,
 				226317EA2CF4215200AD9DDB /* CanvasTest.mm */,
@@ -2228,6 +2250,7 @@
 				22846ED82D794D6700E6A330 /* JSShaderViewBinding.mm in Sources */,
 				22B8D1332D801A7E008C75B2 /* ExampleViewController.m in Sources */,
 				222DF3B72CF497EB004BF728 /* ShaderView.mm in Sources */,
+				225610C72DA6171F0028B652 /* BlendTestPage.mm in Sources */,
 				22846ED52D7949D000E6A330 /* JSFlexboxLayoutBinding.mm in Sources */,
 				2239FCBB2D7185960050F9DF /* JSViewBinding.mm in Sources */,
 				2239FCB02D7056B60050F9DF /* JSCoreRuntime.mm in Sources */,
@@ -2258,8 +2281,10 @@
 				22246FD02CF376DB0090C0E3 /* Yoga.cpp in Sources */,
 				226317E82CF4203C00AD9DDB /* TranslateAnimator.mm in Sources */,
 				22DFFA002CFD399800BFF95D /* ClockView.mm in Sources */,
+				225610C62DA6171F0028B652 /* BlendTestView.mm in Sources */,
 				22846ECD2D79386000E6A330 /* JSImageViewBinding.mm in Sources */,
 				22E519A62D786D710087430F /* JSScrollViewBinding.mm in Sources */,
+				225610C42DA6171F0028B652 /* MatrixTestPage.mm in Sources */,
 				2263180F2CF452B400AD9DDB /* AssetManager.mm in Sources */,
 				22518BDB2CF5637F00A2FF19 /* LottieView.mm in Sources */,
 				22246FC62CF376DB0090C0E3 /* event.cpp in Sources */,
@@ -2268,6 +2293,7 @@
 				22C9482F2D76920800AD59FB /* JSEnterExitInfo.mm in Sources */,
 				2239FCB32D7135CF0050F9DF /* ReactjsTest.mm in Sources */,
 				22518BD52CF5636800A2FF19 /* SVGView.mm in Sources */,
+				225610C52DA6171F0028B652 /* EasingTestPage.mm in Sources */,
 				229D58D42CF5E31700694F52 /* QQMusicPage.mm in Sources */,
 				22246FCB2CF376DB0090C0E3 /* YGLayout.cpp in Sources */,
 				22846EE42D7974C800E6A330 /* JSAudioPlayer.mm in Sources */,

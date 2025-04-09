@@ -29,10 +29,10 @@ void ScrollView::layout(int l, int t, int r, int b) {
     }
     if (_direction == YGFlexDirectionRow) {
         updateTranslateX(0.0);
-        layoutHorizontal(l + translateX, t, r, b);
+        layoutChildren(l + translateX, t, r, b);
     } else {
         updateTranslateY(0.0);
-        layoutVertical(l, t + translateY, r, b);
+        layoutChildren(l, t + translateY, r, b);
     }
 }
 
@@ -202,17 +202,17 @@ void ScrollView::draw(SkCanvas *canvas) {
     canvas->restore();
 }
 
-bool ScrollView::ignoreChildDraw(const View *child) {
+bool ScrollView::ignoreChildDraw(View *child) {
     if (_direction == YGFlexDirectionColumn) {
-        const auto childRect = child->skRect;
+        const auto childRect = child->getIRect();
         auto childTop = childRect.top();
         auto childBottom = childRect.bottom();
         auto scrollTop = skRect.top();
         auto scrollBottom = skRect.bottom();
-        //bottom小于ScrollView的top-100/top大于ScrollView的bottom+100，则认为在屏幕上不可见，不进行绘制
+        //< top-100 || > bottom+100，invisible, ignore draw
         return childTop > scrollBottom + 100 || childBottom < scrollTop - 100;
     } else {
-        const auto childRect = child->skRect;
+        const auto childRect = child->getIRect();
         auto childLeft = childRect.left();
         auto childRight = childRect.right();
         auto scrollLeft = skRect.left();
@@ -234,7 +234,7 @@ void ScrollView::scrollToIndex(int index, bool animated) {
     if (_direction == YGFlexDirectionColumn) {
         for (int i = 0; i < index; ++i) {
             auto child = children[i];
-            translate += child->getHeight() + child->marginTop + child->marginBottom;
+            translate += child->getHeight() + child->getMarginTop() + child->getMarginBottom();
         }
         if (animated) {
             scrollTo(-translate);
@@ -244,7 +244,7 @@ void ScrollView::scrollToIndex(int index, bool animated) {
     } else {
         for (int i = 0; i < index; ++i) {
             auto child = children[i];
-            translate += children[i]->getWidth() + child->marginLeft + child->marginRight;
+            translate += children[i]->getWidth() + child->getMarginLeft() + child->getMarginRight();
         }
         if (animated) {
             scrollTo(-translate);
@@ -266,12 +266,10 @@ void ScrollView::scrollTo(float value) {
         if (_direction == YGFlexDirectionColumn) {
             if (!YGFloatsEqual(this->translateY, value)) {
                 setTranslateY(value);
-                markDirty();
             }
         } else {
             if (!YGFloatsEqual(this->translateX, value)) {
                 setTranslateX(value);
-                markDirty();
             }
         }
     });
@@ -292,12 +290,12 @@ int ScrollView::getDistanceByIndex(int index) {
     if (_direction == YGFlexDirectionColumn) {
         for (int i = 0; i < index; ++i) {
             auto child = children[index];
-            sum += child->getHeight() + child->marginTop + child->marginBottom;
+            sum += child->getHeight() + child->getMarginTop() + child->getMarginBottom();
         }
     } else {
         for (int i = 0; i < index; ++i) {
             auto child = children[index];
-            sum += child->getWidth() + child->marginLeft + child->marginRight;
+            sum += child->getWidth() + child->getMarginLeft() + child->getMarginRight();
         }
     }
     return sum;
@@ -308,3 +306,4 @@ void ScrollView::onFlingStopped() {
 }
 
 }
+

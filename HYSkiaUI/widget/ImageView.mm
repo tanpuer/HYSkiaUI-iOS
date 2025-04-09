@@ -53,10 +53,6 @@ void ImageView::setSource(const char *path) {
         this->duration = this->frameCount * animatedImage->currentFrameDuration();
         this->skAnimatedImage = std::move(animatedImage);
         skImage = skAnimatedImage->getCurrentFrame();
-        for (int i = 1; i < frameCount; ++i) {
-            skAnimatedImage->decodeNextFrame();
-            skImages.push_back(skAnimatedImage->getCurrentFrame());
-        }
         srcRect.setWH(static_cast<float>(skImage->width()), static_cast<float >(skImage->height()));
         ALOGD("decode image success %s %d %d", source.c_str(), skImage->width(), skImage->height())
         startTime = getContext()->getCurrentTimeMills();
@@ -118,14 +114,15 @@ void ImageView::draw(SkCanvas *canvas) {
             startTime = currentTimeMills;
             endTime = startTime + duration;
         }
-        currentFrameIndex = (int)((currentTimeMills - startTime) * frameCount / duration);
-        if (currentFrameIndex >= skImages.size()) {
-            if (completeFunc != nullptr) {
+        auto index = (currentTimeMills - startTime) * frameCount / duration;
+        if (currentFrameIndex != index) {
+            currentFrameIndex = index;
+            decodeNextFrame();
+            if (currentFrameIndex == 0 && completeFunc != nullptr) {
                 completeFunc(this);
             }
-            currentFrameIndex = 0;
+            skImage = skAnimatedImage->getCurrentFrame();
         }
-        skImage = skImages[currentFrameIndex];
         markDirty();
     }
     canvas->save();
@@ -235,8 +232,8 @@ bool ImageView::onTouchEvent(TouchEvent *touchEvent) {
             auto x = translateX;
             auto y = translateY;
             animator->setUpdateListener([x, y](View *view, float value) {
-                view->translateX = value;
-                view->translateY = value * y / x;
+                view->setTranslateX(value);
+                view->setTranslateY(value * y / x);
             });
             animator->start();
             break;
@@ -247,6 +244,19 @@ bool ImageView::onTouchEvent(TouchEvent *touchEvent) {
     }
     markDirty();
     return true;
+}
+
+void ImageView::setSkImage(sk_sp<SkImage> image) {
+    this->skImage = image;
+    srcRect.setWH(static_cast<float>(skImage->width()), static_cast<float >(skImage->height()));
+    markDirty();
+}
+
+void ImageView::decodeNextFrame() {
+    //    MeasureTime measureTime("decodeNextFrame");
+    if (skAnimatedImage->decodeNextFrame() == SkAnimatedImage::kFinished) {
+        skAnimatedImage->reset();
+    }
 }
 
 }

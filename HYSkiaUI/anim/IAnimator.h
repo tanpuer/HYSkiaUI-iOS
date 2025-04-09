@@ -2,6 +2,7 @@
 
 #include "functional"
 #include "core/SkRect.h"
+#include "EaseType.h"
 
 namespace HYSkiaUI {
 
@@ -32,7 +33,7 @@ public:
     
     virtual void update(SkIRect &rect) = 0;
     
-    virtual void addListener(std::function<void()> finishCallback);
+    virtual void addListener(std::function<void()> &&finishCallback);
     
     virtual void setLoopCount(int count);
     
@@ -40,7 +41,13 @@ public:
     
     virtual void resume();
     
+    virtual void stop();
+    
     virtual uint32_t getAnimatorId();
+    
+    virtual void setEaseType(EaseType type);
+    
+    virtual void setAutoReverse(bool autoReverse);
     
 protected:
     
@@ -52,6 +59,8 @@ protected:
     
     int loopCount = 1;
     
+    int currLoopCount = 0;
+    
     std::function<void()> finishCallback = nullptr;
     
     long pausedTime = 0L;
@@ -62,6 +71,11 @@ protected:
     
     float lastInterpolator = 0.0f;
     
+    uint8_t easeType = 0;
+    
+    bool autoReverse = false;
+    
 };
 
 }
+

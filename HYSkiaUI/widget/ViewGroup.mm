@@ -9,9 +9,6 @@ ViewGroup::ViewGroup() : View() {
 }
 
 ViewGroup::~ViewGroup() {
-    if (node == nullptr) {
-        return;
-    }
     for (auto view: children) {
         delete view;
     }
@@ -22,30 +19,27 @@ bool ViewGroup::addView(View *view) {
 }
 
 bool ViewGroup::addViewAt(View *view, uint32_t index) {
-    if (view == nullptr || view->node == nullptr) {
+    if (view == nullptr || view->getNode() == nullptr) {
         ALOGE("add null view, pls check view!")
         return false;
     }
-    YGNodeInsertChild(node, view->node, index);
-    view->parentName = name();
-    view->parentId = viewId;
-    view->parent = this;
+    YGNodeInsertChild(node, view->getNode(), index);
+    view->setParent(this);
     children.insert(children.cbegin() + index, view);
     return true;
 }
 
 bool ViewGroup::removeView(View *view) {
-    if (view == nullptr || view->node == nullptr) {
+    if (view == nullptr || view->getNode() == nullptr) {
         ALOGE("remove null view, pls check view!")
         return false;
     }
-    YGNodeRemoveChild(node, view->node);
-    for (auto ite = children.begin(); ite < children.end(); ++ite) {
-        if ((*ite)->viewId == view->viewId) {
-            (*ite)->markForDelete = true;
-            return true;
-        }
+    YGNodeRemoveChild(node, view->getNode());
+    auto it = std::find(children.begin(), children.end(), view);
+    if (it != children.end()) {
+        children.erase(it);
     }
+    delete view;
     return false;
 }
 
@@ -57,20 +51,7 @@ bool ViewGroup::removeViewAt(uint32_t index) {
     if (view == nullptr) {
         return false;
     }
-    YGNodeRemoveChild(node, view->node);
-    view->markForDelete = true;
-    return true;
-}
-
-void ViewGroup::removeAllViews() {
-    if (node == nullptr) {
-        ALOGE("remove null view, pls check view!")
-        return;
-    }
-    for (const auto &item: children) {
-        item->markForDelete = true;
-    }
-    YGNodeRemoveAllChildren(node);
+    return removeView(view);
 }
 
 void ViewGroup::setMeasuredDimension(int _measuredWidth, int _measuredHeight) {
@@ -89,16 +70,6 @@ void ViewGroup::draw(SkCanvas *canvas) {
     for (auto child: children) {
         child->draw(canvas);
     }
-    children.erase(std::remove_if(children.begin(),
-                                  children.end(),
-                                  [](View *child) {
-        if (child->markForDelete) {
-            delete child;
-            return true;
-        } else {
-            return false;
-        }
-    }), children.end());
 }
 
 void ViewGroup::setAlignItems(YGAlign align) {
@@ -111,33 +82,21 @@ void ViewGroup::setAlignItems(YGAlign align) {
 
 void ViewGroup::setJustifyContent(YGJustify justify) {
     SkASSERT(node);
-    if (node == nullptr) {
-        return;
-    }
     YGNodeStyleSetJustifyContent(node, justify);
 }
 
 void ViewGroup::setAlignContent(YGAlign align) {
     SkASSERT(node);
-    if (node == nullptr) {
-        return;
-    }
     YGNodeStyleSetAlignContent(node, align);
 }
 
 void ViewGroup::setFlexWrap(YGWrap wrap) {
     SkASSERT(node);
-    if (node == nullptr) {
-        return;
-    }
     YGNodeStyleSetFlexWrap(node, wrap);
 }
 
 void ViewGroup::setFlexDirection(YGFlexDirection direction) {
     SkASSERT(node);
-    if (node == nullptr) {
-        return;
-    }
     YGNodeStyleSetFlexDirection(node, direction);
 }
 
@@ -151,7 +110,7 @@ int ViewGroup::getChildHeightSum() {
     int sum = 0;
     for (auto &child: children) {
         SkASSERT(child != nullptr);
-        sum += child->getHeight() + child->marginTop + child->marginBottom;
+        sum += child->getHeight() + child->getMarginTop() + child->getMarginBottom();
     }
     return sum;
 }
@@ -159,7 +118,7 @@ int ViewGroup::getChildHeightSum() {
 int ViewGroup::getChildWidthSum() {
     int sum = 0;
     for (auto &child: children) {
-        sum += child->getWidth() + child->marginLeft + child->marginRight;
+        sum += child->getWidth() + child->getMarginLeft() + child->getMarginRight();
     }
     return sum;
 }
@@ -170,10 +129,6 @@ bool ViewGroup::isViewGroup() {
 
 const char *ViewGroup::name() {
     return "ViewGroup";
-}
-
-YGConfigRef ViewGroup::getConfig() {
-    return config;
 }
 
 bool ViewGroup::dispatchTouchEvent(TouchEvent *touchEvent) {
@@ -239,4 +194,42 @@ void ViewGroup::performAnimations() {
     }
 }
 
+bool ViewGroup::addViewBefore(View *view, View *beforeView) {
+    int index = -1;
+    for (int i = 0; i < children.size(); ++i) {
+        if (children[i] == beforeView) {
+            index = i;
+            break;
+        }
+    }
+    if (index == -1) {
+        return false;
+    }
+    return addViewAt(view, index);
 }
+
+void ViewGroup::removeViews(uint32_t index, uint32_t count) {
+    for (auto i = index; i < index + count; ++i) {
+        auto view = children[i];
+        YGNodeRemoveChild(node, view->getNode());
+        delete view;
+    }
+    children.erase(children.begin() + index, children.begin() + index + count);
+}
+
+void ViewGroup::moveViews(uint32_t from, uint32_t to, uint32_t count) {
+    std::vector<View *> movedViews;
+    for (auto i = from; i < from + count; ++i) {
+        auto view = children[i];
+        movedViews.push_back(view);
+        YGNodeRemoveChild(node, view->getNode());
+    }
+    children.erase(children.begin() + from, children.begin() + from + count);
+    for (int i = 0; i < movedViews.size(); ++i) {
+        children.insert(children.cbegin() + to - count + i, movedViews[i]);
+        YGNodeInsertChild(node, movedViews[i]->getNode(), to - count + i);
+    }
+}
+
+}
+

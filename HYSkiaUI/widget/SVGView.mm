@@ -38,8 +38,7 @@ void SVGView::draw(SkCanvas *canvas) {
     View::draw(canvas);
     if (skSVGDom != nullptr) {
         canvas->save();
-        canvas->translate(left + x, top + y);
-        canvas->rotate(rotateZ, containerWidth / 2, containerHeight / 2);
+        canvas->setMatrix(svgMatrix);
         skSVGDom->render(canvas);
         canvas->restore();
     }
@@ -52,6 +51,9 @@ void SVGView::layout(int l, int t, int r, int b) {
         containerHeight = height;
         skSVGDom->setContainerSize(SkSize::Make(containerWidth, containerHeight));
     }
+    svgMatrix.setIdentity();
+    svgMatrix.preTranslate(left + x, top + y);
+    svgMatrix.preRotate(rotateZ, width / 2, height / 2);
 }
 
 void SVGView::setXY(int x, int y) {

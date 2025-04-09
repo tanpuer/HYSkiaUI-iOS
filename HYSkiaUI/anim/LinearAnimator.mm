@@ -18,10 +18,19 @@ LinearAnimator::~LinearAnimator() {
 }
 
 void LinearAnimator::update(SkIRect &rect) {
-    if (currTime > endTime && !paused) {
-        if (loopCount == -1) {
+    if (paused) {
+        return;
+    }
+    if (currTime > endTime) {
+        currLoopCount++;
+        if (loopCount == -1 || currLoopCount < loopCount) {
             startTime = currTime;
             endTime = currTime + duration;
+            if (autoReverse) {
+                auto temp = startValue;
+                startValue = endValue;
+                endValue = temp;
+            }
         } else {
             end = true;
             updateInner();
@@ -37,9 +46,13 @@ void LinearAnimator::setUpdateListener(std::function<void(View *, float)> &&list
 
 void LinearAnimator::updateInner() {
     if (targetView != nullptr && updateListener != nullptr) {
-        auto interpolator = end ? 1.0f : getInterpolation(1.0f);
-        auto value = interpolator * (endValue - startValue) + startValue;
-        updateListener(targetView, value);
+        if (end) {
+            updateListener(targetView, endValue);
+        } else {
+            auto value = sEaseLst[easeType](static_cast<float >(currTime - startTime), startValue,
+                                            endValue - startValue, duration);
+            updateListener(targetView, value);
+        }
         if (!paused) {
             targetView->markDirty();
         }

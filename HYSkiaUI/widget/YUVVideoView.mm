@@ -86,6 +86,7 @@ void YUVVideoView::draw(SkCanvas *canvas) {
         skCanvas->drawRect(SkRect::MakeXYWH(0, 0, width * ratio, height * ratio),
                            skPaint);
         auto picture = recorder.finishRecordingAsPicture();
+        canvas->setMatrix(viewMatrix);
         canvas->save();
         canvas->translate(left, top);
         canvas->drawPicture(picture);
@@ -93,7 +94,9 @@ void YUVVideoView::draw(SkCanvas *canvas) {
         if (firstFrame) {
             firstFrame = false;
             if (renderFirstFrameCallback != nullptr) {
-                renderFirstFrameCallback();
+                context->setTimer([this](){
+                    renderFirstFrameCallback();
+                }, 0, false);
             }
         }
         markDirty();

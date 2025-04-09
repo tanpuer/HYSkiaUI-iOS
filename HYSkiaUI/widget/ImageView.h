@@ -63,11 +63,13 @@ public:
     
     bool onTouchEvent(TouchEvent *touchEvent) override;
     
+    void setSkImage(sk_sp<SkImage> image);
+    
+    void decodeNextFrame();
+    
 private:
     
     sk_sp<SkImage> skImage;
-    
-    std::vector<sk_sp<SkImage>> skImages;
     
     int currentFrameIndex = 0;
     
@@ -118,3 +120,4 @@ private:
 };
 
 }
+

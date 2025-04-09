@@ -16,13 +16,12 @@ public:
     
     const char *name() override;
     
+#pragma mark ViewGroup
+    
     void measureChild(View *child);
     
     void setMeasuredDimension(int _measuredWidth, int _measuredHeight) override;
     
-    /**
-     * 子类ViewGroup必须复写
-     */
     virtual void layout(int l, int t, int r, int b) override;
     
     virtual void draw(SkCanvas *canvas) override;
@@ -33,28 +32,27 @@ public:
     
     int getChildWidthSum();
     
-    virtual YGConfigRef getConfig();
-    
     virtual void onShow() override;
     
     virtual void onHide() override;
     
     virtual void performAnimations() override;
     
-#pragma mark ViewGroup api
+    virtual bool dispatchTouchEvent(TouchEvent *touchEvent);
     
-    virtual bool addView(View *view);
+    virtual bool onInterceptTouchEvent(TouchEvent *touchEvent) override;
     
-    virtual bool addViewAt(View *view, uint32_t index);
+    virtual bool onTouchEvent(TouchEvent *touchEvent) override;
     
-    virtual bool removeView(View *view);
+    void requestDisallowInterceptTouchEvent(bool disallowIntercept) override;
     
-    virtual bool removeViewAt(uint32_t index);
+    virtual bool dispatchVelocity(Velocity *velocity);
     
-    virtual void removeAllViews();
+#pragma mark Yoga
     
     /**
      * 子视图在主轴上的排列对齐方式
+     * @param justify
      */
     virtual void setJustifyContent(YGJustify justify);
     
@@ -62,6 +60,7 @@ public:
     
     /**
      * 子视图在侧轴上的排列方式
+     * @param align
      */
     virtual void setAlignItems(YGAlign align);
     
@@ -69,6 +68,7 @@ public:
     
     /**
      * 子视图行与行之间在侧轴上的对齐方式
+     * @param align
      */
     virtual void setAlignContent(YGAlign align);
     
@@ -82,27 +82,28 @@ public:
     
     const char *getFLexWrap();
     
-    /**
-     * flex的方向
-     */
     virtual void setFlexDirection(YGFlexDirection direction);
     
     virtual const char *getFlexDirection();
     
-    //TODO 智能指针
+#pragma mark View api
+    
+    virtual bool addView(View *view);
+    
+    virtual bool addViewAt(View *view, uint32_t index);
+    
+    virtual bool addViewBefore(View *view, View *beforeView);
+    
+    virtual bool removeView(View *view);
+    
+    virtual bool removeViewAt(uint32_t index);
+    
+    virtual void removeViews(uint32_t index, uint32_t count);
+    
+    virtual void moveViews(uint32_t from, uint32_t to, uint32_t count);
+    
+    //TODO smart-pointer
     std::vector<View *> children;
-    
-#pragma mark TouchEvent
-    
-    virtual bool dispatchTouchEvent(TouchEvent *touchEvent);
-    
-    virtual bool onInterceptTouchEvent(TouchEvent *touchEvent) override;
-    
-    virtual bool onTouchEvent(TouchEvent *touchEvent) override;
-    
-    void requestDisallowInterceptTouchEvent(bool disallowIntercept) override;
-    
-    virtual bool dispatchVelocity(Velocity *velocity);
     
 };
 

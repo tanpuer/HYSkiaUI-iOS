@@ -40,13 +40,13 @@ JSValueRef JSViewBinding::ViewGetProperty(JSContextRef ctx, JSObjectRef object, 
     } else if (propName == "flex") {
         return JSValueMakeNumber(ctx, view->getFlex());
     } else if (propName == "marginLeft") {
-        return JSValueMakeNumber(ctx, view->marginLeft);
+        return JSValueMakeNumber(ctx, view->getMarginLeft());
     } else if (propName == "marginTop") {
-        return JSValueMakeNumber(ctx, view->marginTop);
+        return JSValueMakeNumber(ctx, view->getMarginTop());
     } else if (propName == "marginRight") {
-        return JSValueMakeNumber(ctx, view->marginRight);
+        return JSValueMakeNumber(ctx, view->getMarginRight());
     } else if (propName == "marginBottom") {
-        return JSValueMakeNumber(ctx, view->marginBottom);
+        return JSValueMakeNumber(ctx, view->getMarginBottom());
     } else if (propName == "rotateZ") {
         return JSValueMakeNumber(ctx, view->getRotateZ());
     } else if (propName == "setOnClickListener") {

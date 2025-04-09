@@ -64,7 +64,6 @@ void Page::exitToLeft(const EnterExitInfo &info) {
     animator->setDuration(info.duration);
     animator->addListener([this]() {
         this->markDestroyed = true;
-        context->getPageStackManager()->removeDestroyedPage();
     });
     animator->start();
     context->getPageStackManager()->showLastPage();
@@ -91,7 +90,6 @@ void Page::exitToTop(const Page::EnterExitInfo &info) {
     animator->setDuration(info.duration);
     animator->addListener([this]() {
         this->markDestroyed = true;
-        context->getPageStackManager()->removeDestroyedPage();
     });
     animator->start();
     context->getPageStackManager()->showLastPage();
@@ -116,10 +114,10 @@ void Page::layout(int l, int t, int r, int b) {
     View::layout(l, t, r, b);
     SkASSERT(children.size() == 1);
     auto root = children[0];
-    auto left = static_cast<int>(YGNodeLayoutGetLeft(root->node));
-    auto top = static_cast<int>(YGNodeLayoutGetTop(root->node));
-    auto width = static_cast<int>(YGNodeLayoutGetWidth(root->node));
-    auto height = static_cast<int>(YGNodeLayoutGetHeight(root->node));
+    auto left = static_cast<int>(YGNodeLayoutGetLeft(root->getNode()));
+    auto top = static_cast<int>(YGNodeLayoutGetTop(root->getNode()));
+    auto width = static_cast<int>(YGNodeLayoutGetWidth(root->getNode()));
+    auto height = static_cast<int>(YGNodeLayoutGetHeight(root->getNode()));
     root->layout(left + animTranslateX,
                  top + animTranslateY,
                  left + animTranslateX + width,
